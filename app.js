@@ -1902,7 +1902,7 @@
             try {
                 oldLocale = globalLocale._abbr;
                 var aliasedRequire = require;
-                __webpack_require__(351)("./" + name);
+                __webpack_require__(349)("./" + name);
                 getSetGlobalLocale(oldLocale);
             } catch (e) {}
         }
@@ -6415,7 +6415,7 @@
             try {
                 oldLocale = globalLocale._abbr;
                 var aliasedRequire = require;
-                __webpack_require__(442)("./" + name);
+                __webpack_require__(440)("./" + name);
                 getSetGlobalLocale(oldLocale);
             } catch (e) {}
         }
@@ -9097,9 +9097,9 @@
 
 
 module.exports = __webpack_require__(32);
-module.exports.easing = __webpack_require__(416);
-module.exports.canvas = __webpack_require__(417);
-module.exports.options = __webpack_require__(418);
+module.exports.easing = __webpack_require__(414);
+module.exports.canvas = __webpack_require__(415);
+module.exports.options = __webpack_require__(416);
 
 
 /***/ }),
@@ -9420,11 +9420,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(360)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(358)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(361)();
+  module.exports = __webpack_require__(359)();
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
@@ -9657,6 +9657,122 @@ module.exports = isArray;
 
 /***/ }),
 /* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {};
+module.exports.Arc = __webpack_require__(422);
+module.exports.Line = __webpack_require__(423);
+module.exports.Point = __webpack_require__(424);
+module.exports.Rectangle = __webpack_require__(425);
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+
+
+/**
+ * Use invariant() to assert state which your program assumes to be true.
+ *
+ * Provide sprintf-style format (only %s is supported) and arguments
+ * to provide information about what broke and what you were
+ * expecting.
+ *
+ * The invariant message will be stripped in production, but the invariant
+ * will remain to ensure logic does not differ in production.
+ */
+
+var validateFormat = function validateFormat(format) {};
+
+if (process.env.NODE_ENV !== 'production') {
+  validateFormat = function validateFormat(format) {
+    if (format === undefined) {
+      throw new Error('invariant requires an error message argument');
+    }
+  };
+}
+
+function invariant(condition, format, a, b, c, d, e, f) {
+  validateFormat(format);
+
+  if (!condition) {
+    var error;
+    if (format === undefined) {
+      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
+    } else {
+      var args = [a, b, c, d, e, f];
+      var argIndex = 0;
+      error = new Error(format.replace(/%s/g, function () {
+        return args[argIndex++];
+      }));
+      error.name = 'Invariant Violation';
+    }
+
+    error.framesToPop = 1; // we don't care about invariant's own frame
+    throw error;
+  }
+}
+
+module.exports = invariant;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+function makeEmptyFunction(arg) {
+  return function () {
+    return arg;
+  };
+}
+
+/**
+ * This function accepts and discards inputs; it has no side effects. This is
+ * primarily useful idiomatically for overridable function endpoints which
+ * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
+ */
+var emptyFunction = function emptyFunction() {};
+
+emptyFunction.thatReturns = makeEmptyFunction;
+emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
+emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
+emptyFunction.thatReturnsNull = makeEmptyFunction(null);
+emptyFunction.thatReturnsThis = function () {
+  return this;
+};
+emptyFunction.thatReturnsArgument = function (arg) {
+  return arg;
+};
+
+module.exports = emptyFunction;
+
+/***/ }),
+/* 15 */
 /***/ (function(module, exports) {
 
 /*
@@ -9738,7 +9854,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 13 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -9794,7 +9910,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(349);
+var	fixUrls = __webpack_require__(348);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -10110,127 +10226,11 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = {};
-module.exports.Arc = __webpack_require__(424);
-module.exports.Line = __webpack_require__(425);
-module.exports.Point = __webpack_require__(426);
-module.exports.Rectangle = __webpack_require__(427);
-
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-
-
-/**
- * Use invariant() to assert state which your program assumes to be true.
- *
- * Provide sprintf-style format (only %s is supported) and arguments
- * to provide information about what broke and what you were
- * expecting.
- *
- * The invariant message will be stripped in production, but the invariant
- * will remain to ensure logic does not differ in production.
- */
-
-var validateFormat = function validateFormat(format) {};
-
-if (process.env.NODE_ENV !== 'production') {
-  validateFormat = function validateFormat(format) {
-    if (format === undefined) {
-      throw new Error('invariant requires an error message argument');
-    }
-  };
-}
-
-function invariant(condition, format, a, b, c, d, e, f) {
-  validateFormat(format);
-
-  if (!condition) {
-    var error;
-    if (format === undefined) {
-      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
-    } else {
-      var args = [a, b, c, d, e, f];
-      var argIndex = 0;
-      error = new Error(format.replace(/%s/g, function () {
-        return args[argIndex++];
-      }));
-      error.name = 'Invariant Violation';
-    }
-
-    error.framesToPop = 1; // we don't care about invariant's own frame
-    throw error;
-  }
-}
-
-module.exports = invariant;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-function makeEmptyFunction(arg) {
-  return function () {
-    return arg;
-  };
-}
-
-/**
- * This function accepts and discards inputs; it has no side effects. This is
- * primarily useful idiomatically for overridable function endpoints which
- * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
- */
-var emptyFunction = function emptyFunction() {};
-
-emptyFunction.thatReturns = makeEmptyFunction;
-emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
-emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
-emptyFunction.thatReturnsNull = makeEmptyFunction(null);
-emptyFunction.thatReturnsThis = function () {
-  return this;
-};
-emptyFunction.thatReturnsArgument = function (arg) {
-  return arg;
-};
-
-module.exports = emptyFunction;
-
-/***/ }),
 /* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsNative = __webpack_require__(473),
-    getValue = __webpack_require__(479);
+var baseIsNative = __webpack_require__(471),
+    getValue = __webpack_require__(477);
 
 /**
  * Gets the native function at `key` of `object`.
@@ -10352,7 +10352,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(350);
+var content = __webpack_require__(347);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -10360,7 +10360,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(13)(content, options);
+var update = __webpack_require__(16)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -11029,8 +11029,8 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(35),
-    getRawTag = __webpack_require__(475),
-    objectToString = __webpack_require__(476);
+    getRawTag = __webpack_require__(473),
+    objectToString = __webpack_require__(474);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -11132,7 +11132,7 @@ module.exports = emptyObject;
 
 
 
-var emptyFunction = __webpack_require__(16);
+var emptyFunction = __webpack_require__(14);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -11662,11 +11662,11 @@ helpers.getValueAtIndexOrDefault = helpers.valueAtIndexOrDefault;
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var listCacheClear = __webpack_require__(463),
-    listCacheDelete = __webpack_require__(464),
-    listCacheGet = __webpack_require__(465),
-    listCacheHas = __webpack_require__(466),
-    listCacheSet = __webpack_require__(467);
+var listCacheClear = __webpack_require__(461),
+    listCacheDelete = __webpack_require__(462),
+    listCacheGet = __webpack_require__(463),
+    listCacheHas = __webpack_require__(464),
+    listCacheSet = __webpack_require__(465);
 
 /**
  * Creates an list cache object.
@@ -11788,7 +11788,7 @@ module.exports = nativeCreate;
 /* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isKeyable = __webpack_require__(488);
+var isKeyable = __webpack_require__(486);
 
 /**
  * Gets the data for `map`.
@@ -11812,8 +11812,8 @@ module.exports = getMapData;
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayLikeKeys = __webpack_require__(508),
-    baseKeys = __webpack_require__(515),
+var arrayLikeKeys = __webpack_require__(506),
+    baseKeys = __webpack_require__(513),
     isArrayLike = __webpack_require__(56);
 
 /**
@@ -11928,7 +11928,7 @@ module.exports = toKey;
 
 
 if (process.env.NODE_ENV !== 'production') {
-  var invariant = __webpack_require__(15);
+  var invariant = __webpack_require__(13);
   var warning = __webpack_require__(28);
   var ReactPropTypesSecret = __webpack_require__(43);
   var loggedTypeFailures = {};
@@ -12005,31 +12005,31 @@ module.exports = ReactPropTypesSecret;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__ = __webpack_require__(359);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__ = __webpack_require__(357);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "BrowserRouter", function() { return __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HashRouter__ = __webpack_require__(363);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HashRouter__ = __webpack_require__(361);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "HashRouter", function() { return __WEBPACK_IMPORTED_MODULE_1__HashRouter__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Link__ = __webpack_require__(190);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Link", function() { return __WEBPACK_IMPORTED_MODULE_2__Link__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__ = __webpack_require__(365);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__ = __webpack_require__(363);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MemoryRouter", function() { return __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NavLink__ = __webpack_require__(368);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NavLink__ = __webpack_require__(366);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "NavLink", function() { return __WEBPACK_IMPORTED_MODULE_4__NavLink__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Prompt__ = __webpack_require__(371);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Prompt__ = __webpack_require__(369);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return __WEBPACK_IMPORTED_MODULE_5__Prompt__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(373);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(371);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_6__Redirect__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(191);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(47);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_8__Router__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(379);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(377);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return __WEBPACK_IMPORTED_MODULE_9__StaticRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Switch__ = __webpack_require__(381);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Switch__ = __webpack_require__(379);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return __WEBPACK_IMPORTED_MODULE_10__Switch__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__matchPath__ = __webpack_require__(383);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__matchPath__ = __webpack_require__(381);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "matchPath", function() { return __WEBPACK_IMPORTED_MODULE_11__matchPath__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__withRouter__ = __webpack_require__(384);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__withRouter__ = __webpack_require__(382);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "withRouter", function() { return __WEBPACK_IMPORTED_MODULE_12__withRouter__["a"]; });
 
 
@@ -12368,7 +12368,7 @@ Router.childContextTypes = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_path_to_regexp__ = __webpack_require__(369);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_path_to_regexp__ = __webpack_require__(367);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_path_to_regexp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_path_to_regexp__);
 
 
@@ -12548,7 +12548,7 @@ module.exports = ReactPropTypesSecret;
 /* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsEqualDeep = __webpack_require__(462),
+var baseIsEqualDeep = __webpack_require__(460),
     isObjectLike = __webpack_require__(26);
 
 /**
@@ -12595,11 +12595,11 @@ module.exports = Map;
 /* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var mapCacheClear = __webpack_require__(480),
-    mapCacheDelete = __webpack_require__(487),
-    mapCacheGet = __webpack_require__(489),
-    mapCacheHas = __webpack_require__(490),
-    mapCacheSet = __webpack_require__(491);
+var mapCacheClear = __webpack_require__(478),
+    mapCacheDelete = __webpack_require__(485),
+    mapCacheGet = __webpack_require__(487),
+    mapCacheHas = __webpack_require__(488),
+    mapCacheSet = __webpack_require__(489);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -12713,11 +12713,11 @@ module.exports = isArrayLike;
 /* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseMatches = __webpack_require__(526),
-    baseMatchesProperty = __webpack_require__(529),
-    identity = __webpack_require__(540),
+var baseMatches = __webpack_require__(524),
+    baseMatchesProperty = __webpack_require__(527),
+    identity = __webpack_require__(538),
     isArray = __webpack_require__(11),
-    property = __webpack_require__(541);
+    property = __webpack_require__(539);
 
 /**
  * The base implementation of `_.iteratee`.
@@ -25391,8 +25391,8 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* MIT license */
-var convert = __webpack_require__(420);
-var string = __webpack_require__(422);
+var convert = __webpack_require__(418);
+var string = __webpack_require__(420);
 
 var Color = function (obj) {
 	if (obj instanceof Color) {
@@ -26222,8 +26222,8 @@ module.exports = {
 
 
 var helpers = __webpack_require__(2);
-var basic = __webpack_require__(428);
-var dom = __webpack_require__(429);
+var basic = __webpack_require__(426);
+var dom = __webpack_require__(427);
 
 // @TODO Make possible to select another platform at build time.
 var implementation = dom._enabled ? dom : basic;
@@ -38534,11 +38534,11 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(33),
-    stackClear = __webpack_require__(468),
-    stackDelete = __webpack_require__(469),
-    stackGet = __webpack_require__(470),
-    stackHas = __webpack_require__(471),
-    stackSet = __webpack_require__(472);
+    stackClear = __webpack_require__(466),
+    stackDelete = __webpack_require__(467),
+    stackGet = __webpack_require__(468),
+    stackHas = __webpack_require__(469),
+    stackSet = __webpack_require__(470);
 
 /**
  * Creates a stack cache object to store key-value pairs.
@@ -38657,7 +38657,7 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 
 module.exports = freeGlobal;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(474)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(472)))
 
 /***/ }),
 /* 325 */
@@ -38695,9 +38695,9 @@ module.exports = toSource;
 /* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var SetCache = __webpack_require__(492),
-    arraySome = __webpack_require__(495),
-    cacheHas = __webpack_require__(496);
+var SetCache = __webpack_require__(490),
+    arraySome = __webpack_require__(493),
+    cacheHas = __webpack_require__(494);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -38784,7 +38784,7 @@ module.exports = equalArrays;
 /* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsArguments = __webpack_require__(510),
+var baseIsArguments = __webpack_require__(508),
     isObjectLike = __webpack_require__(26);
 
 /** Used for built-in method references. */
@@ -38827,7 +38827,7 @@ module.exports = isArguments;
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(10),
-    stubFalse = __webpack_require__(511);
+    stubFalse = __webpack_require__(509);
 
 /** Detect free variable `exports`. */
 var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
@@ -38902,9 +38902,9 @@ module.exports = isIndex;
 /* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsTypedArray = __webpack_require__(512),
-    baseUnary = __webpack_require__(513),
-    nodeUtil = __webpack_require__(514);
+var baseIsTypedArray = __webpack_require__(510),
+    baseUnary = __webpack_require__(511),
+    nodeUtil = __webpack_require__(512);
 
 /* Node.js helper references. */
 var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
@@ -39014,8 +39014,8 @@ module.exports = baseGet;
 
 var isArray = __webpack_require__(11),
     isKey = __webpack_require__(58),
-    stringToPath = __webpack_require__(531),
-    toString = __webpack_require__(534);
+    stringToPath = __webpack_require__(529),
+    toString = __webpack_require__(532);
 
 /**
  * Casts `value` to a path array if it's not one.
@@ -39054,7 +39054,7 @@ var _Main = __webpack_require__(346);
 
 var _Main2 = _interopRequireDefault(_Main);
 
-__webpack_require__(560);
+__webpack_require__(558);
 
 var _reactRouterDom = __webpack_require__(44);
 
@@ -39089,7 +39089,7 @@ _reactDom2.default.render(_react2.default.createElement(
  * LICENSE file in the root directory of this source tree.
  */
 
-var m=__webpack_require__(18),n=__webpack_require__(15),p=__webpack_require__(27),q=__webpack_require__(16),r="function"===typeof Symbol&&Symbol["for"],t=r?Symbol["for"]("react.element"):60103,u=r?Symbol["for"]("react.portal"):60106,v=r?Symbol["for"]("react.fragment"):60107,w=r?Symbol["for"]("react.strict_mode"):60108,x=r?Symbol["for"]("react.provider"):60109,y=r?Symbol["for"]("react.context"):60110,z=r?Symbol["for"]("react.async_mode"):60111,A=r?Symbol["for"]("react.forward_ref"):
+var m=__webpack_require__(18),n=__webpack_require__(13),p=__webpack_require__(27),q=__webpack_require__(14),r="function"===typeof Symbol&&Symbol["for"],t=r?Symbol["for"]("react.element"):60103,u=r?Symbol["for"]("react.portal"):60106,v=r?Symbol["for"]("react.fragment"):60107,w=r?Symbol["for"]("react.strict_mode"):60108,x=r?Symbol["for"]("react.provider"):60109,y=r?Symbol["for"]("react.context"):60110,z=r?Symbol["for"]("react.async_mode"):60111,A=r?Symbol["for"]("react.forward_ref"):
 60112,B="function"===typeof Symbol&&Symbol.iterator;function C(a){for(var b=arguments.length-1,e="http://reactjs.org/docs/error-decoder.html?invariant\x3d"+a,c=0;c<b;c++)e+="\x26args[]\x3d"+encodeURIComponent(arguments[c+1]);n(!1,"Minified React error #"+a+"; visit %s for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ",e)}var D={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};
 function E(a,b,e){this.props=a;this.context=b;this.refs=p;this.updater=e||D}E.prototype.isReactComponent={};E.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?C("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};E.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};function F(){}F.prototype=E.prototype;function G(a,b,e){this.props=a;this.context=b;this.refs=p;this.updater=e||D}var H=G.prototype=new F;
 H.constructor=G;m(H,E.prototype);H.isPureReactComponent=!0;var I={current:null},J=Object.prototype.hasOwnProperty,K={key:!0,ref:!0,__self:!0,__source:!0};
@@ -39127,10 +39127,10 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var _assign = __webpack_require__(18);
-var invariant = __webpack_require__(15);
+var invariant = __webpack_require__(13);
 var emptyObject = __webpack_require__(27);
 var warning = __webpack_require__(28);
-var emptyFunction = __webpack_require__(16);
+var emptyFunction = __webpack_require__(14);
 var checkPropTypes = __webpack_require__(42);
 
 // TODO: this is special because it gets imported during build.
@@ -40543,7 +40543,7 @@ module.exports = react;
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var ba=__webpack_require__(15),ea=__webpack_require__(4),m=__webpack_require__(60),A=__webpack_require__(18),C=__webpack_require__(16),fa=__webpack_require__(61),ha=__webpack_require__(62),ja=__webpack_require__(63),ka=__webpack_require__(27);
+var ba=__webpack_require__(13),ea=__webpack_require__(4),m=__webpack_require__(60),A=__webpack_require__(18),C=__webpack_require__(14),fa=__webpack_require__(61),ha=__webpack_require__(62),ja=__webpack_require__(63),ka=__webpack_require__(27);
 function D(a){for(var b=arguments.length-1,c="http://reactjs.org/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);ba(!1,"Minified React error #"+a+"; visit %s for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ",c)}ea?void 0:D("227");
 function ma(a,b,c,d,e,f,h,g,k){this._hasCaughtError=!1;this._caughtError=null;var v=Array.prototype.slice.call(arguments,3);try{b.apply(c,v)}catch(l){this._caughtError=l,this._hasCaughtError=!0}}
 var E={_caughtError:null,_hasCaughtError:!1,_rethrowError:null,_hasRethrowError:!1,invokeGuardedCallback:function(a,b,c,d,e,f,h,g,k){ma.apply(E,arguments)},invokeGuardedCallbackAndCatchFirstError:function(a,b,c,d,e,f,h,g,k){E.invokeGuardedCallback.apply(this,arguments);if(E.hasCaughtError()){var v=E.clearCaughtError();E._hasRethrowError||(E._hasRethrowError=!0,E._rethrowError=v)}},rethrowCaughtError:function(){return na.apply(E,arguments)},hasCaughtError:function(){return E._hasCaughtError},clearCaughtError:function(){if(E._hasCaughtError){var a=
@@ -40857,12 +40857,12 @@ if (process.env.NODE_ENV !== "production") {
   (function() {
 'use strict';
 
-var invariant = __webpack_require__(15);
+var invariant = __webpack_require__(13);
 var React = __webpack_require__(4);
 var warning = __webpack_require__(28);
 var ExecutionEnvironment = __webpack_require__(60);
 var _assign = __webpack_require__(18);
-var emptyFunction = __webpack_require__(16);
+var emptyFunction = __webpack_require__(14);
 var checkPropTypes = __webpack_require__(42);
 var getActiveElement = __webpack_require__(61);
 var shallowEqual = __webpack_require__(62);
@@ -57674,8 +57674,6 @@ var _reactDom = __webpack_require__(59);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-__webpack_require__(347);
-
 var _aos = __webpack_require__(20);
 
 var _aos2 = _interopRequireDefault(_aos);
@@ -57686,23 +57684,23 @@ var _moment = __webpack_require__(0);
 
 var _moment2 = _interopRequireDefault(_moment);
 
-var _Intro = __webpack_require__(352);
+var _Intro = __webpack_require__(350);
 
 var _Intro2 = _interopRequireDefault(_Intro);
 
-var _Header = __webpack_require__(356);
+var _Header = __webpack_require__(354);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Launches = __webpack_require__(387);
+var _Launches = __webpack_require__(385);
 
 var _Launches2 = _interopRequireDefault(_Launches);
 
-var _Pads = __webpack_require__(396);
+var _Pads = __webpack_require__(394);
 
 var _Pads2 = _interopRequireDefault(_Pads);
 
-var _Stats = __webpack_require__(405);
+var _Stats = __webpack_require__(403);
 
 var _Stats2 = _interopRequireDefault(_Stats);
 
@@ -57838,7 +57836,7 @@ var Main = function (_Component) {
             kwaDescription: '',
             vanDescription: '',
             launchesCount: undefined
-        }, _defineProperty(_this$state, "totalLaunches", undefined), _defineProperty(_this$state, "fal1Launches", undefined), _defineProperty(_this$state, "fal9Launches", undefined), _defineProperty(_this$state, "falHLaunches", undefined), _defineProperty(_this$state, "bfrLaunches", undefined), _defineProperty(_this$state, "rocketsInfo", undefined), _defineProperty(_this$state, "fal1Description", ''), _defineProperty(_this$state, "fal9Description", ''), _defineProperty(_this$state, "falHDescription", ''), _defineProperty(_this$state, "bfrDescription", 'BFR is a design by SpaceX for a privately funded next-generation reusable launch vehicle and spacecraft announced by Elon Musk in September 2017. Musk has said the first spacecraft prototype will begin testing in early 2019. The overall space vehicle architecture includes the launch vehicles and spacecraft that are intended to replace all of SpaceX&#39;s existing space hardware by the early 2020s, ground infrastructure for rapid launch and relaunch, and zero-gravity propellant transfer technology to be deployed in low Earth orbit (LEO). The large payload to Earth orbit of up to 150,000 kg (330,000 lb) makes BFR a super heavy-lift launch vehicle.'), _defineProperty(_this$state, "fal1First_flight", ''), _defineProperty(_this$state, "fal1Height", ''), _defineProperty(_this$state, "fal1Mass", ''), _defineProperty(_this$state, "fal1Cost_per_launch", ''), _defineProperty(_this$state, "fal9First_flight", ''), _defineProperty(_this$state, "fal9Height", ''), _defineProperty(_this$state, "fal9Mass", ''), _defineProperty(_this$state, "fal9Cost_per_launch", ''), _defineProperty(_this$state, "falHHeight", ''), _defineProperty(_this$state, "falHMass", ''), _defineProperty(_this$state, "falHCost_per_launch", ''), _defineProperty(_this$state, "launchesTotal", undefined), _defineProperty(_this$state, "launchesFalcon1", undefined), _defineProperty(_this$state, "launchesFalcon9", undefined), _defineProperty(_this$state, "launchesFalconHeavy", undefined), _defineProperty(_this$state, "launchesBfr", undefined), _defineProperty(_this$state, "launchesScrolledValue", undefined), _defineProperty(_this$state, "scrolledLaunchesSubMenu", ''), _defineProperty(_this$state, "padsScrolledValue", undefined), _defineProperty(_this$state, "scrolledPadsSubMenu", ''), _defineProperty(_this$state, "padsBc", undefined), _defineProperty(_this$state, "padsCc", undefined), _defineProperty(_this$state, "padsKsc", undefined), _defineProperty(_this$state, "padsKwa", undefined), _defineProperty(_this$state, "padsVan", undefined), _defineProperty(_this$state, "launches2006All", {}), _defineProperty(_this$state, "launches2007All", {}), _defineProperty(_this$state, "launches2008All", {}), _defineProperty(_this$state, "launches2009All", {}), _defineProperty(_this$state, "launches2010All", {}), _defineProperty(_this$state, "launches2011All", {}), _defineProperty(_this$state, "launches2012All", {}), _defineProperty(_this$state, "launches2013All", {}), _defineProperty(_this$state, "launches2014All", {}), _defineProperty(_this$state, "launches2015All", {}), _defineProperty(_this$state, "launches2016All", {}), _defineProperty(_this$state, "launches2017All", {}), _defineProperty(_this$state, "launches2018All", {}), _this$state);
+        }, _defineProperty(_this$state, "totalLaunches", undefined), _defineProperty(_this$state, "fal1Launches", undefined), _defineProperty(_this$state, "fal9Launches", undefined), _defineProperty(_this$state, "falHLaunches", undefined), _defineProperty(_this$state, "bfrLaunches", undefined), _defineProperty(_this$state, "rocketsInfo", undefined), _defineProperty(_this$state, "fal1Description", ''), _defineProperty(_this$state, "fal9Description", ''), _defineProperty(_this$state, "falHDescription", ''), _defineProperty(_this$state, "bfrDescription", 'BFR is a design by SpaceX for a privately funded next-generation reusable launch vehicle and spacecraft announced by Elon Musk in September 2017. The large payload to Earth orbit of up to 150,000 kg (330,000 lb) makes BFR a super heavy-lift launch vehicle.'), _defineProperty(_this$state, "fal1First_flight", ''), _defineProperty(_this$state, "fal1Height", ''), _defineProperty(_this$state, "fal1Mass", ''), _defineProperty(_this$state, "fal1Cost_per_launch", ''), _defineProperty(_this$state, "fal9First_flight", ''), _defineProperty(_this$state, "fal9Height", ''), _defineProperty(_this$state, "fal9Mass", ''), _defineProperty(_this$state, "fal9Cost_per_launch", ''), _defineProperty(_this$state, "falHHeight", ''), _defineProperty(_this$state, "falHMass", ''), _defineProperty(_this$state, "falHCost_per_launch", ''), _defineProperty(_this$state, "launchesTotal", undefined), _defineProperty(_this$state, "launchesFalcon1", undefined), _defineProperty(_this$state, "launchesFalcon9", undefined), _defineProperty(_this$state, "launchesFalconHeavy", undefined), _defineProperty(_this$state, "launchesBfr", undefined), _defineProperty(_this$state, "launchesScrolledValue", undefined), _defineProperty(_this$state, "scrolledLaunchesSubMenu", ''), _defineProperty(_this$state, "padsScrolledValue", undefined), _defineProperty(_this$state, "scrolledPadsSubMenu", ''), _defineProperty(_this$state, "padsBc", undefined), _defineProperty(_this$state, "padsCc", undefined), _defineProperty(_this$state, "padsKsc", undefined), _defineProperty(_this$state, "padsKwa", undefined), _defineProperty(_this$state, "padsVan", undefined), _defineProperty(_this$state, "launches2006All", {}), _defineProperty(_this$state, "launches2007All", {}), _defineProperty(_this$state, "launches2008All", {}), _defineProperty(_this$state, "launches2009All", {}), _defineProperty(_this$state, "launches2010All", {}), _defineProperty(_this$state, "launches2011All", {}), _defineProperty(_this$state, "launches2012All", {}), _defineProperty(_this$state, "launches2013All", {}), _defineProperty(_this$state, "launches2014All", {}), _defineProperty(_this$state, "launches2015All", {}), _defineProperty(_this$state, "launches2016All", {}), _defineProperty(_this$state, "launches2017All", {}), _defineProperty(_this$state, "launches2018All", {}), _this$state);
         return _this;
     }
 
@@ -58376,18 +58374,18 @@ var Main = function (_Component) {
                     launchesFalconHeavy: this.state.launchesFalconHeavy,
                     launchesBfr: this.state.launchesBfr
                 }, _defineProperty(_React$createElement, "launchesTotal", this.state.launchesTotal), _defineProperty(_React$createElement, "launchesFalcon1", this.state.launchesFalocn1), _defineProperty(_React$createElement, "launchesFalcon9", this.state.launchesFalocn9), _defineProperty(_React$createElement, "launchesFalconHeavy", this.state.launchesFalconHeavy), _defineProperty(_React$createElement, "launchesBfr", this.state.launchesBfr), _defineProperty(_React$createElement, "scrolledLaunchesSubMenu", this.state.scrolledLaunchesSubMenu), _defineProperty(_React$createElement, "scrolledPadsSubMenu", this.state.scrolledPadsSubMenu), _defineProperty(_React$createElement, "headerLaunchesSubMenu", this.headerLaunchesSubMenu), _defineProperty(_React$createElement, "headerPadsSubMenu", this.headerPadsSubMenu), _React$createElement)),
-                "  ",
+                "   ",
                 _react2.default.createElement(
                     _reactRouterDom.Switch,
                     null,
                     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/",
                         component: _Intro2.default
                     }),
-                    "  ",
+                    "   ",
                     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/intro",
                         component: _Intro2.default
                     }),
-                    "  ",
+                    "   ",
                     _react2.default.createElement(_reactRouterDom.Route, { path: "/launches",
                         render: function render(props) {
                             return _react2.default.createElement(_Launches2.default, { launchTotal: _this3.state.totalLaunches,
@@ -58418,11 +58416,10 @@ var Main = function (_Component) {
                                 falHCost_per_launch: _this3.state.falHCost_per_launch,
                                 launchesElementsPositionHandler: _this3.launchesElementsPositionHandler,
                                 launchesHandleScrolled: _this3.launchesScrolled
-
                             });
                         }
                     }),
-                    "  ",
+                    "   ",
                     _react2.default.createElement(_reactRouterDom.Route, { path: "/pads",
                         render: function render(props) {
                             return _react2.default.createElement(_Pads2.default, { cc: _this3.state.cc,
@@ -58440,7 +58437,7 @@ var Main = function (_Component) {
                             });
                         }
                     }),
-                    " ",
+                    "  ",
                     _react2.default.createElement(_reactRouterDom.Route, { path: "/stats",
                         render: function render(props) {
                             return _react2.default.createElement(_Stats2.default, { launchesCount: _this3.state.launchesCount,
@@ -58460,9 +58457,8 @@ var Main = function (_Component) {
                             });
                         }
                     }),
-                    "  "
-                ),
-                " "
+                    "   "
+                )
             );
         }
     }]);
@@ -58476,49 +58472,18 @@ exports.default = Main;
 /* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(348);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {"hmr":true}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(13)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/resolve-url-loader/index.js!../../node_modules/sass-loader/lib/loader.js!./Main.scss", function() {
-			var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/resolve-url-loader/index.js!../../node_modules/sass-loader/lib/loader.js!./Main.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 348 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(12)(false);
+exports = module.exports = __webpack_require__(15)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".main {\n  font-family: \"Noto Sans\", sans-serif;\n}\n\n.main .section-content {\n  color: white;\n  text-align: center;\n  margin: 50px auto;\n  padding: 0px;\n}\n\n.main .section-content .section-content-title {\n  margin: 0 auto;\n  font-size: 2em;\n  line-height: 4em;\n  display: inline-block;\n  border: 10px solid white;\n  padding: 0px 40px 0px 40px;\n  text-transform: uppercase;\n}\n\n.main .section-content .section-content-title span {\n  font-size: 1.5em;\n}\n\n@media only screen and (max-width: 600px) {\n  .main .section-content {\n    margin: 0px;\n  }\n}\n\n@media only screen and (max-width: 992px) {\n  .main .section-content {\n    width: 100%;\n    margin-top: 10%;\n  }\n}\n\n@media only screen and (min-width: 992px) {\n  .main {\n    width: 100vw;\n  }\n\n  .main .section-content {\n    max-width: 70%;\n    margin: 0% 25%;\n  }\n}", ""]);
+exports.push([module.i, "[data-aos][data-aos][data-aos-duration=\"50\"],\nbody[data-aos-duration=\"50\"] [data-aos] {\n  transition-duration: 50ms;\n}\n\n[data-aos][data-aos][data-aos-delay=\"50\"],\nbody[data-aos-delay=\"50\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"50\"].aos-animate,\nbody[data-aos-delay=\"50\"] [data-aos].aos-animate {\n  transition-delay: 50ms;\n}\n\n[data-aos][data-aos][data-aos-duration=\"100\"],\nbody[data-aos-duration=\"100\"] [data-aos] {\n  transition-duration: .1s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"100\"],\nbody[data-aos-delay=\"100\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"100\"].aos-animate,\nbody[data-aos-delay=\"100\"] [data-aos].aos-animate {\n  transition-delay: .1s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"150\"],\nbody[data-aos-duration=\"150\"] [data-aos] {\n  transition-duration: .15s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"150\"],\nbody[data-aos-delay=\"150\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"150\"].aos-animate,\nbody[data-aos-delay=\"150\"] [data-aos].aos-animate {\n  transition-delay: .15s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"200\"],\nbody[data-aos-duration=\"200\"] [data-aos] {\n  transition-duration: .2s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"200\"],\nbody[data-aos-delay=\"200\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"200\"].aos-animate,\nbody[data-aos-delay=\"200\"] [data-aos].aos-animate {\n  transition-delay: .2s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"250\"],\nbody[data-aos-duration=\"250\"] [data-aos] {\n  transition-duration: .25s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"250\"],\nbody[data-aos-delay=\"250\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"250\"].aos-animate,\nbody[data-aos-delay=\"250\"] [data-aos].aos-animate {\n  transition-delay: .25s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"300\"],\nbody[data-aos-duration=\"300\"] [data-aos] {\n  transition-duration: .3s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"300\"],\nbody[data-aos-delay=\"300\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"300\"].aos-animate,\nbody[data-aos-delay=\"300\"] [data-aos].aos-animate {\n  transition-delay: .3s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"350\"],\nbody[data-aos-duration=\"350\"] [data-aos] {\n  transition-duration: .35s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"350\"],\nbody[data-aos-delay=\"350\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"350\"].aos-animate,\nbody[data-aos-delay=\"350\"] [data-aos].aos-animate {\n  transition-delay: .35s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"400\"],\nbody[data-aos-duration=\"400\"] [data-aos] {\n  transition-duration: .4s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"400\"],\nbody[data-aos-delay=\"400\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"400\"].aos-animate,\nbody[data-aos-delay=\"400\"] [data-aos].aos-animate {\n  transition-delay: .4s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"450\"],\nbody[data-aos-duration=\"450\"] [data-aos] {\n  transition-duration: .45s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"450\"],\nbody[data-aos-delay=\"450\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"450\"].aos-animate,\nbody[data-aos-delay=\"450\"] [data-aos].aos-animate {\n  transition-delay: .45s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"500\"],\nbody[data-aos-duration=\"500\"] [data-aos] {\n  transition-duration: .5s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"500\"],\nbody[data-aos-delay=\"500\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"500\"].aos-animate,\nbody[data-aos-delay=\"500\"] [data-aos].aos-animate {\n  transition-delay: .5s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"550\"],\nbody[data-aos-duration=\"550\"] [data-aos] {\n  transition-duration: .55s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"550\"],\nbody[data-aos-delay=\"550\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"550\"].aos-animate,\nbody[data-aos-delay=\"550\"] [data-aos].aos-animate {\n  transition-delay: .55s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"600\"],\nbody[data-aos-duration=\"600\"] [data-aos] {\n  transition-duration: .6s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"600\"],\nbody[data-aos-delay=\"600\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"600\"].aos-animate,\nbody[data-aos-delay=\"600\"] [data-aos].aos-animate {\n  transition-delay: .6s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"650\"],\nbody[data-aos-duration=\"650\"] [data-aos] {\n  transition-duration: .65s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"650\"],\nbody[data-aos-delay=\"650\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"650\"].aos-animate,\nbody[data-aos-delay=\"650\"] [data-aos].aos-animate {\n  transition-delay: .65s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"700\"],\nbody[data-aos-duration=\"700\"] [data-aos] {\n  transition-duration: .7s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"700\"],\nbody[data-aos-delay=\"700\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"700\"].aos-animate,\nbody[data-aos-delay=\"700\"] [data-aos].aos-animate {\n  transition-delay: .7s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"750\"],\nbody[data-aos-duration=\"750\"] [data-aos] {\n  transition-duration: .75s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"750\"],\nbody[data-aos-delay=\"750\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"750\"].aos-animate,\nbody[data-aos-delay=\"750\"] [data-aos].aos-animate {\n  transition-delay: .75s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"800\"],\nbody[data-aos-duration=\"800\"] [data-aos] {\n  transition-duration: .8s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"800\"],\nbody[data-aos-delay=\"800\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"800\"].aos-animate,\nbody[data-aos-delay=\"800\"] [data-aos].aos-animate {\n  transition-delay: .8s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"850\"],\nbody[data-aos-duration=\"850\"] [data-aos] {\n  transition-duration: .85s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"850\"],\nbody[data-aos-delay=\"850\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"850\"].aos-animate,\nbody[data-aos-delay=\"850\"] [data-aos].aos-animate {\n  transition-delay: .85s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"900\"],\nbody[data-aos-duration=\"900\"] [data-aos] {\n  transition-duration: .9s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"900\"],\nbody[data-aos-delay=\"900\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"900\"].aos-animate,\nbody[data-aos-delay=\"900\"] [data-aos].aos-animate {\n  transition-delay: .9s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"950\"],\nbody[data-aos-duration=\"950\"] [data-aos] {\n  transition-duration: .95s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"950\"],\nbody[data-aos-delay=\"950\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"950\"].aos-animate,\nbody[data-aos-delay=\"950\"] [data-aos].aos-animate {\n  transition-delay: .95s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1000\"],\nbody[data-aos-duration=\"1000\"] [data-aos] {\n  transition-duration: 1s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1000\"],\nbody[data-aos-delay=\"1000\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1000\"].aos-animate,\nbody[data-aos-delay=\"1000\"] [data-aos].aos-animate {\n  transition-delay: 1s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1050\"],\nbody[data-aos-duration=\"1050\"] [data-aos] {\n  transition-duration: 1.05s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1050\"],\nbody[data-aos-delay=\"1050\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1050\"].aos-animate,\nbody[data-aos-delay=\"1050\"] [data-aos].aos-animate {\n  transition-delay: 1.05s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1100\"],\nbody[data-aos-duration=\"1100\"] [data-aos] {\n  transition-duration: 1.1s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1100\"],\nbody[data-aos-delay=\"1100\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1100\"].aos-animate,\nbody[data-aos-delay=\"1100\"] [data-aos].aos-animate {\n  transition-delay: 1.1s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1150\"],\nbody[data-aos-duration=\"1150\"] [data-aos] {\n  transition-duration: 1.15s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1150\"],\nbody[data-aos-delay=\"1150\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1150\"].aos-animate,\nbody[data-aos-delay=\"1150\"] [data-aos].aos-animate {\n  transition-delay: 1.15s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1200\"],\nbody[data-aos-duration=\"1200\"] [data-aos] {\n  transition-duration: 1.2s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1200\"],\nbody[data-aos-delay=\"1200\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1200\"].aos-animate,\nbody[data-aos-delay=\"1200\"] [data-aos].aos-animate {\n  transition-delay: 1.2s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1250\"],\nbody[data-aos-duration=\"1250\"] [data-aos] {\n  transition-duration: 1.25s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1250\"],\nbody[data-aos-delay=\"1250\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1250\"].aos-animate,\nbody[data-aos-delay=\"1250\"] [data-aos].aos-animate {\n  transition-delay: 1.25s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1300\"],\nbody[data-aos-duration=\"1300\"] [data-aos] {\n  transition-duration: 1.3s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1300\"],\nbody[data-aos-delay=\"1300\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1300\"].aos-animate,\nbody[data-aos-delay=\"1300\"] [data-aos].aos-animate {\n  transition-delay: 1.3s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1350\"],\nbody[data-aos-duration=\"1350\"] [data-aos] {\n  transition-duration: 1.35s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1350\"],\nbody[data-aos-delay=\"1350\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1350\"].aos-animate,\nbody[data-aos-delay=\"1350\"] [data-aos].aos-animate {\n  transition-delay: 1.35s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1400\"],\nbody[data-aos-duration=\"1400\"] [data-aos] {\n  transition-duration: 1.4s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1400\"],\nbody[data-aos-delay=\"1400\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1400\"].aos-animate,\nbody[data-aos-delay=\"1400\"] [data-aos].aos-animate {\n  transition-delay: 1.4s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1450\"],\nbody[data-aos-duration=\"1450\"] [data-aos] {\n  transition-duration: 1.45s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1450\"],\nbody[data-aos-delay=\"1450\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1450\"].aos-animate,\nbody[data-aos-delay=\"1450\"] [data-aos].aos-animate {\n  transition-delay: 1.45s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1500\"],\nbody[data-aos-duration=\"1500\"] [data-aos] {\n  transition-duration: 1.5s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1500\"],\nbody[data-aos-delay=\"1500\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1500\"].aos-animate,\nbody[data-aos-delay=\"1500\"] [data-aos].aos-animate {\n  transition-delay: 1.5s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1550\"],\nbody[data-aos-duration=\"1550\"] [data-aos] {\n  transition-duration: 1.55s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1550\"],\nbody[data-aos-delay=\"1550\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1550\"].aos-animate,\nbody[data-aos-delay=\"1550\"] [data-aos].aos-animate {\n  transition-delay: 1.55s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1600\"],\nbody[data-aos-duration=\"1600\"] [data-aos] {\n  transition-duration: 1.6s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1600\"],\nbody[data-aos-delay=\"1600\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1600\"].aos-animate,\nbody[data-aos-delay=\"1600\"] [data-aos].aos-animate {\n  transition-delay: 1.6s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1650\"],\nbody[data-aos-duration=\"1650\"] [data-aos] {\n  transition-duration: 1.65s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1650\"],\nbody[data-aos-delay=\"1650\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1650\"].aos-animate,\nbody[data-aos-delay=\"1650\"] [data-aos].aos-animate {\n  transition-delay: 1.65s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1700\"],\nbody[data-aos-duration=\"1700\"] [data-aos] {\n  transition-duration: 1.7s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1700\"],\nbody[data-aos-delay=\"1700\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1700\"].aos-animate,\nbody[data-aos-delay=\"1700\"] [data-aos].aos-animate {\n  transition-delay: 1.7s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1750\"],\nbody[data-aos-duration=\"1750\"] [data-aos] {\n  transition-duration: 1.75s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1750\"],\nbody[data-aos-delay=\"1750\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1750\"].aos-animate,\nbody[data-aos-delay=\"1750\"] [data-aos].aos-animate {\n  transition-delay: 1.75s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1800\"],\nbody[data-aos-duration=\"1800\"] [data-aos] {\n  transition-duration: 1.8s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1800\"],\nbody[data-aos-delay=\"1800\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1800\"].aos-animate,\nbody[data-aos-delay=\"1800\"] [data-aos].aos-animate {\n  transition-delay: 1.8s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1850\"],\nbody[data-aos-duration=\"1850\"] [data-aos] {\n  transition-duration: 1.85s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1850\"],\nbody[data-aos-delay=\"1850\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1850\"].aos-animate,\nbody[data-aos-delay=\"1850\"] [data-aos].aos-animate {\n  transition-delay: 1.85s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1900\"],\nbody[data-aos-duration=\"1900\"] [data-aos] {\n  transition-duration: 1.9s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1900\"],\nbody[data-aos-delay=\"1900\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1900\"].aos-animate,\nbody[data-aos-delay=\"1900\"] [data-aos].aos-animate {\n  transition-delay: 1.9s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1950\"],\nbody[data-aos-duration=\"1950\"] [data-aos] {\n  transition-duration: 1.95s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1950\"],\nbody[data-aos-delay=\"1950\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1950\"].aos-animate,\nbody[data-aos-delay=\"1950\"] [data-aos].aos-animate {\n  transition-delay: 1.95s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2000\"],\nbody[data-aos-duration=\"2000\"] [data-aos] {\n  transition-duration: 2s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2000\"],\nbody[data-aos-delay=\"2000\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2000\"].aos-animate,\nbody[data-aos-delay=\"2000\"] [data-aos].aos-animate {\n  transition-delay: 2s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2050\"],\nbody[data-aos-duration=\"2050\"] [data-aos] {\n  transition-duration: 2.05s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2050\"],\nbody[data-aos-delay=\"2050\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2050\"].aos-animate,\nbody[data-aos-delay=\"2050\"] [data-aos].aos-animate {\n  transition-delay: 2.05s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2100\"],\nbody[data-aos-duration=\"2100\"] [data-aos] {\n  transition-duration: 2.1s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2100\"],\nbody[data-aos-delay=\"2100\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2100\"].aos-animate,\nbody[data-aos-delay=\"2100\"] [data-aos].aos-animate {\n  transition-delay: 2.1s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2150\"],\nbody[data-aos-duration=\"2150\"] [data-aos] {\n  transition-duration: 2.15s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2150\"],\nbody[data-aos-delay=\"2150\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2150\"].aos-animate,\nbody[data-aos-delay=\"2150\"] [data-aos].aos-animate {\n  transition-delay: 2.15s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2200\"],\nbody[data-aos-duration=\"2200\"] [data-aos] {\n  transition-duration: 2.2s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2200\"],\nbody[data-aos-delay=\"2200\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2200\"].aos-animate,\nbody[data-aos-delay=\"2200\"] [data-aos].aos-animate {\n  transition-delay: 2.2s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2250\"],\nbody[data-aos-duration=\"2250\"] [data-aos] {\n  transition-duration: 2.25s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2250\"],\nbody[data-aos-delay=\"2250\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2250\"].aos-animate,\nbody[data-aos-delay=\"2250\"] [data-aos].aos-animate {\n  transition-delay: 2.25s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2300\"],\nbody[data-aos-duration=\"2300\"] [data-aos] {\n  transition-duration: 2.3s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2300\"],\nbody[data-aos-delay=\"2300\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2300\"].aos-animate,\nbody[data-aos-delay=\"2300\"] [data-aos].aos-animate {\n  transition-delay: 2.3s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2350\"],\nbody[data-aos-duration=\"2350\"] [data-aos] {\n  transition-duration: 2.35s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2350\"],\nbody[data-aos-delay=\"2350\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2350\"].aos-animate,\nbody[data-aos-delay=\"2350\"] [data-aos].aos-animate {\n  transition-delay: 2.35s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2400\"],\nbody[data-aos-duration=\"2400\"] [data-aos] {\n  transition-duration: 2.4s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2400\"],\nbody[data-aos-delay=\"2400\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2400\"].aos-animate,\nbody[data-aos-delay=\"2400\"] [data-aos].aos-animate {\n  transition-delay: 2.4s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2450\"],\nbody[data-aos-duration=\"2450\"] [data-aos] {\n  transition-duration: 2.45s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2450\"],\nbody[data-aos-delay=\"2450\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2450\"].aos-animate,\nbody[data-aos-delay=\"2450\"] [data-aos].aos-animate {\n  transition-delay: 2.45s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2500\"],\nbody[data-aos-duration=\"2500\"] [data-aos] {\n  transition-duration: 2.5s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2500\"],\nbody[data-aos-delay=\"2500\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2500\"].aos-animate,\nbody[data-aos-delay=\"2500\"] [data-aos].aos-animate {\n  transition-delay: 2.5s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2550\"],\nbody[data-aos-duration=\"2550\"] [data-aos] {\n  transition-duration: 2.55s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2550\"],\nbody[data-aos-delay=\"2550\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2550\"].aos-animate,\nbody[data-aos-delay=\"2550\"] [data-aos].aos-animate {\n  transition-delay: 2.55s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2600\"],\nbody[data-aos-duration=\"2600\"] [data-aos] {\n  transition-duration: 2.6s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2600\"],\nbody[data-aos-delay=\"2600\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2600\"].aos-animate,\nbody[data-aos-delay=\"2600\"] [data-aos].aos-animate {\n  transition-delay: 2.6s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2650\"],\nbody[data-aos-duration=\"2650\"] [data-aos] {\n  transition-duration: 2.65s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2650\"],\nbody[data-aos-delay=\"2650\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2650\"].aos-animate,\nbody[data-aos-delay=\"2650\"] [data-aos].aos-animate {\n  transition-delay: 2.65s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2700\"],\nbody[data-aos-duration=\"2700\"] [data-aos] {\n  transition-duration: 2.7s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2700\"],\nbody[data-aos-delay=\"2700\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2700\"].aos-animate,\nbody[data-aos-delay=\"2700\"] [data-aos].aos-animate {\n  transition-delay: 2.7s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2750\"],\nbody[data-aos-duration=\"2750\"] [data-aos] {\n  transition-duration: 2.75s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2750\"],\nbody[data-aos-delay=\"2750\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2750\"].aos-animate,\nbody[data-aos-delay=\"2750\"] [data-aos].aos-animate {\n  transition-delay: 2.75s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2800\"],\nbody[data-aos-duration=\"2800\"] [data-aos] {\n  transition-duration: 2.8s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2800\"],\nbody[data-aos-delay=\"2800\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2800\"].aos-animate,\nbody[data-aos-delay=\"2800\"] [data-aos].aos-animate {\n  transition-delay: 2.8s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2850\"],\nbody[data-aos-duration=\"2850\"] [data-aos] {\n  transition-duration: 2.85s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2850\"],\nbody[data-aos-delay=\"2850\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2850\"].aos-animate,\nbody[data-aos-delay=\"2850\"] [data-aos].aos-animate {\n  transition-delay: 2.85s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2900\"],\nbody[data-aos-duration=\"2900\"] [data-aos] {\n  transition-duration: 2.9s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2900\"],\nbody[data-aos-delay=\"2900\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2900\"].aos-animate,\nbody[data-aos-delay=\"2900\"] [data-aos].aos-animate {\n  transition-delay: 2.9s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2950\"],\nbody[data-aos-duration=\"2950\"] [data-aos] {\n  transition-duration: 2.95s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2950\"],\nbody[data-aos-delay=\"2950\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2950\"].aos-animate,\nbody[data-aos-delay=\"2950\"] [data-aos].aos-animate {\n  transition-delay: 2.95s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"3000\"],\nbody[data-aos-duration=\"3000\"] [data-aos] {\n  transition-duration: 3s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"3000\"],\nbody[data-aos-delay=\"3000\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"3000\"].aos-animate,\nbody[data-aos-delay=\"3000\"] [data-aos].aos-animate {\n  transition-delay: 3s;\n}\n\n[data-aos][data-aos][data-aos-easing=linear],\nbody[data-aos-easing=linear] [data-aos] {\n  transition-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75);\n}\n\n[data-aos][data-aos][data-aos-easing=ease],\nbody[data-aos-easing=ease] [data-aos] {\n  transition-timing-function: ease;\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in],\nbody[data-aos-easing=ease-in] [data-aos] {\n  transition-timing-function: ease-in;\n}\n\n[data-aos][data-aos][data-aos-easing=ease-out],\nbody[data-aos-easing=ease-out] [data-aos] {\n  transition-timing-function: ease-out;\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-out],\nbody[data-aos-easing=ease-in-out] [data-aos] {\n  transition-timing-function: ease-in-out;\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-back],\nbody[data-aos-easing=ease-in-back] [data-aos] {\n  transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-out-back],\nbody[data-aos-easing=ease-out-back] [data-aos] {\n  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-out-back],\nbody[data-aos-easing=ease-in-out-back] [data-aos] {\n  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-sine],\nbody[data-aos-easing=ease-in-sine] [data-aos] {\n  transition-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-out-sine],\nbody[data-aos-easing=ease-out-sine] [data-aos] {\n  transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-out-sine],\nbody[data-aos-easing=ease-in-out-sine] [data-aos] {\n  transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-quad],\nbody[data-aos-easing=ease-in-quad] [data-aos] {\n  transition-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-out-quad],\nbody[data-aos-easing=ease-out-quad] [data-aos] {\n  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-out-quad],\nbody[data-aos-easing=ease-in-out-quad] [data-aos] {\n  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-cubic],\nbody[data-aos-easing=ease-in-cubic] [data-aos] {\n  transition-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-out-cubic],\nbody[data-aos-easing=ease-out-cubic] [data-aos] {\n  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-out-cubic],\nbody[data-aos-easing=ease-in-out-cubic] [data-aos] {\n  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-quart],\nbody[data-aos-easing=ease-in-quart] [data-aos] {\n  transition-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-out-quart],\nbody[data-aos-easing=ease-out-quart] [data-aos] {\n  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-out-quart],\nbody[data-aos-easing=ease-in-out-quart] [data-aos] {\n  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);\n}\n\n[data-aos^=fade][data-aos^=fade] {\n  opacity: 0;\n  transition-property: opacity,transform;\n}\n\n[data-aos^=fade][data-aos^=fade].aos-animate {\n  opacity: 1;\n  transform: translate(0);\n}\n\n[data-aos=fade-up] {\n  transform: translateY(100px);\n}\n\n[data-aos=fade-down] {\n  transform: translateY(-100px);\n}\n\n[data-aos=fade-right] {\n  transform: translate(-100px);\n}\n\n[data-aos=fade-left] {\n  transform: translate(100px);\n}\n\n[data-aos=fade-up-right] {\n  transform: translate(-100px, 100px);\n}\n\n[data-aos=fade-up-left] {\n  transform: translate(100px, 100px);\n}\n\n[data-aos=fade-down-right] {\n  transform: translate(-100px, -100px);\n}\n\n[data-aos=fade-down-left] {\n  transform: translate(100px, -100px);\n}\n\n[data-aos^=zoom][data-aos^=zoom] {\n  opacity: 0;\n  transition-property: opacity,transform;\n}\n\n[data-aos^=zoom][data-aos^=zoom].aos-animate {\n  opacity: 1;\n  transform: translate(0) scale(1);\n}\n\n[data-aos=zoom-in] {\n  transform: scale(0.6);\n}\n\n[data-aos=zoom-in-up] {\n  transform: translateY(100px) scale(0.6);\n}\n\n[data-aos=zoom-in-down] {\n  transform: translateY(-100px) scale(0.6);\n}\n\n[data-aos=zoom-in-right] {\n  transform: translate(-100px) scale(0.6);\n}\n\n[data-aos=zoom-in-left] {\n  transform: translate(100px) scale(0.6);\n}\n\n[data-aos=zoom-out] {\n  transform: scale(1.2);\n}\n\n[data-aos=zoom-out-up] {\n  transform: translateY(100px) scale(1.2);\n}\n\n[data-aos=zoom-out-down] {\n  transform: translateY(-100px) scale(1.2);\n}\n\n[data-aos=zoom-out-right] {\n  transform: translate(-100px) scale(1.2);\n}\n\n[data-aos=zoom-out-left] {\n  transform: translate(100px) scale(1.2);\n}\n\n[data-aos^=slide][data-aos^=slide] {\n  transition-property: transform;\n}\n\n[data-aos^=slide][data-aos^=slide].aos-animate {\n  transform: translate(0);\n}\n\n[data-aos=slide-up] {\n  transform: translateY(100%);\n}\n\n[data-aos=slide-down] {\n  transform: translateY(-100%);\n}\n\n[data-aos=slide-right] {\n  transform: translateX(-100%);\n}\n\n[data-aos=slide-left] {\n  transform: translateX(100%);\n}\n\n[data-aos^=flip][data-aos^=flip] {\n  backface-visibility: hidden;\n  transition-property: transform;\n}\n\n[data-aos=flip-left] {\n  transform: perspective(2500px) rotateY(-100deg);\n}\n\n[data-aos=flip-left].aos-animate {\n  transform: perspective(2500px) rotateY(0);\n}\n\n[data-aos=flip-right] {\n  transform: perspective(2500px) rotateY(100deg);\n}\n\n[data-aos=flip-right].aos-animate {\n  transform: perspective(2500px) rotateY(0);\n}\n\n[data-aos=flip-up] {\n  transform: perspective(2500px) rotateX(-100deg);\n}\n\n[data-aos=flip-up].aos-animate {\n  transform: perspective(2500px) rotateX(0);\n}\n\n[data-aos=flip-down] {\n  transform: perspective(2500px) rotateX(100deg);\n}\n\n[data-aos=flip-down].aos-animate {\n  transform: perspective(2500px) rotateX(0);\n}", ""]);
 
 // exports
 
 
 /***/ }),
-/* 349 */
+/* 348 */
 /***/ (function(module, exports) {
 
 
@@ -58613,21 +58578,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 350 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(12)(false);
-// imports
-
-
-// module
-exports.push([module.i, "[data-aos][data-aos][data-aos-duration=\"50\"],\nbody[data-aos-duration=\"50\"] [data-aos] {\n  transition-duration: 50ms;\n}\n\n[data-aos][data-aos][data-aos-delay=\"50\"],\nbody[data-aos-delay=\"50\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"50\"].aos-animate,\nbody[data-aos-delay=\"50\"] [data-aos].aos-animate {\n  transition-delay: 50ms;\n}\n\n[data-aos][data-aos][data-aos-duration=\"100\"],\nbody[data-aos-duration=\"100\"] [data-aos] {\n  transition-duration: .1s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"100\"],\nbody[data-aos-delay=\"100\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"100\"].aos-animate,\nbody[data-aos-delay=\"100\"] [data-aos].aos-animate {\n  transition-delay: .1s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"150\"],\nbody[data-aos-duration=\"150\"] [data-aos] {\n  transition-duration: .15s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"150\"],\nbody[data-aos-delay=\"150\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"150\"].aos-animate,\nbody[data-aos-delay=\"150\"] [data-aos].aos-animate {\n  transition-delay: .15s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"200\"],\nbody[data-aos-duration=\"200\"] [data-aos] {\n  transition-duration: .2s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"200\"],\nbody[data-aos-delay=\"200\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"200\"].aos-animate,\nbody[data-aos-delay=\"200\"] [data-aos].aos-animate {\n  transition-delay: .2s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"250\"],\nbody[data-aos-duration=\"250\"] [data-aos] {\n  transition-duration: .25s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"250\"],\nbody[data-aos-delay=\"250\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"250\"].aos-animate,\nbody[data-aos-delay=\"250\"] [data-aos].aos-animate {\n  transition-delay: .25s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"300\"],\nbody[data-aos-duration=\"300\"] [data-aos] {\n  transition-duration: .3s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"300\"],\nbody[data-aos-delay=\"300\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"300\"].aos-animate,\nbody[data-aos-delay=\"300\"] [data-aos].aos-animate {\n  transition-delay: .3s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"350\"],\nbody[data-aos-duration=\"350\"] [data-aos] {\n  transition-duration: .35s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"350\"],\nbody[data-aos-delay=\"350\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"350\"].aos-animate,\nbody[data-aos-delay=\"350\"] [data-aos].aos-animate {\n  transition-delay: .35s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"400\"],\nbody[data-aos-duration=\"400\"] [data-aos] {\n  transition-duration: .4s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"400\"],\nbody[data-aos-delay=\"400\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"400\"].aos-animate,\nbody[data-aos-delay=\"400\"] [data-aos].aos-animate {\n  transition-delay: .4s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"450\"],\nbody[data-aos-duration=\"450\"] [data-aos] {\n  transition-duration: .45s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"450\"],\nbody[data-aos-delay=\"450\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"450\"].aos-animate,\nbody[data-aos-delay=\"450\"] [data-aos].aos-animate {\n  transition-delay: .45s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"500\"],\nbody[data-aos-duration=\"500\"] [data-aos] {\n  transition-duration: .5s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"500\"],\nbody[data-aos-delay=\"500\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"500\"].aos-animate,\nbody[data-aos-delay=\"500\"] [data-aos].aos-animate {\n  transition-delay: .5s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"550\"],\nbody[data-aos-duration=\"550\"] [data-aos] {\n  transition-duration: .55s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"550\"],\nbody[data-aos-delay=\"550\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"550\"].aos-animate,\nbody[data-aos-delay=\"550\"] [data-aos].aos-animate {\n  transition-delay: .55s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"600\"],\nbody[data-aos-duration=\"600\"] [data-aos] {\n  transition-duration: .6s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"600\"],\nbody[data-aos-delay=\"600\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"600\"].aos-animate,\nbody[data-aos-delay=\"600\"] [data-aos].aos-animate {\n  transition-delay: .6s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"650\"],\nbody[data-aos-duration=\"650\"] [data-aos] {\n  transition-duration: .65s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"650\"],\nbody[data-aos-delay=\"650\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"650\"].aos-animate,\nbody[data-aos-delay=\"650\"] [data-aos].aos-animate {\n  transition-delay: .65s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"700\"],\nbody[data-aos-duration=\"700\"] [data-aos] {\n  transition-duration: .7s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"700\"],\nbody[data-aos-delay=\"700\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"700\"].aos-animate,\nbody[data-aos-delay=\"700\"] [data-aos].aos-animate {\n  transition-delay: .7s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"750\"],\nbody[data-aos-duration=\"750\"] [data-aos] {\n  transition-duration: .75s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"750\"],\nbody[data-aos-delay=\"750\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"750\"].aos-animate,\nbody[data-aos-delay=\"750\"] [data-aos].aos-animate {\n  transition-delay: .75s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"800\"],\nbody[data-aos-duration=\"800\"] [data-aos] {\n  transition-duration: .8s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"800\"],\nbody[data-aos-delay=\"800\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"800\"].aos-animate,\nbody[data-aos-delay=\"800\"] [data-aos].aos-animate {\n  transition-delay: .8s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"850\"],\nbody[data-aos-duration=\"850\"] [data-aos] {\n  transition-duration: .85s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"850\"],\nbody[data-aos-delay=\"850\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"850\"].aos-animate,\nbody[data-aos-delay=\"850\"] [data-aos].aos-animate {\n  transition-delay: .85s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"900\"],\nbody[data-aos-duration=\"900\"] [data-aos] {\n  transition-duration: .9s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"900\"],\nbody[data-aos-delay=\"900\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"900\"].aos-animate,\nbody[data-aos-delay=\"900\"] [data-aos].aos-animate {\n  transition-delay: .9s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"950\"],\nbody[data-aos-duration=\"950\"] [data-aos] {\n  transition-duration: .95s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"950\"],\nbody[data-aos-delay=\"950\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"950\"].aos-animate,\nbody[data-aos-delay=\"950\"] [data-aos].aos-animate {\n  transition-delay: .95s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1000\"],\nbody[data-aos-duration=\"1000\"] [data-aos] {\n  transition-duration: 1s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1000\"],\nbody[data-aos-delay=\"1000\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1000\"].aos-animate,\nbody[data-aos-delay=\"1000\"] [data-aos].aos-animate {\n  transition-delay: 1s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1050\"],\nbody[data-aos-duration=\"1050\"] [data-aos] {\n  transition-duration: 1.05s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1050\"],\nbody[data-aos-delay=\"1050\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1050\"].aos-animate,\nbody[data-aos-delay=\"1050\"] [data-aos].aos-animate {\n  transition-delay: 1.05s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1100\"],\nbody[data-aos-duration=\"1100\"] [data-aos] {\n  transition-duration: 1.1s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1100\"],\nbody[data-aos-delay=\"1100\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1100\"].aos-animate,\nbody[data-aos-delay=\"1100\"] [data-aos].aos-animate {\n  transition-delay: 1.1s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1150\"],\nbody[data-aos-duration=\"1150\"] [data-aos] {\n  transition-duration: 1.15s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1150\"],\nbody[data-aos-delay=\"1150\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1150\"].aos-animate,\nbody[data-aos-delay=\"1150\"] [data-aos].aos-animate {\n  transition-delay: 1.15s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1200\"],\nbody[data-aos-duration=\"1200\"] [data-aos] {\n  transition-duration: 1.2s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1200\"],\nbody[data-aos-delay=\"1200\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1200\"].aos-animate,\nbody[data-aos-delay=\"1200\"] [data-aos].aos-animate {\n  transition-delay: 1.2s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1250\"],\nbody[data-aos-duration=\"1250\"] [data-aos] {\n  transition-duration: 1.25s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1250\"],\nbody[data-aos-delay=\"1250\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1250\"].aos-animate,\nbody[data-aos-delay=\"1250\"] [data-aos].aos-animate {\n  transition-delay: 1.25s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1300\"],\nbody[data-aos-duration=\"1300\"] [data-aos] {\n  transition-duration: 1.3s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1300\"],\nbody[data-aos-delay=\"1300\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1300\"].aos-animate,\nbody[data-aos-delay=\"1300\"] [data-aos].aos-animate {\n  transition-delay: 1.3s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1350\"],\nbody[data-aos-duration=\"1350\"] [data-aos] {\n  transition-duration: 1.35s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1350\"],\nbody[data-aos-delay=\"1350\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1350\"].aos-animate,\nbody[data-aos-delay=\"1350\"] [data-aos].aos-animate {\n  transition-delay: 1.35s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1400\"],\nbody[data-aos-duration=\"1400\"] [data-aos] {\n  transition-duration: 1.4s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1400\"],\nbody[data-aos-delay=\"1400\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1400\"].aos-animate,\nbody[data-aos-delay=\"1400\"] [data-aos].aos-animate {\n  transition-delay: 1.4s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1450\"],\nbody[data-aos-duration=\"1450\"] [data-aos] {\n  transition-duration: 1.45s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1450\"],\nbody[data-aos-delay=\"1450\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1450\"].aos-animate,\nbody[data-aos-delay=\"1450\"] [data-aos].aos-animate {\n  transition-delay: 1.45s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1500\"],\nbody[data-aos-duration=\"1500\"] [data-aos] {\n  transition-duration: 1.5s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1500\"],\nbody[data-aos-delay=\"1500\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1500\"].aos-animate,\nbody[data-aos-delay=\"1500\"] [data-aos].aos-animate {\n  transition-delay: 1.5s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1550\"],\nbody[data-aos-duration=\"1550\"] [data-aos] {\n  transition-duration: 1.55s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1550\"],\nbody[data-aos-delay=\"1550\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1550\"].aos-animate,\nbody[data-aos-delay=\"1550\"] [data-aos].aos-animate {\n  transition-delay: 1.55s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1600\"],\nbody[data-aos-duration=\"1600\"] [data-aos] {\n  transition-duration: 1.6s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1600\"],\nbody[data-aos-delay=\"1600\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1600\"].aos-animate,\nbody[data-aos-delay=\"1600\"] [data-aos].aos-animate {\n  transition-delay: 1.6s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1650\"],\nbody[data-aos-duration=\"1650\"] [data-aos] {\n  transition-duration: 1.65s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1650\"],\nbody[data-aos-delay=\"1650\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1650\"].aos-animate,\nbody[data-aos-delay=\"1650\"] [data-aos].aos-animate {\n  transition-delay: 1.65s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1700\"],\nbody[data-aos-duration=\"1700\"] [data-aos] {\n  transition-duration: 1.7s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1700\"],\nbody[data-aos-delay=\"1700\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1700\"].aos-animate,\nbody[data-aos-delay=\"1700\"] [data-aos].aos-animate {\n  transition-delay: 1.7s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1750\"],\nbody[data-aos-duration=\"1750\"] [data-aos] {\n  transition-duration: 1.75s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1750\"],\nbody[data-aos-delay=\"1750\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1750\"].aos-animate,\nbody[data-aos-delay=\"1750\"] [data-aos].aos-animate {\n  transition-delay: 1.75s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1800\"],\nbody[data-aos-duration=\"1800\"] [data-aos] {\n  transition-duration: 1.8s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1800\"],\nbody[data-aos-delay=\"1800\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1800\"].aos-animate,\nbody[data-aos-delay=\"1800\"] [data-aos].aos-animate {\n  transition-delay: 1.8s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1850\"],\nbody[data-aos-duration=\"1850\"] [data-aos] {\n  transition-duration: 1.85s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1850\"],\nbody[data-aos-delay=\"1850\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1850\"].aos-animate,\nbody[data-aos-delay=\"1850\"] [data-aos].aos-animate {\n  transition-delay: 1.85s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1900\"],\nbody[data-aos-duration=\"1900\"] [data-aos] {\n  transition-duration: 1.9s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1900\"],\nbody[data-aos-delay=\"1900\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1900\"].aos-animate,\nbody[data-aos-delay=\"1900\"] [data-aos].aos-animate {\n  transition-delay: 1.9s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"1950\"],\nbody[data-aos-duration=\"1950\"] [data-aos] {\n  transition-duration: 1.95s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1950\"],\nbody[data-aos-delay=\"1950\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"1950\"].aos-animate,\nbody[data-aos-delay=\"1950\"] [data-aos].aos-animate {\n  transition-delay: 1.95s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2000\"],\nbody[data-aos-duration=\"2000\"] [data-aos] {\n  transition-duration: 2s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2000\"],\nbody[data-aos-delay=\"2000\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2000\"].aos-animate,\nbody[data-aos-delay=\"2000\"] [data-aos].aos-animate {\n  transition-delay: 2s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2050\"],\nbody[data-aos-duration=\"2050\"] [data-aos] {\n  transition-duration: 2.05s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2050\"],\nbody[data-aos-delay=\"2050\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2050\"].aos-animate,\nbody[data-aos-delay=\"2050\"] [data-aos].aos-animate {\n  transition-delay: 2.05s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2100\"],\nbody[data-aos-duration=\"2100\"] [data-aos] {\n  transition-duration: 2.1s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2100\"],\nbody[data-aos-delay=\"2100\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2100\"].aos-animate,\nbody[data-aos-delay=\"2100\"] [data-aos].aos-animate {\n  transition-delay: 2.1s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2150\"],\nbody[data-aos-duration=\"2150\"] [data-aos] {\n  transition-duration: 2.15s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2150\"],\nbody[data-aos-delay=\"2150\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2150\"].aos-animate,\nbody[data-aos-delay=\"2150\"] [data-aos].aos-animate {\n  transition-delay: 2.15s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2200\"],\nbody[data-aos-duration=\"2200\"] [data-aos] {\n  transition-duration: 2.2s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2200\"],\nbody[data-aos-delay=\"2200\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2200\"].aos-animate,\nbody[data-aos-delay=\"2200\"] [data-aos].aos-animate {\n  transition-delay: 2.2s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2250\"],\nbody[data-aos-duration=\"2250\"] [data-aos] {\n  transition-duration: 2.25s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2250\"],\nbody[data-aos-delay=\"2250\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2250\"].aos-animate,\nbody[data-aos-delay=\"2250\"] [data-aos].aos-animate {\n  transition-delay: 2.25s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2300\"],\nbody[data-aos-duration=\"2300\"] [data-aos] {\n  transition-duration: 2.3s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2300\"],\nbody[data-aos-delay=\"2300\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2300\"].aos-animate,\nbody[data-aos-delay=\"2300\"] [data-aos].aos-animate {\n  transition-delay: 2.3s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2350\"],\nbody[data-aos-duration=\"2350\"] [data-aos] {\n  transition-duration: 2.35s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2350\"],\nbody[data-aos-delay=\"2350\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2350\"].aos-animate,\nbody[data-aos-delay=\"2350\"] [data-aos].aos-animate {\n  transition-delay: 2.35s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2400\"],\nbody[data-aos-duration=\"2400\"] [data-aos] {\n  transition-duration: 2.4s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2400\"],\nbody[data-aos-delay=\"2400\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2400\"].aos-animate,\nbody[data-aos-delay=\"2400\"] [data-aos].aos-animate {\n  transition-delay: 2.4s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2450\"],\nbody[data-aos-duration=\"2450\"] [data-aos] {\n  transition-duration: 2.45s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2450\"],\nbody[data-aos-delay=\"2450\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2450\"].aos-animate,\nbody[data-aos-delay=\"2450\"] [data-aos].aos-animate {\n  transition-delay: 2.45s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2500\"],\nbody[data-aos-duration=\"2500\"] [data-aos] {\n  transition-duration: 2.5s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2500\"],\nbody[data-aos-delay=\"2500\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2500\"].aos-animate,\nbody[data-aos-delay=\"2500\"] [data-aos].aos-animate {\n  transition-delay: 2.5s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2550\"],\nbody[data-aos-duration=\"2550\"] [data-aos] {\n  transition-duration: 2.55s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2550\"],\nbody[data-aos-delay=\"2550\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2550\"].aos-animate,\nbody[data-aos-delay=\"2550\"] [data-aos].aos-animate {\n  transition-delay: 2.55s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2600\"],\nbody[data-aos-duration=\"2600\"] [data-aos] {\n  transition-duration: 2.6s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2600\"],\nbody[data-aos-delay=\"2600\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2600\"].aos-animate,\nbody[data-aos-delay=\"2600\"] [data-aos].aos-animate {\n  transition-delay: 2.6s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2650\"],\nbody[data-aos-duration=\"2650\"] [data-aos] {\n  transition-duration: 2.65s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2650\"],\nbody[data-aos-delay=\"2650\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2650\"].aos-animate,\nbody[data-aos-delay=\"2650\"] [data-aos].aos-animate {\n  transition-delay: 2.65s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2700\"],\nbody[data-aos-duration=\"2700\"] [data-aos] {\n  transition-duration: 2.7s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2700\"],\nbody[data-aos-delay=\"2700\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2700\"].aos-animate,\nbody[data-aos-delay=\"2700\"] [data-aos].aos-animate {\n  transition-delay: 2.7s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2750\"],\nbody[data-aos-duration=\"2750\"] [data-aos] {\n  transition-duration: 2.75s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2750\"],\nbody[data-aos-delay=\"2750\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2750\"].aos-animate,\nbody[data-aos-delay=\"2750\"] [data-aos].aos-animate {\n  transition-delay: 2.75s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2800\"],\nbody[data-aos-duration=\"2800\"] [data-aos] {\n  transition-duration: 2.8s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2800\"],\nbody[data-aos-delay=\"2800\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2800\"].aos-animate,\nbody[data-aos-delay=\"2800\"] [data-aos].aos-animate {\n  transition-delay: 2.8s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2850\"],\nbody[data-aos-duration=\"2850\"] [data-aos] {\n  transition-duration: 2.85s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2850\"],\nbody[data-aos-delay=\"2850\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2850\"].aos-animate,\nbody[data-aos-delay=\"2850\"] [data-aos].aos-animate {\n  transition-delay: 2.85s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2900\"],\nbody[data-aos-duration=\"2900\"] [data-aos] {\n  transition-duration: 2.9s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2900\"],\nbody[data-aos-delay=\"2900\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2900\"].aos-animate,\nbody[data-aos-delay=\"2900\"] [data-aos].aos-animate {\n  transition-delay: 2.9s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"2950\"],\nbody[data-aos-duration=\"2950\"] [data-aos] {\n  transition-duration: 2.95s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2950\"],\nbody[data-aos-delay=\"2950\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"2950\"].aos-animate,\nbody[data-aos-delay=\"2950\"] [data-aos].aos-animate {\n  transition-delay: 2.95s;\n}\n\n[data-aos][data-aos][data-aos-duration=\"3000\"],\nbody[data-aos-duration=\"3000\"] [data-aos] {\n  transition-duration: 3s;\n}\n\n[data-aos][data-aos][data-aos-delay=\"3000\"],\nbody[data-aos-delay=\"3000\"] [data-aos] {\n  transition-delay: 0;\n}\n\n[data-aos][data-aos][data-aos-delay=\"3000\"].aos-animate,\nbody[data-aos-delay=\"3000\"] [data-aos].aos-animate {\n  transition-delay: 3s;\n}\n\n[data-aos][data-aos][data-aos-easing=linear],\nbody[data-aos-easing=linear] [data-aos] {\n  transition-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75);\n}\n\n[data-aos][data-aos][data-aos-easing=ease],\nbody[data-aos-easing=ease] [data-aos] {\n  transition-timing-function: ease;\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in],\nbody[data-aos-easing=ease-in] [data-aos] {\n  transition-timing-function: ease-in;\n}\n\n[data-aos][data-aos][data-aos-easing=ease-out],\nbody[data-aos-easing=ease-out] [data-aos] {\n  transition-timing-function: ease-out;\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-out],\nbody[data-aos-easing=ease-in-out] [data-aos] {\n  transition-timing-function: ease-in-out;\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-back],\nbody[data-aos-easing=ease-in-back] [data-aos] {\n  transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-out-back],\nbody[data-aos-easing=ease-out-back] [data-aos] {\n  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-out-back],\nbody[data-aos-easing=ease-in-out-back] [data-aos] {\n  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-sine],\nbody[data-aos-easing=ease-in-sine] [data-aos] {\n  transition-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-out-sine],\nbody[data-aos-easing=ease-out-sine] [data-aos] {\n  transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-out-sine],\nbody[data-aos-easing=ease-in-out-sine] [data-aos] {\n  transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-quad],\nbody[data-aos-easing=ease-in-quad] [data-aos] {\n  transition-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-out-quad],\nbody[data-aos-easing=ease-out-quad] [data-aos] {\n  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-out-quad],\nbody[data-aos-easing=ease-in-out-quad] [data-aos] {\n  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-cubic],\nbody[data-aos-easing=ease-in-cubic] [data-aos] {\n  transition-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-out-cubic],\nbody[data-aos-easing=ease-out-cubic] [data-aos] {\n  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-out-cubic],\nbody[data-aos-easing=ease-in-out-cubic] [data-aos] {\n  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-quart],\nbody[data-aos-easing=ease-in-quart] [data-aos] {\n  transition-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-out-quart],\nbody[data-aos-easing=ease-out-quart] [data-aos] {\n  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);\n}\n\n[data-aos][data-aos][data-aos-easing=ease-in-out-quart],\nbody[data-aos-easing=ease-in-out-quart] [data-aos] {\n  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);\n}\n\n[data-aos^=fade][data-aos^=fade] {\n  opacity: 0;\n  transition-property: opacity,transform;\n}\n\n[data-aos^=fade][data-aos^=fade].aos-animate {\n  opacity: 1;\n  transform: translate(0);\n}\n\n[data-aos=fade-up] {\n  transform: translateY(100px);\n}\n\n[data-aos=fade-down] {\n  transform: translateY(-100px);\n}\n\n[data-aos=fade-right] {\n  transform: translate(-100px);\n}\n\n[data-aos=fade-left] {\n  transform: translate(100px);\n}\n\n[data-aos=fade-up-right] {\n  transform: translate(-100px, 100px);\n}\n\n[data-aos=fade-up-left] {\n  transform: translate(100px, 100px);\n}\n\n[data-aos=fade-down-right] {\n  transform: translate(-100px, -100px);\n}\n\n[data-aos=fade-down-left] {\n  transform: translate(100px, -100px);\n}\n\n[data-aos^=zoom][data-aos^=zoom] {\n  opacity: 0;\n  transition-property: opacity,transform;\n}\n\n[data-aos^=zoom][data-aos^=zoom].aos-animate {\n  opacity: 1;\n  transform: translate(0) scale(1);\n}\n\n[data-aos=zoom-in] {\n  transform: scale(0.6);\n}\n\n[data-aos=zoom-in-up] {\n  transform: translateY(100px) scale(0.6);\n}\n\n[data-aos=zoom-in-down] {\n  transform: translateY(-100px) scale(0.6);\n}\n\n[data-aos=zoom-in-right] {\n  transform: translate(-100px) scale(0.6);\n}\n\n[data-aos=zoom-in-left] {\n  transform: translate(100px) scale(0.6);\n}\n\n[data-aos=zoom-out] {\n  transform: scale(1.2);\n}\n\n[data-aos=zoom-out-up] {\n  transform: translateY(100px) scale(1.2);\n}\n\n[data-aos=zoom-out-down] {\n  transform: translateY(-100px) scale(1.2);\n}\n\n[data-aos=zoom-out-right] {\n  transform: translate(-100px) scale(1.2);\n}\n\n[data-aos=zoom-out-left] {\n  transform: translate(100px) scale(1.2);\n}\n\n[data-aos^=slide][data-aos^=slide] {\n  transition-property: transform;\n}\n\n[data-aos^=slide][data-aos^=slide].aos-animate {\n  transform: translate(0);\n}\n\n[data-aos=slide-up] {\n  transform: translateY(100%);\n}\n\n[data-aos=slide-down] {\n  transform: translateY(-100%);\n}\n\n[data-aos=slide-right] {\n  transform: translateX(-100%);\n}\n\n[data-aos=slide-left] {\n  transform: translateX(100%);\n}\n\n[data-aos^=flip][data-aos^=flip] {\n  backface-visibility: hidden;\n  transition-property: transform;\n}\n\n[data-aos=flip-left] {\n  transform: perspective(2500px) rotateY(-100deg);\n}\n\n[data-aos=flip-left].aos-animate {\n  transform: perspective(2500px) rotateY(0);\n}\n\n[data-aos=flip-right] {\n  transform: perspective(2500px) rotateY(100deg);\n}\n\n[data-aos=flip-right].aos-animate {\n  transform: perspective(2500px) rotateY(0);\n}\n\n[data-aos=flip-up] {\n  transform: perspective(2500px) rotateX(-100deg);\n}\n\n[data-aos=flip-up].aos-animate {\n  transform: perspective(2500px) rotateX(0);\n}\n\n[data-aos=flip-down] {\n  transform: perspective(2500px) rotateX(100deg);\n}\n\n[data-aos=flip-down].aos-animate {\n  transform: perspective(2500px) rotateX(0);\n}", ""]);
-
-// exports
-
-
-/***/ }),
-/* 351 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -58892,10 +58843,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 351;
+webpackContext.id = 349;
 
 /***/ }),
-/* 352 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58911,7 +58862,7 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(353);
+__webpack_require__(351);
 
 __webpack_require__(19);
 
@@ -58982,13 +58933,13 @@ var Intro = function (_Component) {
 exports.default = Intro;
 
 /***/ }),
-/* 353 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(354);
+var content = __webpack_require__(352);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -58996,7 +58947,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(13)(content, options);
+var update = __webpack_require__(16)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -59013,28 +58964,28 @@ if(false) {
 }
 
 /***/ }),
-/* 354 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(30);
-exports = module.exports = __webpack_require__(12)(false);
+exports = module.exports = __webpack_require__(15)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".intro {\n  background-image: url(" + escape(__webpack_require__(355)) + ");\n  background-repeat: no-repeat;\n  background-size: 100% 100%;\n  width: 100vw;\n  height: 100vh;\n  overflow-x: hidden;\n  background-position: center center;\n  perspective: 1px;\n}\n\n.intro .intro-content {\n  color: white;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n\n.intro .intro-content .intro-content-title {\n  display: flex;\n  justify-content: center;\n  flex-direction: row;\n  text-transform: uppercase;\n  border: 5px solid white;\n  border-radius: 5px;\n}\n\n.intro .intro-content .intro-content-description {\n  text-align: justify;\n  border: 5px solid rgba(47, 47, 47, 0.2);\n  background: rgba(47, 47, 47, 0.5);\n  border-radius: 5px;\n}\n\n@media only screen and (max-width: 600px) {\n  .intro-content {\n    margin-top: 90px;\n  }\n\n  .intro-content .intro-content-title {\n    margin: 0 auto;\n    margin-bottom: 5%;\n    margin-top: 10%;\n    font-size: 2em;\n    padding: 15px;\n    width: 75vw;\n    line-height: 4em;\n    flex-wrap: wrap;\n  }\n\n  .intro-content .intro-content-title p:nth-of-type(2) {\n    font-size: 2em;\n    padding-right: 10px;\n  }\n\n  .intro-content .intro-content-description {\n    margin: 0 auto;\n    padding: 15px;\n    width: 75vw;\n    line-height: 1.75em;\n    font-size: 1.75em;\n  }\n}\n\n@media only screen and (min-width: 600px) and (max-width: 992px) {\n  .intro-content {\n    overflow-y: hidden;\n    overflow-x: hidden;\n    width: 100vw;\n    margin: 0 auto;\n    margin-top: 5%;\n  }\n\n  .intro-content .intro-content-title {\n    font-size: 2.5em;\n    line-height: 4em;\n    padding: 0px 40px 0px 40px;\n    width: 50vw;\n    margin: 20px auto;\n    margin-top: 90px;\n  }\n\n  .intro-content .intro-content-title p:nth-of-type(2) {\n    font-size: 2em;\n    padding-right: 10px;\n  }\n\n  .intro-content .intro-content-description {\n    padding: 20px;\n    font-size: 1.75em;\n    line-height: 1.75em;\n    width: 50vw;\n    margin: 20px auto;\n    border: 10px solid red;\n    padding: 20px 40px;\n  }\n}\n\n@media only screen and (min-width: 992px) {\n  .intro-content {\n    overflow-y: hidden;\n    overflow-x: hidden;\n    margin: 0 auto;\n    margin-left: 13%;\n    margin-top: 90px;\n  }\n\n  .intro-content .intro-content-title {\n    font-size: 2.5em;\n    line-height: 4em;\n    padding: 0px 40px 0px 40px;\n    width: 50%;\n    margin: 20px auto;\n  }\n\n  .intro-content .intro-content-title p:nth-of-type(2) {\n    font-size: 2em;\n    padding-right: 10px;\n  }\n\n  .intro-content .intro-content-description {\n    padding: 20px;\n    width: 30vw;\n    font-size: 1.75em;\n    line-height: 1.75em;\n    width: 50%;\n    margin: 20px auto;\n    padding: 20px 40px;\n  }\n}", ""]);
+exports.push([module.i, ".intro {\n  background-image: url(" + escape(__webpack_require__(353)) + ");\n  background-repeat: no-repeat;\n  background-size: 100% 100%;\n  width: 100vw;\n  height: 100vh;\n  overflow-x: hidden;\n  background-position: center center;\n  perspective: 1px;\n}\n\n.intro .intro-content {\n  color: white;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n\n.intro .intro-content .intro-content-title {\n  display: flex;\n  justify-content: center;\n  flex-direction: row;\n  text-transform: uppercase;\n  border: 5px solid white;\n  border-radius: 5px;\n}\n\n.intro .intro-content .intro-content-description {\n  text-align: justify;\n  border: 5px solid rgba(47, 47, 47, 0.2);\n  background: rgba(47, 47, 47, 0.5);\n  border-radius: 5px;\n}\n\n@media only screen and (max-width: 600px) {\n  .intro-content {\n    margin-top: 90px;\n  }\n\n  .intro-content .intro-content-title {\n    margin: 0 auto;\n    margin-bottom: 5%;\n    margin-top: 10%;\n    font-size: 2em;\n    padding: 15px;\n    width: 75vw;\n    line-height: 4em;\n    flex-wrap: wrap;\n  }\n\n  .intro-content .intro-content-title p:nth-of-type(2) {\n    font-size: 2em;\n    padding-right: 10px;\n  }\n\n  .intro-content .intro-content-description {\n    margin: 0 auto;\n    padding: 15px;\n    width: 75vw;\n    line-height: 1.75em;\n    font-size: 1.75em;\n  }\n}\n\n@media only screen and (min-width: 600px) and (max-width: 992px) {\n  .intro-content {\n    overflow-y: hidden;\n    overflow-x: hidden;\n    width: 100vw;\n    margin: 0 auto;\n    margin-top: 5%;\n  }\n\n  .intro-content .intro-content-title {\n    font-size: 2em;\n    line-height: 3.5em;\n    padding: 0px 40px 0px 40px;\n    width: 50vw;\n    margin: 20px auto;\n    margin-top: 90px;\n  }\n\n  .intro-content .intro-content-title p:nth-of-type(2) {\n    font-size: 2em;\n    padding-right: 10px;\n  }\n\n  .intro-content .intro-content-description {\n    padding: 20px;\n    font-size: 1.75em;\n    line-height: 1.75em;\n    width: 50vw;\n    margin: 20px auto;\n    border: 10px solid red;\n    padding: 20px 40px;\n  }\n}\n\n@media only screen and (min-width: 992px) {\n  .intro-content {\n    overflow-y: hidden;\n    overflow-x: hidden;\n    margin: 0 auto;\n    margin-left: 13%;\n    margin-top: 90px;\n  }\n\n  .intro-content .intro-content-title {\n    font-size: 2em;\n    line-height: 3em;\n    padding: 0px 40px;\n    width: 50%;\n    margin: 20px auto;\n  }\n\n  .intro-content .intro-content-title p:nth-of-type(2) {\n    font-size: 2em;\n    padding-right: 10px;\n  }\n\n  .intro-content .intro-content-description {\n    padding: 20px;\n    width: 30vw;\n    font-size: 1.5em;\n    line-height: 1.5em;\n    width: 50%;\n    margin: 20px auto;\n    padding: 20px 40px;\n  }\n}", ""]);
 
 // exports
 
 
 /***/ }),
-/* 355 */
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "Images/Long_exposure_of_a_Falcon_9_launch.png";
 
 /***/ }),
-/* 356 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59050,7 +59001,7 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(357);
+__webpack_require__(355);
 
 var _aos = __webpack_require__(20);
 
@@ -59367,13 +59318,13 @@ var Header = function (_Component) {
 exports.default = Header;
 
 /***/ }),
-/* 357 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(358);
+var content = __webpack_require__(356);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -59381,7 +59332,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(13)(content, options);
+var update = __webpack_require__(16)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -59398,21 +59349,21 @@ if(false) {
 }
 
 /***/ }),
-/* 358 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(12)(false);
+exports = module.exports = __webpack_require__(15)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".header {\n  background-color: transparent;\n  color: white;\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 1;\n}\n\n.header .header-content {\n  display: flex;\n  font-size: 1.5em;\n  overflow-x: hidden;\n  overflow-y: hidden;\n}\n\n.header .header-content .nav-title {\n  padding: 10px 10px;\n  text-transform: uppercase;\n}\n\n.header .header-content .nav-title a {\n  text-decoration: none;\n}\n\n.header .header-content .nav-title a:visited {\n  color: white;\n}\n\n@media only screen and (max-width: 600px) {\n  .header {\n    background-color: rgba(47, 47, 47, 0.4);\n    width: 100%;\n    height: 10%;\n  }\n\n  .header .header-intro,\n  .header .header-launches,\n  .header .header-pads,\n  .header .header-stats,\n  .header .header-countdown,\n  .header .navigation-sub {\n    display: none;\n  }\n\n  .header .header-content {\n    flex-direction: column;\n    justify-content: center;\n  }\n\n  .header .header-content .hamburger {\n    margin: 2% 5%;\n    align-self: flex-end;\n  }\n\n  .header.header-small {\n    background: rgba(47, 47, 47, 0.8);\n    height: 100vh;\n  }\n\n  .header.header-small .header-intro,\n  .header.header-small .header-launches,\n  .header.header-small .header-pads,\n  .header.header-small .header-stats {\n    display: flex;\n    order: 1;\n  }\n\n  .header.header-small .header-intro .navigation-sub,\n  .header.header-small .header-launches .navigation-sub,\n  .header.header-small .header-pads .navigation-sub,\n  .header.header-small .header-stats .navigation-sub {\n    display: none;\n  }\n\n  .header.header-small .header-intro .clicked,\n  .header.header-small .header-launches .clicked,\n  .header.header-small .header-pads .clicked,\n  .header.header-small .header-stats .clicked {\n    color: white;\n    text-decoration: underline;\n  }\n\n  .header.header-small .header-content {\n    align-items: center;\n    position: fixed;\n    top: 50%;\n    left: 50%;\n    margin-top: -150px;\n    margin-left: -100px;\n  }\n\n  .bar1,\n  .bar2,\n  .bar3 {\n    width: 40px;\n    height: 4px;\n    background-color: white;\n    margin: 6px 0;\n    transition: 0.4s;\n  }\n\n  .change .bar1 {\n    -webkit-transform: rotate(-45deg) translate(-6px, 6px);\n    transform: rotate(-45deg) translate(-6px, 6px);\n  }\n\n  .change .bar2 {\n    opacity: 0;\n  }\n\n  .change .bar3 {\n    -webkit-transform: rotate(45deg) translate(-7px, -10px);\n    transform: rotate(45deg) translate(-7px, -10px);\n  }\n}\n\n@media only screen and (min-width: 600px) and (max-width: 992px) {\n  .header {\n    width: 100vw;\n    height: 10%;\n    display: flex;\n    align-items: center;\n    background-color: rgba(47, 47, 47, 0.4);\n  }\n\n  .header .header-content {\n    flex-grow: 1;\n    justify-content: center;\n  }\n\n  .header .header-content .header-countdown {\n    display: none;\n  }\n\n  .header .header-content .header-intro .navigation-sub,\n  .header .header-content .header-launches .navigation-sub,\n  .header .header-content .header-pads .navigation-sub,\n  .header .header-content .header-stats .navigation-sub {\n    display: none;\n  }\n\n  .header .header-content .header-intro .clicked,\n  .header .header-content .header-launches .clicked,\n  .header .header-content .header-pads .clicked,\n  .header .header-content .header-stats .clicked {\n    color: white;\n    text-decoration: underline;\n  }\n}\n\n@media only screen and (min-width: 992px) {\n  .header {\n    width: 20vw;\n    height: 100vh;\n  }\n\n  .header .header-content {\n    flex-direction: column;\n    text-align: center;\n    position: fixed;\n    top: 5%;\n  }\n\n  .header .header-content .header-countdown {\n    font-size: 1em;\n    margin: 10px 0px;\n    justify-content: center;\n    display: flex;\n    flex-direction: column;\n  }\n\n  .header .header-content .header-countdown .header-countdown-name {\n    padding: 5px;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    text-transform: uppercase;\n  }\n\n  .header .header-content .header-countdown .header-countdown-name p {\n    padding: 5px;\n    font-size: 0.8em;\n  }\n\n  .header .header-content .header-countdown .header-countdown-time {\n    padding: 5px;\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .header .header-content .header-countdown .header-countdown-time p {\n    padding: 5px;\n    font-size: 0.6em;\n  }\n\n  .header .header-content .header-countdown .header-countdown-time p:nth-of-type(1) {\n    font-size: 0.8em;\n  }\n\n  .header .header-content .hide {\n    display: none;\n  }\n\n  .header .header-content .nav-title:hover {\n    background-color: rgba(255, 255, 255, 0.4);\n    border-radius: 2%;\n  }\n\n  .header .header-content .header-intro .navigation-sub ul,\n  .header .header-content .header-launches .navigation-sub ul,\n  .header .header-content .header-pads .navigation-sub ul,\n  .header .header-content .header-stats .navigation-sub ul {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    height: 100%;\n  }\n\n  .header .header-content .header-intro .navigation-sub ul li,\n  .header .header-content .header-launches .navigation-sub ul li,\n  .header .header-content .header-pads .navigation-sub ul li,\n  .header .header-content .header-stats .navigation-sub ul li {\n    padding: 15px;\n    font-size: 0.6em;\n    cursor: pointer;\n  }\n\n  .header .header-content .header-intro .navigation-sub ul li:hover,\n  .header .header-content .header-launches .navigation-sub ul li:hover,\n  .header .header-content .header-pads .navigation-sub ul li:hover,\n  .header .header-content .header-stats .navigation-sub ul li:hover {\n    background-color: rgba(255, 255, 255, 0.4);\n    border-radius: 2%;\n  }\n\n  .header .header-content .header-intro .navigation-sub ul .navigation-clicked,\n  .header .header-content .header-launches .navigation-sub ul .navigation-clicked,\n  .header .header-content .header-pads .navigation-sub ul .navigation-clicked,\n  .header .header-content .header-stats .navigation-sub ul .navigation-clicked {\n    text-decoration: underline;\n    background-color: rgba(255, 255, 255, 0.4);\n    border-radius: 2%;\n  }\n\n  .header .header-content .header-intro .rollDown,\n  .header .header-content .header-launches .rollDown,\n  .header .header-content .header-pads .rollDown,\n  .header .header-content .header-stats .rollDown {\n    height: 220px;\n    transition: 1s;\n    overflow-y: hidden;\n  }\n\n  .header .header-content .header-intro .rollUp,\n  .header .header-content .header-launches .rollUp,\n  .header .header-content .header-pads .rollUp,\n  .header .header-content .header-stats .rollUp {\n    height: 0px;\n    transition: 1s;\n    overflow-y: hidden;\n  }\n\n  .header .header-content .header-intro .clicked,\n  .header .header-content .header-launches .clicked,\n  .header .header-content .header-pads .clicked,\n  .header .header-content .header-stats .clicked {\n    color: white;\n    text-decoration: underline;\n    background-color: rgba(255, 255, 255, 0.4);\n    border-radius: 2%;\n  }\n}", ""]);
+exports.push([module.i, ".header {\n  background-color: transparent;\n  color: white;\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 1;\n}\n\n.header .header-content {\n  display: flex;\n  font-size: 1.5em;\n  overflow-x: hidden;\n  overflow-y: hidden;\n}\n\n.header .header-content .nav-title {\n  padding: 10px 10px;\n  text-transform: uppercase;\n}\n\n.header .header-content .nav-title a {\n  text-decoration: none;\n}\n\n.header .header-content .nav-title a:visited {\n  color: white;\n}\n\n.header .header-content .nav-title a:link {\n  color: white;\n}\n\n@media only screen and (max-width: 600px) {\n  .header {\n    background-color: rgba(47, 47, 47, 0.4);\n    width: 100%;\n    height: 10%;\n  }\n\n  .header .header-intro,\n  .header .header-launches,\n  .header .header-pads,\n  .header .header-stats,\n  .header .header-countdown,\n  .header .navigation-sub {\n    display: none;\n  }\n\n  .header .header-content {\n    flex-direction: column;\n    justify-content: center;\n  }\n\n  .header .header-content .hamburger {\n    margin: 2% 5%;\n    align-self: flex-end;\n  }\n\n  .header.header-small {\n    background: rgba(47, 47, 47, 0.8);\n    height: 100vh;\n  }\n\n  .header.header-small .header-intro,\n  .header.header-small .header-launches,\n  .header.header-small .header-pads,\n  .header.header-small .header-stats {\n    display: flex;\n    order: 1;\n  }\n\n  .header.header-small .header-intro .navigation-sub,\n  .header.header-small .header-launches .navigation-sub,\n  .header.header-small .header-pads .navigation-sub,\n  .header.header-small .header-stats .navigation-sub {\n    display: none;\n  }\n\n  .header.header-small .header-intro .clicked,\n  .header.header-small .header-launches .clicked,\n  .header.header-small .header-pads .clicked,\n  .header.header-small .header-stats .clicked {\n    color: white;\n    text-decoration: underline;\n  }\n\n  .header.header-small .header-content {\n    align-items: center;\n    position: fixed;\n    top: 50%;\n    left: 50%;\n    margin-top: -150px;\n    margin-left: -100px;\n  }\n\n  .bar1,\n  .bar2,\n  .bar3 {\n    width: 40px;\n    height: 4px;\n    background-color: white;\n    margin: 6px 0;\n    transition: 0.4s;\n  }\n\n  .change .bar1 {\n    -webkit-transform: rotate(-45deg) translate(-6px, 6px);\n    transform: rotate(-45deg) translate(-6px, 6px);\n  }\n\n  .change .bar2 {\n    opacity: 0;\n  }\n\n  .change .bar3 {\n    -webkit-transform: rotate(45deg) translate(-7px, -10px);\n    transform: rotate(45deg) translate(-7px, -10px);\n  }\n}\n\n@media only screen and (min-width: 600px) and (max-width: 992px) {\n  .header {\n    width: 100vw;\n    height: 10%;\n    display: flex;\n    align-items: center;\n    background-color: rgba(47, 47, 47, 0.4);\n  }\n\n  .header .header-content {\n    flex-grow: 1;\n    justify-content: center;\n  }\n\n  .header .header-content .header-countdown {\n    display: none;\n  }\n\n  .header .header-content .header-intro .navigation-sub,\n  .header .header-content .header-launches .navigation-sub,\n  .header .header-content .header-pads .navigation-sub,\n  .header .header-content .header-stats .navigation-sub {\n    display: none;\n  }\n\n  .header .header-content .header-intro .clicked,\n  .header .header-content .header-launches .clicked,\n  .header .header-content .header-pads .clicked,\n  .header .header-content .header-stats .clicked {\n    color: white;\n    text-decoration: underline;\n  }\n}\n\n@media only screen and (min-width: 992px) {\n  .header {\n    width: 20vw;\n    height: 100vh;\n  }\n\n  .header .header-content {\n    flex-direction: column;\n    text-align: center;\n    position: fixed;\n    top: 5%;\n  }\n\n  .header .header-content .header-countdown {\n    font-size: 1em;\n    margin: 10px 0px;\n    justify-content: center;\n    display: flex;\n    flex-direction: column;\n  }\n\n  .header .header-content .header-countdown .header-countdown-name {\n    padding: 5px;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    text-transform: uppercase;\n  }\n\n  .header .header-content .header-countdown .header-countdown-name p {\n    padding: 5px;\n    font-size: 0.8em;\n  }\n\n  .header .header-content .header-countdown .header-countdown-time {\n    padding: 5px;\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .header .header-content .header-countdown .header-countdown-time p {\n    padding: 5px;\n    font-size: 0.6em;\n  }\n\n  .header .header-content .header-countdown .header-countdown-time p:nth-of-type(1) {\n    font-size: 0.8em;\n  }\n\n  .header .header-content .hide {\n    display: none;\n  }\n\n  .header .header-content .nav-title:hover {\n    background-color: rgba(255, 255, 255, 0.4);\n    border-radius: 2%;\n  }\n\n  .header .header-content .header-intro .navigation-sub ul,\n  .header .header-content .header-launches .navigation-sub ul,\n  .header .header-content .header-pads .navigation-sub ul,\n  .header .header-content .header-stats .navigation-sub ul {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    height: 100%;\n  }\n\n  .header .header-content .header-intro .navigation-sub ul li,\n  .header .header-content .header-launches .navigation-sub ul li,\n  .header .header-content .header-pads .navigation-sub ul li,\n  .header .header-content .header-stats .navigation-sub ul li {\n    padding: 15px;\n    font-size: 0.6em;\n    cursor: pointer;\n  }\n\n  .header .header-content .header-intro .navigation-sub ul li:hover,\n  .header .header-content .header-launches .navigation-sub ul li:hover,\n  .header .header-content .header-pads .navigation-sub ul li:hover,\n  .header .header-content .header-stats .navigation-sub ul li:hover {\n    background-color: rgba(255, 255, 255, 0.4);\n    border-radius: 2%;\n  }\n\n  .header .header-content .header-intro .navigation-sub ul .navigation-clicked,\n  .header .header-content .header-launches .navigation-sub ul .navigation-clicked,\n  .header .header-content .header-pads .navigation-sub ul .navigation-clicked,\n  .header .header-content .header-stats .navigation-sub ul .navigation-clicked {\n    text-decoration: underline;\n    background-color: rgba(255, 255, 255, 0.4);\n    border-radius: 2%;\n  }\n\n  .header .header-content .header-intro .rollDown,\n  .header .header-content .header-launches .rollDown,\n  .header .header-content .header-pads .rollDown,\n  .header .header-content .header-stats .rollDown {\n    height: 220px;\n    transition: 1s;\n    overflow-y: hidden;\n  }\n\n  .header .header-content .header-intro .rollUp,\n  .header .header-content .header-launches .rollUp,\n  .header .header-content .header-pads .rollUp,\n  .header .header-content .header-stats .rollUp {\n    height: 0px;\n    transition: 1s;\n    overflow-y: hidden;\n  }\n\n  .header .header-content .header-intro .clicked,\n  .header .header-content .header-launches .clicked,\n  .header .header-content .header-pads .clicked,\n  .header .header-content .header-stats .clicked {\n    color: white;\n    text-decoration: underline;\n    background-color: rgba(255, 255, 255, 0.4);\n    border-radius: 2%;\n  }\n}", ""]);
 
 // exports
 
 
 /***/ }),
-/* 359 */
+/* 357 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59422,7 +59373,7 @@ exports.push([module.i, ".header {\n  background-color: transparent;\n  color: w
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createBrowserHistory__ = __webpack_require__(362);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createBrowserHistory__ = __webpack_require__(360);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createBrowserHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_history_createBrowserHistory__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(47);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -59479,7 +59430,7 @@ BrowserRouter.propTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (BrowserRouter);
 
 /***/ }),
-/* 360 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59492,8 +59443,8 @@ BrowserRouter.propTypes = {
 
 
 
-var emptyFunction = __webpack_require__(16);
-var invariant = __webpack_require__(15);
+var emptyFunction = __webpack_require__(14);
+var invariant = __webpack_require__(13);
 var warning = __webpack_require__(28);
 var assign = __webpack_require__(18);
 
@@ -60029,7 +59980,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 361 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60042,8 +59993,8 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 
-var emptyFunction = __webpack_require__(16);
-var invariant = __webpack_require__(15);
+var emptyFunction = __webpack_require__(14);
+var invariant = __webpack_require__(13);
 var ReactPropTypesSecret = __webpack_require__(43);
 
 module.exports = function() {
@@ -60094,7 +60045,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 362 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60407,7 +60358,7 @@ var createBrowserHistory = function createBrowserHistory() {
 exports.default = createBrowserHistory;
 
 /***/ }),
-/* 363 */
+/* 361 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60417,7 +60368,7 @@ exports.default = createBrowserHistory;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createHashHistory__ = __webpack_require__(364);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createHashHistory__ = __webpack_require__(362);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createHashHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_history_createHashHistory__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(47);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -60473,7 +60424,7 @@ HashRouter.propTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (HashRouter);
 
 /***/ }),
-/* 364 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60803,18 +60754,18 @@ var createHashHistory = function createHashHistory() {
 exports.default = createHashHistory;
 
 /***/ }),
-/* 365 */
+/* 363 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_MemoryRouter__ = __webpack_require__(366);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_MemoryRouter__ = __webpack_require__(364);
 // Written in this round about way for babel-transform-imports
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_MemoryRouter__["a" /* default */]);
 
 /***/ }),
-/* 366 */
+/* 364 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60824,7 +60775,7 @@ exports.default = createHashHistory;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory__ = __webpack_require__(367);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory__ = __webpack_require__(365);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(48);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -60881,7 +60832,7 @@ MemoryRouter.propTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (MemoryRouter);
 
 /***/ }),
-/* 367 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61057,7 +61008,7 @@ var createMemoryHistory = function createMemoryHistory() {
 exports.default = createMemoryHistory;
 
 /***/ }),
-/* 368 */
+/* 366 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61138,10 +61089,10 @@ NavLink.defaultProps = {
 /* harmony default export */ __webpack_exports__["a"] = (NavLink);
 
 /***/ }),
-/* 369 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isarray = __webpack_require__(370)
+var isarray = __webpack_require__(368)
 
 /**
  * Expose `pathToRegexp`.
@@ -61570,7 +61521,7 @@ function pathToRegexp (path, keys, options) {
 
 
 /***/ }),
-/* 370 */
+/* 368 */
 /***/ (function(module, exports) {
 
 module.exports = Array.isArray || function (arr) {
@@ -61579,18 +61530,18 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 371 */
+/* 369 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Prompt__ = __webpack_require__(372);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Prompt__ = __webpack_require__(370);
 // Written in this round about way for babel-transform-imports
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Prompt__["a" /* default */]);
 
 /***/ }),
-/* 372 */
+/* 370 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61681,18 +61632,18 @@ Prompt.contextTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (Prompt);
 
 /***/ }),
-/* 373 */
+/* 371 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Redirect__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Redirect__ = __webpack_require__(372);
 // Written in this round about way for babel-transform-imports
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Redirect__["a" /* default */]);
 
 /***/ }),
-/* 374 */
+/* 372 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61704,7 +61655,7 @@ Prompt.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history__ = __webpack_require__(375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history__ = __webpack_require__(373);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -61800,15 +61751,15 @@ Redirect.contextTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (Redirect);
 
 /***/ }),
-/* 375 */
+/* 373 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createBrowserHistory__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createBrowserHistory__ = __webpack_require__(374);
 /* unused harmony reexport createBrowserHistory */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__createHashHistory__ = __webpack_require__(377);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__createHashHistory__ = __webpack_require__(375);
 /* unused harmony reexport createHashHistory */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__createMemoryHistory__ = __webpack_require__(378);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__createMemoryHistory__ = __webpack_require__(376);
 /* unused harmony reexport createMemoryHistory */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__LocationUtils__ = __webpack_require__(31);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["a"]; });
@@ -61827,7 +61778,7 @@ Redirect.contextTypes = {
 
 
 /***/ }),
-/* 376 */
+/* 374 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62131,7 +62082,7 @@ var createBrowserHistory = function createBrowserHistory() {
 /* unused harmony default export */ var _unused_webpack_default_export = (createBrowserHistory);
 
 /***/ }),
-/* 377 */
+/* 375 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62452,7 +62403,7 @@ var createHashHistory = function createHashHistory() {
 /* unused harmony default export */ var _unused_webpack_default_export = (createHashHistory);
 
 /***/ }),
-/* 378 */
+/* 376 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62620,18 +62571,18 @@ var createMemoryHistory = function createMemoryHistory() {
 /* unused harmony default export */ var _unused_webpack_default_export = (createMemoryHistory);
 
 /***/ }),
-/* 379 */
+/* 377 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_StaticRouter__ = __webpack_require__(380);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_StaticRouter__ = __webpack_require__(378);
 // Written in this round about way for babel-transform-imports
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_StaticRouter__["a" /* default */]);
 
 /***/ }),
-/* 380 */
+/* 378 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62814,18 +62765,18 @@ StaticRouter.childContextTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (StaticRouter);
 
 /***/ }),
-/* 381 */
+/* 379 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Switch__ = __webpack_require__(382);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Switch__ = __webpack_require__(380);
 // Written in this round about way for babel-transform-imports
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Switch__["a" /* default */]);
 
 /***/ }),
-/* 382 */
+/* 380 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62919,7 +62870,7 @@ Switch.propTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (Switch);
 
 /***/ }),
-/* 383 */
+/* 381 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62930,18 +62881,18 @@ Switch.propTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_matchPath__["a" /* default */]);
 
 /***/ }),
-/* 384 */
+/* 382 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_withRouter__ = __webpack_require__(385);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_withRouter__ = __webpack_require__(383);
 // Written in this round about way for babel-transform-imports
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_withRouter__["a" /* default */]);
 
 /***/ }),
-/* 385 */
+/* 383 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62949,7 +62900,7 @@ Switch.propTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__ = __webpack_require__(386);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__ = __webpack_require__(384);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(192);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -62986,7 +62937,7 @@ var withRouter = function withRouter(Component) {
 /* harmony default export */ __webpack_exports__["a"] = (withRouter);
 
 /***/ }),
-/* 386 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -63064,14 +63015,14 @@ var withRouter = function withRouter(Component) {
 
 
 /***/ }),
-/* 387 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -63080,7 +63031,7 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(388);
+__webpack_require__(386);
 
 var _aos = __webpack_require__(20);
 
@@ -63097,456 +63048,461 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Launches = function (_Component) {
-    _inherits(Launches, _Component);
+  _inherits(Launches, _Component);
 
-    function Launches(props) {
-        _classCallCheck(this, Launches);
+  function Launches(props) {
+    _classCallCheck(this, Launches);
 
-        var _this = _possibleConstructorReturn(this, (Launches.__proto__ || Object.getPrototypeOf(Launches)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Launches.__proto__ || Object.getPrototypeOf(Launches)).call(this, props));
 
-        _this.HandleScroll = function () {
-            setTimeout(function () {
-                _this.setState({ scrolled: document.getElementById("launches").scrollTop }, function () {
-                    return _this.props.launchesHandleScrolled(_this.state.scrolled);
-                });
-            }, 200);
-        };
+    _this.HandleScroll = function () {
+      setTimeout(function () {
+        _this.setState({ scrolled: document.getElementById("launches").scrollTop }, function () {
+          return _this.props.launchesHandleScrolled(_this.state.scrolled);
+        });
+      }, 200);
+    };
 
-        _this.state = {
-            scrolled: undefined
-        };
-        return _this;
+    _this.state = {
+      scrolled: undefined
+    };
+    return _this;
+  }
+
+  _createClass(Launches, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      document.getElementById("launches").addEventListener("scroll", this.HandleScroll);
+      var launchesTotal = 0;
+      var launchesFalcon1 = document.getElementById("falcon_1").offsetTop;
+      var launchesFalcon9 = document.getElementById("falcon_9").offsetTop;
+      var launchesFalconHeavy = document.getElementById("falconHeavy").offsetTop;
+      var launchesBfr = document.getElementById("bfr").offsetTop;
+      this.setState({
+        launchesTotal: launchesTotal,
+        launchesFalcon1: launchesFalcon1,
+        launchesFalcon9: launchesFalcon9,
+        launchesFalconHeavy: launchesFalconHeavy,
+        launchesBfr: launchesBfr
+      }, function () {
+        return _this2.props.launchesElementsPositionHandler(_this2.state.launchesTotal, _this2.state.launchesFalcon1, _this2.state.launchesFalcon9, _this2.state.launchesFalconHeavy, _this2.state.launchesBfr);
+      });
     }
-
-    _createClass(Launches, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            var _this2 = this;
-
-            document.getElementById("launches").addEventListener("scroll", this.HandleScroll);
-            var launchesTotal = 0;
-            var launchesFalcon1 = document.getElementById("falcon_1").offsetTop;
-            var launchesFalcon9 = document.getElementById("falcon_9").offsetTop;
-            var launchesFalconHeavy = document.getElementById("falconHeavy").offsetTop;
-            var launchesBfr = document.getElementById("bfr").offsetTop;
-            this.setState({
-                launchesTotal: launchesTotal,
-                launchesFalcon1: launchesFalcon1,
-                launchesFalcon9: launchesFalcon9,
-                launchesFalconHeavy: launchesFalconHeavy,
-                launchesBfr: launchesBfr
-            }, function () {
-                return _this2.props.launchesElementsPositionHandler(_this2.state.launchesTotal, _this2.state.launchesFalcon1, _this2.state.launchesFalcon9, _this2.state.launchesFalconHeavy, _this2.state.launchesBfr);
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'launches', id: 'launches' },
+        _react2.default.createElement(
+          'div',
+          { className: 'section-content' },
+          _react2.default.createElement(
+            'div',
+            { className: 'section-header', 'data-aos': 'slide-down', 'data-aos-duration': '1000' },
+            _react2.default.createElement(
+              'h2',
+              null,
+              ' Launch count '
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'section-window', 'data-aos': 'slide-up', 'data-aos-duration': '1000' },
+            _react2.default.createElement(
+              'div',
+              { id: 'total', className: 'article' },
+              _react2.default.createElement(
                 'div',
-                { className: 'launches', id: 'launches' },
+                { className: 'article-header' },
                 _react2.default.createElement(
-                    'div',
-                    { className: 'section-layer' },
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'section-content' },
-                        _react2.default.createElement(
-                            'h2',
-                            null,
-                            ' Launch count '
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'section-window', 'data-aos': 'slide-up', 'data-aos-duration': '1000' },
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'description-container' },
-                                _react2.default.createElement(
-                                    'div',
-                                    { id: 'total', className: 'article' },
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'article-description' },
-                                        _react2.default.createElement(
-                                            'h3',
-                                            null,
-                                            'Total'
-                                        ),
-                                        this.props.totalLaunches !== undefined ? _react2.default.createElement(
-                                            'div',
-                                            { className: 'loading' },
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                'Total number of launches: ',
-                                                " ",
-                                                ' ',
-                                                this.props.totalLaunches,
-                                                ' '
-                                            )
-                                        ) : _react2.default.createElement(
-                                            'div',
-                                            { className: 'loading' },
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                'Total number of launches:'
-                                            ),
-                                            _react2.default.createElement(
-                                                'div',
-                                                null,
-                                                _react2.default.createElement(
-                                                    'p',
-                                                    null,
-                                                    'Loading... '
-                                                ),
-                                                _react2.default.createElement(
-                                                    'div',
-                                                    { className: 'loader' },
-                                                    ' '
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement('div', { className: 'image' })
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { id: 'falcon_1', className: 'article' },
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'article-description' },
-                                        _react2.default.createElement(
-                                            'h3',
-                                            null,
-                                            ' Falcon 1 '
-                                        ),
-                                        ' ',
-                                        this.props.fal1Launches !== undefined ? _react2.default.createElement(
-                                            'div',
-                                            { className: 'loading' },
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                'Number of launches: ',
-                                                " ",
-                                                ' ',
-                                                this.props.fal1Launches,
-                                                ' '
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                ' ',
-                                                this.props.fal1Description,
-                                                ' '
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                ' Technical details: '
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                'First flight: ',
-                                                " ",
-                                                ' ',
-                                                this.props.fal1First_flight
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                'Height: ',
-                                                " ",
-                                                ' ',
-                                                this.props.fal1Height,
-                                                ' m'
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                'Mass: ',
-                                                this.props.fal1Mass,
-                                                ' ',
-                                                " ",
-                                                'kg'
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                'Cost per launch: ',
-                                                " ",
-                                                ' ',
-                                                this.props.fal1Cost_per_launch,
-                                                '$'
-                                            )
-                                        ) : _react2.default.createElement(
-                                            'div',
-                                            { className: 'loading' },
-                                            _react2.default.createElement(
-                                                'div',
-                                                null,
-                                                _react2.default.createElement(
-                                                    'p',
-                                                    null,
-                                                    'Loading... '
-                                                ),
-                                                _react2.default.createElement(
-                                                    'div',
-                                                    { className: 'loader' },
-                                                    ' '
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement('div', { className: 'image' })
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { id: 'falcon_9', className: 'article' },
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'article-description' },
-                                        _react2.default.createElement(
-                                            'h3',
-                                            null,
-                                            ' Falcon 9 '
-                                        ),
-                                        ' ',
-                                        this.props.fal9Launches !== undefined ? _react2.default.createElement(
-                                            'div',
-                                            { className: 'loading' },
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                'Number of launches: ',
-                                                " ",
-                                                ' ',
-                                                this.props.fal9Launches
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                ' ',
-                                                this.props.fal9Description
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                ' Technical details: '
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                'First flight: ',
-                                                " ",
-                                                ' ',
-                                                this.props.fal9First_flight
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                'Height: ',
-                                                " ",
-                                                ' ',
-                                                this.props.fal9Height,
-                                                'm'
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                'Mass: ',
-                                                this.props.fal9Mass,
-                                                ' ',
-                                                " ",
-                                                'kg'
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                'Cost per launch: ',
-                                                " ",
-                                                ' ',
-                                                this.props.fal9Cost_per_launch,
-                                                '$'
-                                            )
-                                        ) : _react2.default.createElement(
-                                            'div',
-                                            { className: 'loading' },
-                                            _react2.default.createElement(
-                                                'div',
-                                                null,
-                                                _react2.default.createElement(
-                                                    'p',
-                                                    null,
-                                                    'Loading...'
-                                                ),
-                                                _react2.default.createElement(
-                                                    'div',
-                                                    { className: 'loader' },
-                                                    ' '
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement('div', { className: 'image' })
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { id: 'falconHeavy', className: 'article' },
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'article-description' },
-                                        _react2.default.createElement(
-                                            'h3',
-                                            null,
-                                            ' Falcon Heavy '
-                                        ),
-                                        ' ',
-                                        this.props.falHLaunches !== undefined ? _react2.default.createElement(
-                                            'div',
-                                            { className: 'loading' },
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                'Number of launches: ',
-                                                " ",
-                                                ' ',
-                                                this.props.falHLaunches
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                ' ',
-                                                this.props.falHDescription
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                ' Technical details: '
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                'First flight: ',
-                                                " ",
-                                                ' ',
-                                                this.props.falHFirst_flight
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                'Height: ',
-                                                " ",
-                                                ' ',
-                                                this.props.falHHeight,
-                                                'm'
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                'Mass: ',
-                                                this.props.falHMass,
-                                                ' ',
-                                                " ",
-                                                'kg'
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                'Cost per launch: ',
-                                                " ",
-                                                ' ',
-                                                this.props.falHCost_per_launch,
-                                                '$'
-                                            )
-                                        ) : _react2.default.createElement(
-                                            'div',
-                                            { className: 'loading' },
-                                            _react2.default.createElement(
-                                                'div',
-                                                null,
-                                                _react2.default.createElement(
-                                                    'p',
-                                                    null,
-                                                    'Loading...'
-                                                ),
-                                                _react2.default.createElement(
-                                                    'div',
-                                                    { className: 'loader' },
-                                                    ' '
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement('div', { className: 'image' })
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { id: 'bfr', className: 'article' },
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'article-description' },
-                                        _react2.default.createElement(
-                                            'h3',
-                                            null,
-                                            ' BFR '
-                                        ),
-                                        ' ',
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'loading' },
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                'Number of launches: ',
-                                                " ",
-                                                ' ',
-                                                this.props.bfrLaunches
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                ' ',
-                                                this.props.bfrDescription
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                ' Technical details: '
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                ' Unknown '
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement('div', { className: 'image' })
-                                )
-                            )
-                        )
-                    )
+                  'h3',
+                  null,
+                  'Total'
                 )
-            );
-        }
-    }]);
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'article-content' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'article-description' },
+                  this.props.totalLaunches !== undefined ? _react2.default.createElement(
+                    'div',
+                    { className: 'loading' },
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      'Total number of launches:',
+                      " ",
+                      this.props.totalLaunches,
+                      " "
+                    )
+                  ) : _react2.default.createElement(
+                    'div',
+                    { className: 'loading' },
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      'Total number of launches:'
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      null,
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        'Loading... '
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'loader' },
+                        ' '
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement('div', { className: 'image' })
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { id: 'falcon_1', className: 'article' },
+              _react2.default.createElement(
+                'div',
+                { className: 'article-header' },
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  ' Falcon 1 '
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'article-content' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'article-description' },
+                  this.props.fal1Launches !== undefined ? _react2.default.createElement(
+                    'div',
+                    { className: 'loading' },
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      'Number of launches:',
+                      " ",
+                      this.props.fal1Launches,
+                      " "
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      ' ',
+                      this.props.fal1Description,
+                      ' '
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      ' Technical details: '
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      'First flight:',
+                      " ",
+                      this.props.fal1First_flight
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      'Height: ',
+                      this.props.fal1Height,
+                      ' m'
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      'Mass: ',
+                      this.props.fal1Mass,
+                      ' kg'
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      'Cost per launch: ',
+                      this.props.fal1Cost_per_launch,
+                      '$'
+                    )
+                  ) : _react2.default.createElement(
+                    'div',
+                    { className: 'loading' },
+                    _react2.default.createElement(
+                      'div',
+                      null,
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        'Loading... '
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'loader' },
+                        ' '
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement('div', { className: 'image' })
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { id: 'falcon_9', className: 'article' },
+              _react2.default.createElement(
+                'div',
+                { className: 'article-header' },
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  ' Falcon 9 '
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'article-content' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'article-description' },
+                  this.props.fal9Launches !== undefined ? _react2.default.createElement(
+                    'div',
+                    { className: 'loading' },
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      'Number of launches:',
+                      " ",
+                      this.props.fal9Launches
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      ' ',
+                      this.props.fal9Description
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      ' Technical details: '
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      'First flight:',
+                      " ",
+                      this.props.fal9First_flight
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      'Height: ',
+                      this.props.fal9Height,
+                      'm'
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      'Mass: ',
+                      this.props.fal9Mass,
+                      ' kg'
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      'Cost per launch: ',
+                      this.props.fal9Cost_per_launch,
+                      '$'
+                    )
+                  ) : _react2.default.createElement(
+                    'div',
+                    { className: 'loading' },
+                    _react2.default.createElement(
+                      'div',
+                      null,
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        'Loading...'
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'loader' },
+                        ' '
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement('div', { className: 'image' })
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { id: 'falconHeavy', className: 'article' },
+              _react2.default.createElement(
+                'div',
+                { className: 'article-header' },
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  ' Falcon Heavy '
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'article-content' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'article-description' },
+                  this.props.falHLaunches !== undefined ? _react2.default.createElement(
+                    'div',
+                    { className: 'loading' },
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      'Number of launches:',
+                      " ",
+                      this.props.falHLaunches
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      ' ',
+                      this.props.falHDescription
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      ' Technical details: '
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      'First flight:',
+                      " ",
+                      this.props.falHFirst_flight
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      'Height: ',
+                      this.props.falHHeight,
+                      'm'
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      'Mass: ',
+                      this.props.falHMass,
+                      ' kg'
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      'Cost per launch: ',
+                      this.props.falHCost_per_launch,
+                      '$'
+                    )
+                  ) : _react2.default.createElement(
+                    'div',
+                    { className: 'loading' },
+                    _react2.default.createElement(
+                      'div',
+                      null,
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        'Loading...'
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'loader' },
+                        ' '
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement('div', { className: 'image' })
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { id: 'bfr', className: 'article' },
+              _react2.default.createElement(
+                'div',
+                { className: 'article-header' },
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  ' BFR '
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'article-content' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'article-description' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'loading' },
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      'Number of launches: ',
+                      this.props.bfrLaunches
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      ' ',
+                      this.props.bfrDescription
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      ' Technical details: '
+                    ),
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      ' Unknown '
+                    )
+                  )
+                ),
+                _react2.default.createElement('div', { className: 'image' })
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
 
-    return Launches;
+  return Launches;
 }(_react.Component);
 
 exports.default = Launches;
 
 /***/ }),
-/* 388 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(389);
+var content = __webpack_require__(387);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -63554,7 +63510,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(13)(content, options);
+var update = __webpack_require__(16)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -63571,58 +63527,58 @@ if(false) {
 }
 
 /***/ }),
-/* 389 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(30);
-exports = module.exports = __webpack_require__(12)(false);
+exports = module.exports = __webpack_require__(15)(false);
 // imports
 
 
 // module
-exports.push([module.i, "@-webkit-keyframes loading {\n  0% {\n    -webkit-transform: rotate(0deg);\n  }\n\n  100% {\n    -webkit-transform: rotate(360deg);\n  }\n}\n\n@keyframes loading {\n  0% {\n    transform: rotate(0deg);\n  }\n\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n.launches {\n  background: url(" + escape(__webpack_require__(390)) + ");\n  background-repeat: no-repeat;\n  background-size: 100% 100%;\n  width: 100%;\n  height: 100vh;\n  overflow-x: hidden;\n  background-position: center center;\n  perspective: 1px;\n}\n\n.launches h2 {\n  font-size: 3em;\n  border-bottom: 2px solid white;\n  line-height: 1.5em;\n  margin-bottom: 30px;\n  display: inline-block;\n  max-width: 60%;\n  text-align: center;\n}\n\n.launches .section-window {\n  font-size: 1em;\n  line-height: 1em;\n  padding: 20px 0px;\n  margin: 0 auto;\n  border: 3px solid rgba(47, 47, 47, 0.1);\n  background: rgba(47, 47, 47, 0.8);\n  display: flex;\n  flex-direction: column;\n  border-radius: 5px;\n}\n\n.launches .section-window .description-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  height: 100%;\n  overflow-y: hidden;\n  overflow-x: hidden;\n}\n\n.launches .section-window .description-container .article {\n  display: flex;\n}\n\n.launches .section-window .description-container .article .article-description {\n  text-align: left;\n  margin: 10px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n\n.launches .section-window .description-container .article .article-description h3 {\n  border-bottom: 1px solid white;\n  max-width: 75%;\n}\n\n.launches .section-window .description-container .article .article-description .loading {\n  display: flex;\n  flex-direction: column;\n}\n\n.launches .section-window .description-container .article .article-description .loading p {\n  display: flex;\n  flex-direction: row;\n}\n\n.launches .section-window .description-container .article .article-description .loading div {\n  display: flex;\n  flex-direction: row;\n}\n\n.launches .section-window .description-container .article .article-description .loading div .loader {\n  align-self: center;\n  margin-left: -15px;\n  border: 6px solid lightgrey;\n  border-radius: 50%;\n  border-top: 6px solid grey;\n  border-bottom: 6px solid grey;\n  width: 12px;\n  height: 12px;\n  -webkit-animation: loading 2s linear infinite;\n  animation: loading 2s linear infinite;\n}\n\n.launches .section-window .description-container .article .image {\n  margin: 10px;\n  border-radius: 5px;\n  align-self: center;\n}\n\n.launches .section-window .description-container #total .image {\n  background: url(" + escape(__webpack_require__(391)) + ");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n}\n\n.launches .section-window .description-container #falcon_1 .image {\n  background: url(" + escape(__webpack_require__(392)) + ");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n}\n\n.launches .section-window .description-container #falcon_9 .image {\n  background: url(" + escape(__webpack_require__(393)) + ");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n}\n\n.launches .section-window .description-container #falconHeavy .image {\n  background: url(" + escape(__webpack_require__(394)) + ");\n  background-repeat: no-repeat;\n  background-position: top center;\n  background-size: cover;\n}\n\n.launches .section-window .description-container #bfr .image {\n  background: url(" + escape(__webpack_require__(395)) + ");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n}\n\n@media only screen and (max-width: 600px) {\n  .launches h2 {\n    margin-top: 50px;\n    font-size: 2em;\n  }\n\n  .launches .section-window {\n    margin: 0 auto;\n  }\n\n  .launches .section-window .article {\n    margin-top: 30px;\n    flex-direction: column-reverse;\n    align-items: center;\n    height: 100%;\n  }\n\n  .launches .section-window .article .image {\n    padding: 20%;\n  }\n\n  .launches .section-window .article .article-description {\n    width: 100%;\n    height: 100%;\n  }\n\n  .launches .section-window .article .article-description h3 {\n    font-size: 1em;\n    padding: 10px;\n    line-height: 1.5em;\n  }\n\n  .launches .section-window .article .article-description p {\n    padding: 5px;\n    line-height: 1.5em;\n  }\n\n  .launches .section-window .article .article-description p:nth-of-type(1) {\n    font-size: 1em;\n  }\n\n  .launches .section-window .article .article-description p:nth-of-type(3) {\n    font-size: 1em;\n  }\n\n  .launches .section-window .article:nth-of-type(1) {\n    margin-top: 0;\n  }\n}\n\n@media only screen and (min-width: 600px) and (max-width: 992px) {\n  .launches h2 {\n    margin-top: 30px;\n    font-size: 3em;\n  }\n\n  .launches .section-window {\n    margin: 0 auto;\n  }\n\n  .launches .section-window .article {\n    margin-top: 30px;\n    flex-direction: column-reverse;\n    align-items: center;\n    height: 100%;\n  }\n\n  .launches .section-window .article .image {\n    padding: 20%;\n  }\n\n  .launches .section-window .article .article-description {\n    width: 100%;\n    height: 100%;\n  }\n\n  .launches .section-window .article .article-description h3 {\n    font-size: 2em;\n    padding: 20px;\n    line-height: 2em;\n  }\n\n  .launches .section-window .article .article-description p {\n    padding: 10px;\n    line-height: 1.5em;\n  }\n\n  .launches .section-window .article .article-description p:nth-of-type(1) {\n    font-size: 1em;\n  }\n\n  .launches .section-window .article .article-description p:nth-of-type(3) {\n    font-size: 1em;\n  }\n\n  .launches .section-window .article:nth-of-type(1) {\n    margin-top: 0;\n  }\n}\n\n@media only screen and (min-width: 992px) {\n  .launches h2 {\n    margin-top: 50px;\n    font-size: 3em;\n  }\n\n  .launches .section-window {\n    max-width: 100vw;\n    padding: 20px 0px;\n  }\n\n  .launches .section-window .article {\n    height: 100vh;\n    flex-direction: row;\n    justify-content: center;\n  }\n\n  .launches .section-window .article .article-description {\n    width: 50%;\n    height: 100%;\n  }\n\n  .launches .section-window .article .article-description h3 {\n    font-size: 2em;\n    padding: 10px;\n    line-height: 2em;\n  }\n\n  .launches .section-window .article .article-description p {\n    padding: 20px;\n    line-height: 1.5em;\n  }\n\n  .launches .section-window .article .article-description p:nth-of-type(1) {\n    font-size: 1.5em;\n  }\n\n  .launches .section-window .article .article-description p:nth-of-type(3) {\n    font-size: 1.5em;\n  }\n\n  .launches .section-window .article .image {\n    width: 50%;\n    height: 50%;\n  }\n\n  .launches .section-window .article:nth-of-type(1) {\n    margin-top: -120px;\n  }\n}", ""]);
+exports.push([module.i, "@-webkit-keyframes loading {\n  0% {\n    -webkit-transform: rotate(0deg);\n  }\n\n  100% {\n    -webkit-transform: rotate(360deg);\n  }\n}\n\n@keyframes loading {\n  0% {\n    transform: rotate(0deg);\n  }\n\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n.launches {\n  background: url(" + escape(__webpack_require__(388)) + ");\n  background-repeat: no-repeat;\n  background-size: 100% 100%;\n  width: 100vw;\n  height: 100vh;\n  overflow-x: hidden;\n  background-position: center center;\n  perspective: 1px;\n  display: flex;\n  flex-direction: column;\n}\n\n.launches .section-content {\n  color: white;\n}\n\n.launches .section-content .section-header {\n  padding: 35px;\n  margin: 0 auto;\n}\n\n.launches .section-content .section-header h2 {\n  border-bottom: 2px solid white;\n  text-align: center;\n}\n\n.launches .section-content .section-window {\n  font-size: 1em;\n  line-height: 1em;\n  margin: 0 auto;\n  border: 3px solid rgba(47, 47, 47, 0.1);\n  box-sizing: border-box;\n  background: rgba(47, 47, 47, 0.8);\n  border-radius: 5px;\n}\n\n.launches .section-content .section-window .article:nth-of-type(1) {\n  margin-top: 0px;\n}\n\n.launches .section-content .section-window .article {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  margin: 10% 0;\n}\n\n.launches .section-content .section-window .article .article-header {\n  padding: 20px;\n  max-width: 50%;\n}\n\n.launches .section-content .section-window .article .article-header h3 {\n  border-bottom: 1px solid white;\n  font-size: 2em;\n  line-height: 1.5em;\n  padding: 10px;\n  text-align: left;\n  margin: 30px auto;\n}\n\n.launches .section-content .section-window .article .article-content {\n  display: flex;\n  flex-direction: row;\n}\n\n.launches .section-content .section-window .article .article-content .image {\n  height: 50vh;\n  margin: 10px;\n  border-radius: 5px;\n  box-sizing: border-box;\n  align-self: center;\n}\n\n.launches .section-content .section-window .article .article-content .article-description {\n  text-align: left;\n  align-self: center;\n}\n\n.launches .section-content .section-window .article .article-content .article-description .loading {\n  display: flex;\n  flex-direction: column;\n}\n\n.launches .section-content .section-window .article .article-content .article-description .loading p {\n  display: flex;\n  flex-direction: row;\n}\n\n.launches .section-content .section-window .article .article-content .article-description .loading div {\n  display: flex;\n  flex-direction: row;\n}\n\n.launches .section-content .section-window .article .article-content .article-description .loading div .loader {\n  align-self: center;\n  margin-left: -15px;\n  border: 6px solid lightgrey;\n  border-radius: 50%;\n  border-top: 6px solid grey;\n  border-bottom: 6px solid grey;\n  width: 12px;\n  height: 12px;\n  -webkit-animation: loading 2s linear infinite;\n  animation: loading 2s linear infinite;\n}\n\n.launches .section-content .section-window #total .image {\n  background: url(" + escape(__webpack_require__(389)) + ");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n}\n\n.launches .section-content .section-window #falcon_1 .image {\n  background: url(" + escape(__webpack_require__(390)) + ");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n}\n\n.launches .section-content .section-window #falcon_9 .image {\n  background: url(" + escape(__webpack_require__(391)) + ");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n}\n\n.launches .section-content .section-window #falconHeavy .image {\n  background: url(" + escape(__webpack_require__(392)) + ");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n}\n\n.launches .section-content .section-window #bfr .image {\n  background: url(" + escape(__webpack_require__(393)) + ");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n}\n\n@media only screen and (max-width: 600px) {\n  .launches h2 {\n    width: 60%;\n    font-size: 3em;\n    line-height: 1.5em;\n    margin: 0 auto;\n    margin-top: 70px;\n  }\n\n  .launches .section-window {\n    margin: 0 auto;\n  }\n\n  .launches .section-window .article {\n    margin-top: 30px;\n    flex-direction: column;\n    height: 100%;\n  }\n\n  .launches .section-window .article h3 {\n    font-size: 2em;\n    padding: 10px;\n    line-height: 2em;\n  }\n\n  .launches .section-window .article .article-content {\n    width: 90%;\n    padding: 0 5%;\n  }\n\n  .launches .section-window .article .article-content .image {\n    width: 50%;\n  }\n\n  .launches .section-window .article .article-content .article-description {\n    width: 50%;\n  }\n\n  .launches .section-window .article .article-content .article-description p {\n    padding: 10px;\n    line-height: 1.5em;\n  }\n\n  .launches .section-window .article .article-content .article-description p:nth-of-type(1) {\n    font-size: 1.3em;\n    text-decoration: underline;\n  }\n\n  .launches .section-window .article .article-content .article-description p:nth-of-type(3) {\n    font-size: 1.3em;\n    text-decoration: underline;\n  }\n\n  .launches .section-window .article:nth-of-type(1) {\n    margin-top: 0;\n  }\n}\n\n@media only screen and (min-width: 600px) and (max-width: 992px) {\n  .launches h2 {\n    width: 60%;\n    font-size: 3em;\n    line-height: 1.5em;\n    margin: 0 auto;\n    margin-top: 70px;\n  }\n\n  .launches .section-window {\n    margin: 0 auto;\n  }\n\n  .launches .section-window .article {\n    margin-top: 30px;\n    flex-direction: column;\n    height: 100%;\n  }\n\n  .launches .section-window .article h3 {\n    font-size: 2em;\n    padding: 10px;\n    line-height: 2em;\n  }\n\n  .launches .section-window .article .article-content {\n    width: 90%;\n    padding: 0 5%;\n  }\n\n  .launches .section-window .article .article-content .image {\n    width: 50%;\n  }\n\n  .launches .section-window .article .article-content .article-description {\n    width: 50%;\n  }\n\n  .launches .section-window .article .article-content .article-description p {\n    padding: 10px;\n    line-height: 1.5em;\n  }\n\n  .launches .section-window .article .article-content .article-description p:nth-of-type(1) {\n    font-size: 1.3em;\n    text-decoration: underline;\n  }\n\n  .launches .section-window .article .article-content .article-description p:nth-of-type(3) {\n    font-size: 1.3em;\n    text-decoration: underline;\n  }\n\n  .launches .section-window .article:nth-of-type(1) {\n    margin-top: 0;\n  }\n}\n\n@media only screen and (min-width: 992px) {\n  .launches h2 {\n    width: 60%;\n    font-size: 3em;\n    line-height: 1.5em;\n    margin: 0 auto;\n  }\n\n  .launches .section-content {\n    margin-left: 20vw;\n  }\n\n  .launches .section-content .section-header {\n    width: 80%;\n  }\n\n  .launches .section-window {\n    width: 80%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n  }\n\n  .launches .section-window .article {\n    height: 100vh;\n  }\n\n  .launches .section-window .article h3 {\n    font-size: 2em;\n    padding: 10px;\n    line-height: 2em;\n  }\n\n  .launches .section-window .article .article-content {\n    width: 100%;\n  }\n\n  .launches .section-window .article .article-content .article-description {\n    width: 50%;\n  }\n\n  .launches .section-window .article .article-content .article-description p {\n    padding: 10px;\n    line-height: 1.5em;\n  }\n\n  .launches .section-window .article .article-content .article-description p:nth-of-type(1) {\n    font-size: 1.5em;\n    text-decoration: underline;\n  }\n\n  .launches .section-window .article .article-content .article-description p:nth-of-type(3) {\n    font-size: 1.5em;\n  }\n\n  .launches .section-window .article .article-content .image {\n    width: 50%;\n  }\n}", ""]);
 
 // exports
 
 
 /***/ }),
-/* 390 */
+/* 388 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "Images/Rocket flies for the second time.png";
 
 /***/ }),
-/* 391 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "Images/Hangar and pad at Launch Complex 39A.png";
 
 /***/ }),
-/* 392 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "Images/Falcon_1_Flight_4_liftoff.jpg";
 
 /***/ }),
-/* 393 */
+/* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "Images/Falcon 9 first stage after landing on Droneship.png";
 
 /***/ }),
-/* 394 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "Images/Falcon_Heavy_cropped.jpg";
 
 /***/ }),
-/* 395 */
+/* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "Images/Artists rendering of the Big Falcon Rocket.png";
 
 /***/ }),
-/* 396 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63638,7 +63594,7 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(397);
+__webpack_require__(395);
 
 var _aos = __webpack_require__(20);
 
@@ -63713,32 +63669,40 @@ var Pads = function (_Component) {
         { className: 'pads', id: 'pads' },
         _react2.default.createElement(
           'div',
-          { className: 'section-layer' },
+          { className: 'section-content' },
           _react2.default.createElement(
             'div',
-            { className: 'section-content' },
+            { className: 'section-header', 'data-aos': 'slide-down', 'data-aos-duration': '1000' },
             _react2.default.createElement(
               'h2',
               null,
               'Launching pads'
-            ),
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'section-window', 'data-aos': 'slide-up', 'data-aos-duration': '1000' },
             _react2.default.createElement(
               'div',
-              { className: 'section-window', 'data-aos': 'slide-up', 'data-aos-duration': '1000' },
+              { className: 'description-container' },
               _react2.default.createElement(
                 'div',
-                { className: 'description-container' },
+                { id: 'bc', className: 'article' },
                 _react2.default.createElement(
                   'div',
-                  { id: 'bc', className: 'article' },
+                  { className: 'article-header' },
+                  _react2.default.createElement(
+                    'h3',
+                    null,
+                    'Boca Chica'
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'article-content' },
                   _react2.default.createElement(
                     'div',
                     { className: 'article-description' },
-                    _react2.default.createElement(
-                      'h3',
-                      null,
-                      'Boca Chica'
-                    ),
                     _react2.default.createElement(
                       'p',
                       null,
@@ -63752,18 +63716,26 @@ var Pads = function (_Component) {
                     )
                   ),
                   _react2.default.createElement('div', { className: 'image' })
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { id: 'cc', className: 'article' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'article-header' },
+                  _react2.default.createElement(
+                    'h3',
+                    null,
+                    'Cape Canaveral'
+                  )
                 ),
                 _react2.default.createElement(
                   'div',
-                  { id: 'cc', className: 'article' },
+                  { className: 'article-content' },
                   _react2.default.createElement(
                     'div',
                     { className: 'article-description' },
-                    _react2.default.createElement(
-                      'h3',
-                      null,
-                      'Cape Canaveral'
-                    ),
                     this.props.cc !== undefined ? _react2.default.createElement(
                       'div',
                       { className: 'loading' },
@@ -63798,18 +63770,26 @@ var Pads = function (_Component) {
                     )
                   ),
                   _react2.default.createElement('div', { className: 'image' })
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { id: 'ksc', className: 'article' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'article-header' },
+                  _react2.default.createElement(
+                    'h3',
+                    null,
+                    'Kennedy Space Center'
+                  )
                 ),
                 _react2.default.createElement(
                   'div',
-                  { id: 'ksc', className: 'article' },
+                  { className: 'article-content' },
                   _react2.default.createElement(
                     'div',
                     { className: 'article-description' },
-                    _react2.default.createElement(
-                      'h3',
-                      null,
-                      'Kennedy Space Center'
-                    ),
                     this.props.ksc !== undefined ? _react2.default.createElement(
                       'div',
                       { className: 'loading' },
@@ -63844,18 +63824,26 @@ var Pads = function (_Component) {
                     )
                   ),
                   _react2.default.createElement('div', { className: 'image' })
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { id: 'kwa', className: 'article' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'article-header' },
+                  _react2.default.createElement(
+                    'h3',
+                    null,
+                    'Kwajalein'
+                  )
                 ),
                 _react2.default.createElement(
                   'div',
-                  { id: 'kwa', className: 'article' },
+                  { className: 'article-content' },
                   _react2.default.createElement(
                     'div',
                     { className: 'article-description' },
-                    _react2.default.createElement(
-                      'h3',
-                      null,
-                      'Kwajalein'
-                    ),
                     this.props.kwa !== undefined ? _react2.default.createElement(
                       'div',
                       { className: 'loading' },
@@ -63890,18 +63878,26 @@ var Pads = function (_Component) {
                     )
                   ),
                   _react2.default.createElement('div', { className: 'image' })
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { id: 'van', className: 'article' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'article-header' },
+                  _react2.default.createElement(
+                    'h3',
+                    null,
+                    'Vanderberg'
+                  )
                 ),
                 _react2.default.createElement(
                   'div',
-                  { id: 'van', className: 'article' },
+                  { className: 'article-content' },
                   _react2.default.createElement(
                     'div',
                     { className: 'article-description' },
-                    _react2.default.createElement(
-                      'h3',
-                      null,
-                      'Vanderberg'
-                    ),
                     this.props.van !== undefined ? _react2.default.createElement(
                       'div',
                       { className: 'loading' },
@@ -63951,13 +63947,13 @@ var Pads = function (_Component) {
 exports.default = Pads;
 
 /***/ }),
-/* 397 */
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(398);
+var content = __webpack_require__(396);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -63965,7 +63961,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(13)(content, options);
+var update = __webpack_require__(16)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -63982,58 +63978,58 @@ if(false) {
 }
 
 /***/ }),
-/* 398 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(30);
-exports = module.exports = __webpack_require__(12)(false);
+exports = module.exports = __webpack_require__(15)(false);
 // imports
 
 
 // module
-exports.push([module.i, "@-webkit-keyframes loading {\n  0% {\n    -webkit-transform: rotate(0deg);\n  }\n\n  100% {\n    -webkit-transform: rotate(360deg);\n  }\n}\n\n@keyframes loading {\n  0% {\n    transform: rotate(0deg);\n  }\n\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n.pads {\n  background: url(" + escape(__webpack_require__(399)) + ");\n  background-repeat: no-repeat;\n  background-size: 100% 100%;\n  width: 100%;\n  height: 100vh;\n  overflow-x: hidden;\n  background-position: center center;\n  perspective: 1px;\n}\n\n.pads h2 {\n  font-size: 3em;\n  border-bottom: 2px solid white;\n  line-height: 1.5em;\n  margin-bottom: 30px;\n  display: inline-block;\n  max-width: 60%;\n  text-align: center;\n}\n\n.pads .section-window {\n  font-size: 1em;\n  line-height: 1em;\n  padding: 20px 0px;\n  margin: 0 auto;\n  border: 3px solid rgba(47, 47, 47, 0.1);\n  background: rgba(47, 47, 47, 0.8);\n  display: flex;\n  flex-direction: column;\n  border-radius: 5px;\n}\n\n.pads .section-window .description-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  overflow-y: hidden;\n  overflow-x: hidden;\n  height: 100%;\n}\n\n.pads .section-window .description-container .article {\n  display: flex;\n}\n\n.pads .section-window .description-container .article .article-description {\n  text-align: left;\n  margin: 10px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n\n.pads .section-window .description-container .article .article-description h3 {\n  border-bottom: 1px solid white;\n  max-width: 75%;\n}\n\n.pads .section-window .description-container .article .article-description .loading {\n  display: flex;\n  flex-direction: column;\n}\n\n.pads .section-window .description-container .article .article-description .loading p {\n  display: flex;\n  flex-direction: row;\n}\n\n.pads .section-window .description-container .article .article-description .loading div {\n  display: flex;\n  flex-direction: row;\n}\n\n.pads .section-window .description-container .article .article-description .loading div .loader {\n  align-self: center;\n  margin-left: -15px;\n  border: 6px solid lightgrey;\n  border-radius: 50%;\n  border-top: 6px solid grey;\n  border-bottom: 6px solid grey;\n  width: 12px;\n  height: 12px;\n  -webkit-animation: loading 2s linear infinite;\n  animation: loading 2s linear infinite;\n}\n\n.pads .section-window .description-container .article .image {\n  margin: 10px;\n  border-radius: 5px;\n  align-self: center;\n}\n\n.pads .section-window .description-container #cc .image {\n  background: url(" + escape(__webpack_require__(400)) + ");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n}\n\n.pads .section-window .description-container #ksc .image {\n  background: url(" + escape(__webpack_require__(401)) + ");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n}\n\n.pads .section-window .description-container #van .image {\n  background: url(" + escape(__webpack_require__(402)) + ");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n}\n\n.pads .section-window .description-container #bc .image {\n  background: url(" + escape(__webpack_require__(403)) + ");\n  background-repeat: no-repeat;\n  background-position: top center;\n  background-size: cover;\n}\n\n.pads .section-window .description-container #kwa .image {\n  background: url(" + escape(__webpack_require__(404)) + ");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n}\n\n@media only screen and (max-width: 600px) {\n  .pads h2 {\n    margin-top: 50px;\n    font-size: 2em;\n  }\n\n  .pads .section-window {\n    margin: 0 auto;\n  }\n\n  .pads .section-window .article {\n    margin-top: 30px;\n    flex-direction: column-reverse;\n    align-items: center;\n    height: 100%;\n  }\n\n  .pads .section-window .article .image {\n    padding: 20%;\n  }\n\n  .pads .section-window .article .article-description {\n    width: 100%;\n    height: 100%;\n  }\n\n  .pads .section-window .article .article-description h3 {\n    font-size: 1em;\n    padding: 10px;\n    line-height: 1.5em;\n  }\n\n  .pads .section-window .article .article-description p {\n    padding: 5px;\n    line-height: 1.5em;\n  }\n\n  .pads .section-window .article .article-description p:nth-of-type(1) {\n    font-size: 1em;\n  }\n\n  .pads .section-window .article .article-description p:nth-of-type(3) {\n    font-size: 1em;\n  }\n\n  .pads .section-window .article:nth-of-type(1) {\n    margin-top: 0;\n  }\n}\n\n@media only screen and (min-width: 600px) and (max-width: 992px) {\n  .pads h2 {\n    margin-top: 30px;\n    font-size: 3em;\n  }\n\n  .pads .section-window {\n    margin: 0 auto;\n  }\n\n  .pads .section-window .article {\n    margin-top: 30px;\n    flex-direction: column-reverse;\n    align-items: center;\n    height: 100%;\n  }\n\n  .pads .section-window .article .image {\n    padding: 20%;\n  }\n\n  .pads .section-window .article .article-description {\n    width: 100%;\n    height: 100%;\n  }\n\n  .pads .section-window .article .article-description h3 {\n    font-size: 2em;\n    padding: 20px;\n    line-height: 2em;\n  }\n\n  .pads .section-window .article .article-description p {\n    padding: 10px;\n    line-height: 1.5em;\n  }\n\n  .pads .section-window .article .article-description p:nth-of-type(1) {\n    font-size: 1em;\n  }\n\n  .pads .section-window .article .article-description p:nth-of-type(3) {\n    font-size: 1em;\n  }\n\n  .pads .section-window .article:nth-of-type(1) {\n    margin-top: 0;\n  }\n}\n\n@media only screen and (min-width: 992px) {\n  .pads h2 {\n    margin-top: 50px;\n    font-size: 3em;\n  }\n\n  .pads .section-window {\n    max-width: 100vw;\n    padding: 20px 0px;\n  }\n\n  .pads .section-window .article {\n    height: 100vh;\n    flex-direction: row;\n    justify-content: center;\n  }\n\n  .pads .section-window .article .article-description {\n    width: 50%;\n    height: 100%;\n  }\n\n  .pads .section-window .article .article-description h3 {\n    font-size: 2em;\n    padding: 10px;\n    line-height: 2em;\n  }\n\n  .pads .section-window .article .article-description p {\n    padding: 20px;\n    line-height: 1.5em;\n  }\n\n  .pads .section-window .article .article-description p:nth-of-type(1) {\n    font-size: 1.5em;\n  }\n\n  .pads .section-window .article .article-description p:nth-of-type(3) {\n    font-size: 1.5em;\n  }\n\n  .pads .section-window .article .image {\n    width: 50%;\n    height: 50%;\n  }\n\n  .pads .section-window .article:nth-of-type(1) {\n    margin-top: -120px;\n  }\n}", ""]);
+exports.push([module.i, "@-webkit-keyframes loading {\n  0% {\n    -webkit-transform: rotate(0deg);\n  }\n\n  100% {\n    -webkit-transform: rotate(360deg);\n  }\n}\n\n@keyframes loading {\n  0% {\n    transform: rotate(0deg);\n  }\n\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n.pads {\n  background: url(" + escape(__webpack_require__(397)) + ");\n  background-repeat: no-repeat;\n  background-size: 100% 100%;\n  width: 100vw;\n  height: 100vh;\n  overflow-x: hidden;\n  background-position: center center;\n  perspective: 1px;\n  display: flex;\n  flex-direction: column;\n}\n\n.pads .section-content {\n  color: white;\n}\n\n.pads .section-content .section-header {\n  padding: 35px;\n  margin: 0 auto;\n}\n\n.pads .section-content .section-header h2 {\n  border-bottom: 2px solid white;\n  text-align: center;\n}\n\n.pads .section-content .section-window {\n  font-size: 1em;\n  line-height: 1em;\n  margin: 0 auto;\n  border: 3px solid rgba(47, 47, 47, 0.1);\n  box-sizing: border-box;\n  background: rgba(47, 47, 47, 0.8);\n  border-radius: 5px;\n}\n\n.pads .section-content .section-window .article:nth-of-type(1) {\n  margin-top: 0px;\n}\n\n.pads .section-content .section-window .article {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  margin: 10% 0;\n}\n\n.pads .section-content .section-window .article .article-header {\n  padding: 20px;\n  max-width: 50%;\n}\n\n.pads .section-content .section-window .article .article-header h3 {\n  border-bottom: 1px solid white;\n  font-size: 2em;\n  line-height: 1.5em;\n  padding: 10px;\n  text-align: left;\n  margin: 30px auto;\n}\n\n.pads .section-content .section-window .article .article-content {\n  display: flex;\n  flex-direction: row;\n}\n\n.pads .section-content .section-window .article .article-content .image {\n  height: 50vh;\n  margin: 10px;\n  border-radius: 5px;\n  box-sizing: border-box;\n  align-self: center;\n}\n\n.pads .section-content .section-window .article .article-content .article-description {\n  text-align: left;\n  align-self: center;\n}\n\n.pads .section-content .section-window .article .article-content .article-description .loading {\n  display: flex;\n  flex-direction: column;\n}\n\n.pads .section-content .section-window .article .article-content .article-description .loading p {\n  display: flex;\n  flex-direction: row;\n}\n\n.pads .section-content .section-window .article .article-content .article-description .loading div {\n  display: flex;\n  flex-direction: row;\n}\n\n.pads .section-content .section-window .article .article-content .article-description .loading div .loader {\n  align-self: center;\n  margin-left: -15px;\n  border: 6px solid lightgrey;\n  border-radius: 50%;\n  border-top: 6px solid grey;\n  border-bottom: 6px solid grey;\n  width: 12px;\n  height: 12px;\n  -webkit-animation: loading 2s linear infinite;\n  animation: loading 2s linear infinite;\n}\n\n.pads .section-content .section-window #cc .image {\n  background: url(" + escape(__webpack_require__(398)) + ");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n}\n\n.pads .section-content .section-window #ksc .image {\n  background: url(" + escape(__webpack_require__(399)) + ");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n}\n\n.pads .section-content .section-window #van .image {\n  background: url(" + escape(__webpack_require__(400)) + ");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n}\n\n.pads .section-content .section-window #bc .image {\n  background: url(" + escape(__webpack_require__(401)) + ");\n  background-repeat: no-repeat;\n  background-position: top center;\n  background-size: cover;\n}\n\n.pads .section-content .section-window #kwa .image {\n  background: url(" + escape(__webpack_require__(402)) + ");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n}\n\n@media only screen and (max-width: 600px) {\n  .pads h2 {\n    width: 60%;\n    font-size: 3em;\n    line-height: 1.5em;\n    margin: 0 auto;\n    margin-top: 70px;\n  }\n\n  .pads .section-window {\n    margin: 0 auto;\n  }\n\n  .pads .section-window .article {\n    margin-top: 30px;\n    flex-direction: column;\n    height: 100%;\n  }\n\n  .pads .section-window .article h3 {\n    font-size: 2em;\n    padding: 10px;\n    line-height: 2em;\n  }\n\n  .pads .section-window .article .article-content {\n    width: 90%;\n    padding: 0 5%;\n  }\n\n  .pads .section-window .article .article-content .image {\n    width: 50%;\n  }\n\n  .pads .section-window .article .article-content .article-description {\n    width: 50%;\n  }\n\n  .pads .section-window .article .article-content .article-description p {\n    padding: 10px;\n    line-height: 1.5em;\n  }\n\n  .pads .section-window .article .article-content .article-description p:nth-of-type(1) {\n    font-size: 1.3em;\n    text-decoration: underline;\n  }\n\n  .pads .section-window .article .article-content .article-description p:nth-of-type(3) {\n    font-size: 1.3em;\n    text-decoration: underline;\n  }\n\n  .pads .section-window .article:nth-of-type(1) {\n    margin-top: 0;\n  }\n}\n\n@media only screen and (min-width: 600px) and (max-width: 992px) {\n  .pads h2 {\n    width: 60%;\n    font-size: 3em;\n    line-height: 1.5em;\n    margin: 0 auto;\n    margin-top: 70px;\n  }\n\n  .pads .section-window {\n    margin: 0 auto;\n  }\n\n  .pads .section-window .article {\n    margin-top: 30px;\n    flex-direction: column;\n    height: 100%;\n  }\n\n  .pads .section-window .article h3 {\n    font-size: 2em;\n    padding: 10px;\n    line-height: 2em;\n  }\n\n  .pads .section-window .article .article-content {\n    width: 90%;\n    padding: 0 5%;\n  }\n\n  .pads .section-window .article .article-content .image {\n    width: 50%;\n  }\n\n  .pads .section-window .article .article-content .article-description {\n    width: 50%;\n  }\n\n  .pads .section-window .article .article-content .article-description p {\n    padding: 10px;\n    line-height: 1.5em;\n  }\n\n  .pads .section-window .article .article-content .article-description p:nth-of-type(1) {\n    font-size: 1.3em;\n    text-decoration: underline;\n  }\n\n  .pads .section-window .article .article-content .article-description p:nth-of-type(3) {\n    font-size: 1.3em;\n    text-decoration: underline;\n  }\n\n  .pads .section-window .article:nth-of-type(1) {\n    margin-top: 0;\n  }\n}\n\n@media only screen and (min-width: 992px) {\n  .pads h2 {\n    width: 60%;\n    font-size: 3em;\n    line-height: 1.5em;\n    margin: 0 auto;\n  }\n\n  .pads .section-content {\n    margin-left: 20vw;\n  }\n\n  .pads .section-content .section-header {\n    width: 80%;\n  }\n\n  .pads .section-window {\n    width: 80%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n  }\n\n  .pads .section-window .article {\n    height: 100vh;\n  }\n\n  .pads .section-window .article h3 {\n    font-size: 2em;\n    padding: 10px;\n    line-height: 2em;\n  }\n\n  .pads .section-window .article .article-content {\n    width: 100%;\n  }\n\n  .pads .section-window .article .article-content .article-description {\n    width: 50%;\n  }\n\n  .pads .section-window .article .article-content .article-description p {\n    padding: 10px;\n    line-height: 1.5em;\n  }\n\n  .pads .section-window .article .article-content .article-description p:nth-of-type(1) {\n    font-size: 1.5em;\n    text-decoration: underline;\n  }\n\n  .pads .section-window .article .article-content .article-description p:nth-of-type(3) {\n    font-size: 1.5em;\n  }\n\n  .pads .section-window .article .article-content .image {\n    width: 50%;\n  }\n}", ""]);
 
 // exports
 
 
 /***/ }),
-/* 399 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "Images/Aerial shot of Falcon 9 vertical at Cape Canaveral.jpg";
 
 /***/ }),
-/* 400 */
+/* 398 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "Images/Launch_pad_40_awaiting_Falcon_9_rocket.jpg";
 
 /***/ }),
-/* 401 */
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "Images/Kennedy_Space_Center_Launch_Complex_39.jpg";
 
 /***/ }),
-/* 402 */
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "Images/Iridium-1_Mission_(31450835954).jpg";
 
 /***/ }),
-/* 403 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "Images/SpaceX_Boca_Chica_Launch_Pad.png";
 
 /***/ }),
-/* 404 */
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "Images/Omelek_Island.jpg";
 
 /***/ }),
-/* 405 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64049,7 +64045,7 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(406);
+__webpack_require__(404);
 
 var _aos = __webpack_require__(20);
 
@@ -64057,7 +64053,7 @@ var _aos2 = _interopRequireDefault(_aos);
 
 __webpack_require__(19);
 
-var _reactChartjs = __webpack_require__(409);
+var _reactChartjs = __webpack_require__(407);
 
 var _reactChartjs2 = _interopRequireDefault(_reactChartjs);
 
@@ -64088,86 +64084,87 @@ var Stats = function (_Component) {
                 { className: 'stats', id: 'stats' },
                 _react2.default.createElement(
                     'div',
-                    { className: 'section-layer' },
+                    { className: 'section-content' },
                     _react2.default.createElement(
                         'div',
-                        { className: 'section-content' },
+                        { className: 'section-header', 'data-aos': 'slide-down', 'data-aos-duration': '1000' },
                         _react2.default.createElement(
                             'h2',
                             null,
                             'Launching stats'
-                        ),
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'section-window', 'data-aos': 'slide-up', 'data-aos-duration': '1000' },
                         _react2.default.createElement(
                             'div',
-                            { className: 'section-window', 'data-aos': 'slide-up', 'data-aos-duration': '1000' },
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'description-container' },
-                                _react2.default.createElement(_reactChartjs2.default, {
-                                    type: 'bar',
-                                    data: {
-                                        labels: LABELS,
-                                        datasets: [{
-                                            label: 'Failures',
-                                            data: [this.props.launches2006All.failures2006, this.props.launches2007All.failures2007, this.props.launches2008All.failures2008, this.props.launches2009All.failures2009, this.props.launches2010All.failures2010, this.props.launches2011All.failures2011, this.props.launches2012All.failures2012, this.props.launches2013All.failures2013, this.props.launches2014All.failures2014, this.props.launches2015All.failures2015, this.props.launches2016All.failures2016, this.props.launches2017All.failures2017, this.props.launches2018All.failures2018],
-                                            backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)'],
-                                            borderColor: ['rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)'],
-                                            borderWidth: 1
-                                        }, {
-                                            label: 'Falcon 1',
-                                            data: [this.props.launches2006All.falcon12006, this.props.launches2007All.falcon12007, this.props.launches2008All.falcon12008, this.props.launches2009All.falcon12009, this.props.launches2010All.falcon12010, this.props.launches2011All.falcon12011, this.props.launches2012All.falcon12012, this.props.launches2013All.falcon12013, this.props.launches2014All.falcon12014, this.props.launches2015All.falcon12015, this.props.launches2016All.falcon12016, this.props.launches2017All.falcon12017, this.props.launches2018All.falcon12018],
-                                            backgroundColor: ['rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)'],
-                                            borderColor: ['rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)'],
-                                            borderWidth: 1
-                                        }, {
-                                            label: 'Falcon 9',
-                                            data: [this.props.launches2006All.falcon92006, this.props.launches2007All.falcon92007, this.props.launches2008All.falcon92008, this.props.launches2009All.falcon92009, this.props.launches2010All.falcon92010, this.props.launches2011All.falcon92011, this.props.launches2012All.falcon92012, this.props.launches2013All.falcon92013, this.props.launches2014All.falcon92014, this.props.launches2015All.falcon92015, this.props.launches2016All.falcon92016, this.props.launches2017All.falcon92017, this.props.launches2018All.falcon92018],
-                                            backgroundColor: ['rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)'],
-                                            borderColor: ['rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)'],
-                                            borderWidth: 1
-                                        }, {
-                                            label: 'Falcon Heavy',
-                                            data: [this.props.launches2006All.falconHeavy2006, this.props.launches2007All.falconHeavy2007, this.props.launches2008All.falconHeavy2008, this.props.launches2009All.falconHeavy2009, this.props.launches2010All.falconHeavy2010, this.props.launches2011All.falconHeavy2011, this.props.launches2012All.falconHeavy2012, this.props.launches2013All.falconHeavy2013, this.props.launches2014All.falconHeavy2014, this.props.launches2015All.falconHeavy2015, this.props.launches2016All.falconHeavy2016, this.props.launches2017All.falconHeavy2017, this.props.launches2018All.falconHeavy2018],
-                                            backgroundColor: ['rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)'],
-                                            borderColor: ['rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)'],
-                                            borderWidth: 1
-                                        }]
-                                    },
-                                    width: 300,
-                                    height: 150,
-                                    options: {
-                                        fontColor: 'white',
-                                        legend: {
-                                            display: true,
-                                            labels: {
-                                                fontColor: 'white'
-                                            },
-                                            position: 'bottom'
-                                        },
-                                        maintainAspectRatio: false,
-                                        title: {
-                                            display: true,
-                                            text: 'Launches per year',
-                                            fontSize: 25,
-                                            fontFamily: '"Noto Sans", sans-serif',
+                            { className: 'description-container' },
+                            _react2.default.createElement(_reactChartjs2.default, {
+                                type: 'bar',
+                                data: {
+                                    labels: LABELS,
+                                    datasets: [{
+                                        label: 'Failures',
+                                        data: [this.props.launches2006All.failures2006, this.props.launches2007All.failures2007, this.props.launches2008All.failures2008, this.props.launches2009All.failures2009, this.props.launches2010All.failures2010, this.props.launches2011All.failures2011, this.props.launches2012All.failures2012, this.props.launches2013All.failures2013, this.props.launches2014All.failures2014, this.props.launches2015All.failures2015, this.props.launches2016All.failures2016, this.props.launches2017All.failures2017, this.props.launches2018All.failures2018],
+                                        backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 0.6)'],
+                                        borderColor: ['rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)', 'rgba(255,99,132,1)'],
+                                        borderWidth: 1
+                                    }, {
+                                        label: 'Falcon 1',
+                                        data: [this.props.launches2006All.falcon12006, this.props.launches2007All.falcon12007, this.props.launches2008All.falcon12008, this.props.launches2009All.falcon12009, this.props.launches2010All.falcon12010, this.props.launches2011All.falcon12011, this.props.launches2012All.falcon12012, this.props.launches2013All.falcon12013, this.props.launches2014All.falcon12014, this.props.launches2015All.falcon12015, this.props.launches2016All.falcon12016, this.props.launches2017All.falcon12017, this.props.launches2018All.falcon12018],
+                                        backgroundColor: ['rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 0.6)'],
+                                        borderColor: ['rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)', 'rgba(54, 162, 235, 1)'],
+                                        borderWidth: 1
+                                    }, {
+                                        label: 'Falcon 9',
+                                        data: [this.props.launches2006All.falcon92006, this.props.launches2007All.falcon92007, this.props.launches2008All.falcon92008, this.props.launches2009All.falcon92009, this.props.launches2010All.falcon92010, this.props.launches2011All.falcon92011, this.props.launches2012All.falcon92012, this.props.launches2013All.falcon92013, this.props.launches2014All.falcon92014, this.props.launches2015All.falcon92015, this.props.launches2016All.falcon92016, this.props.launches2017All.falcon92017, this.props.launches2018All.falcon92018],
+                                        backgroundColor: ['rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 0.6)'],
+                                        borderColor: ['rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)', 'rgba(255, 206, 86, 1)'],
+                                        borderWidth: 1
+                                    }, {
+                                        label: 'Falcon Heavy',
+                                        data: [this.props.launches2006All.falconHeavy2006, this.props.launches2007All.falconHeavy2007, this.props.launches2008All.falconHeavy2008, this.props.launches2009All.falconHeavy2009, this.props.launches2010All.falconHeavy2010, this.props.launches2011All.falconHeavy2011, this.props.launches2012All.falconHeavy2012, this.props.launches2013All.falconHeavy2013, this.props.launches2014All.falconHeavy2014, this.props.launches2015All.falconHeavy2015, this.props.launches2016All.falconHeavy2016, this.props.launches2017All.falconHeavy2017, this.props.launches2018All.falconHeavy2018],
+                                        backgroundColor: ['rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)', 'rgba(25, 192, 192, 0.6)'],
+                                        borderColor: ['rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)', 'rgba(25, 192, 192, 1)'],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                width: 0,
+                                height: 350,
+                                options: {
+                                    fontColor: 'white',
+                                    legend: {
+                                        display: true,
+                                        labels: {
                                             fontColor: 'white'
                                         },
-                                        scales: {
-                                            xAxes: [{
-                                                stacked: true
-                                            }],
-                                            yAxes: [{
-                                                stacked: true,
-                                                ticks: {
-                                                    beginAtZero: true,
-                                                    stepValue: 1,
-                                                    max: 25
-                                                }
-                                            }]
-                                        }
+                                        position: 'bottom'
+                                    },
+                                    maintainAspectRatio: false,
+                                    title: {
+                                        display: true,
+                                        text: 'Launches per year',
+                                        fontSize: 25,
+                                        fontFamily: '"Noto Sans", sans-serif',
+                                        fontColor: 'white'
+                                    },
+                                    scales: {
+                                        xAxes: [{
+                                            stacked: true
+                                        }],
+                                        yAxes: [{
+                                            stacked: true,
+                                            ticks: {
+                                                beginAtZero: true,
+                                                stepValue: 1,
+                                                min: 0,
+                                                max: 25
+                                            }
+                                        }]
                                     }
-                                })
-                            )
+                                }
+                            })
                         )
                     )
                 )
@@ -64181,13 +64178,13 @@ var Stats = function (_Component) {
 exports.default = Stats;
 
 /***/ }),
-/* 406 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(407);
+var content = __webpack_require__(405);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -64195,7 +64192,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(13)(content, options);
+var update = __webpack_require__(16)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -64212,28 +64209,28 @@ if(false) {
 }
 
 /***/ }),
-/* 407 */
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(30);
-exports = module.exports = __webpack_require__(12)(false);
+exports = module.exports = __webpack_require__(15)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".stats {\n  background: url(" + escape(__webpack_require__(408)) + ");\n  background-repeat: no-repeat;\n  background-size: 100% 100%;\n  width: 100%;\n  height: 100vh;\n  overflow-x: hidden;\n  background-position: center center;\n  perspective: 1px;\n}\n\n.stats h2 {\n  font-size: 3em;\n  border-bottom: 2px solid white;\n  line-height: 1.5em;\n  margin-bottom: 30px;\n  display: inline-block;\n  max-width: 60%;\n  text-align: center;\n}\n\n.stats .section-content-title {\n  box-sizing: border-box;\n  font-size: 2em;\n  line-height: 4em;\n  display: inline-block;\n  border: 10px solid white;\n  padding: 0px 40px 0px 40px;\n  text-transform: uppercase;\n}\n\n.stats .section-window {\n  font-size: 1em;\n  line-height: 1em;\n  padding: 20px 0px 20px 0px;\n  margin: 0 auto;\n  border: 3px solid rgba(47, 47, 47, 0.1);\n  background: rgba(47, 47, 47, 0.8);\n  display: flex;\n  flex-direction: column;\n  border-radius: 5px;\n}\n\n.stats .section-window .description-container {\n  display: flex;\n  flex-direction: column;\n  overflow-y: hidden;\n  overflow-x: hidden;\n}\n\n@media only screen and (max-width: 992px) {\n  .stats h2 {\n    margin-top: 30px;\n    font-size: 3em;\n  }\n\n  .stats .description-container {\n    height: 300px;\n  }\n}\n\n@media only screen and (min-width: 992px) {\n  .stats h2 {\n    margin-top: 50px;\n    font-size: 3em;\n  }\n\n  .stats .section-window {\n    max-width: 100vw;\n  }\n\n  .stats .section-window .description-container {\n    height: 550px;\n  }\n}", ""]);
+exports.push([module.i, ".stats {\n  background: url(" + escape(__webpack_require__(406)) + ");\n  background-repeat: no-repeat;\n  background-size: 100% 100%;\n  width: 100vw;\n  height: 100vh;\n  overflow-x: hidden;\n  background-position: center center;\n  perspective: 1px;\n  display: flex;\n  flex-direction: column;\n}\n\n.stats .section-content {\n  color: white;\n}\n\n.stats .section-content .section-header {\n  padding: 35px;\n  margin: 0 auto;\n}\n\n.stats .section-content .section-header h2 {\n  border-bottom: 2px solid white;\n  text-align: center;\n}\n\n.stats .section-content .section-window {\n  font-size: 1em;\n  line-height: 1em;\n  margin: 0 auto;\n  border: 3px solid rgba(47, 47, 47, 0.1);\n  box-sizing: border-box;\n  background: rgba(47, 47, 47, 0.8);\n  border-radius: 5px;\n  height: 55vh;\n}\n\n@media only screen and (max-width: 600px) {\n  .stats h2 {\n    width: 60%;\n    font-size: 3em;\n    line-height: 1.5em;\n    margin: 0 auto;\n    margin-top: 70px;\n  }\n\n  .stats .section-window {\n    margin: 0 auto;\n  }\n}\n\n@media only screen and (min-width: 600px) and (max-width: 992px) {\n  .stats h2 {\n    width: 60%;\n    font-size: 3em;\n    line-height: 1.5em;\n    margin: 0 auto;\n    margin-top: 70px;\n  }\n\n  .stats .section-window {\n    margin: 0 auto;\n  }\n}\n\n@media only screen and (min-width: 992px) {\n  .stats h2 {\n    width: 60%;\n    font-size: 3em;\n    line-height: 1.5em;\n    margin: 0 auto;\n  }\n\n  .stats .section-content {\n    margin-left: 20vw;\n  }\n\n  .stats .section-content .section-header {\n    width: 80%;\n  }\n\n  .stats .section-window {\n    width: 80%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n  }\n}", ""]);
 
 // exports
 
 
 /***/ }),
-/* 408 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "Images/Rocket is re-fired in McGregor, TX prior to re-flight.png";
 
 /***/ }),
-/* 409 */
+/* 407 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64250,15 +64247,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaults", function() { return defaults; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(410);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(408);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js__ = __webpack_require__(414);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js__ = __webpack_require__(412);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_chart_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_isEqual__ = __webpack_require__(461);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_isEqual__ = __webpack_require__(459);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_isEqual___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash_isEqual__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash_find__ = __webpack_require__(524);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash_find__ = __webpack_require__(522);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash_find___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_lodash_find__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash_keyBy__ = __webpack_require__(549);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash_keyBy__ = __webpack_require__(547);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash_keyBy___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_lodash_keyBy__);
 /* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "Chart", function() { return __WEBPACK_IMPORTED_MODULE_2_chart_js___default.a; });
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -64772,7 +64769,7 @@ var defaults = __WEBPACK_IMPORTED_MODULE_2_chart_js___default.a.defaults;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(5)))
 
 /***/ }),
-/* 410 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {/**
@@ -64797,17 +64794,17 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(411)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(409)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(413)();
+  module.exports = __webpack_require__(411)();
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 411 */
+/* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64823,7 +64820,7 @@ if (process.env.NODE_ENV !== 'production') {
 var assign = __webpack_require__(18);
 
 var ReactPropTypesSecret = __webpack_require__(51);
-var checkPropTypes = __webpack_require__(412);
+var checkPropTypes = __webpack_require__(410);
 
 var printWarning = function() {};
 
@@ -65370,7 +65367,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 412 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65469,7 +65466,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 413 */
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65535,62 +65532,62 @@ module.exports = function() {
 
 
 /***/ }),
-/* 414 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
  * @namespace Chart
  */
-var Chart = __webpack_require__(415)();
+var Chart = __webpack_require__(413)();
 
 Chart.helpers = __webpack_require__(2);
 
 // @todo dispatch these helpers into appropriated helpers/helpers.* file and write unit tests!
-__webpack_require__(419)(Chart);
+__webpack_require__(417)(Chart);
 
 Chart.defaults = __webpack_require__(3);
 Chart.Element = __webpack_require__(9);
-Chart.elements = __webpack_require__(14);
+Chart.elements = __webpack_require__(12);
 Chart.Interaction = __webpack_require__(195);
 Chart.layouts = __webpack_require__(23);
 Chart.platform = __webpack_require__(196);
 Chart.plugins = __webpack_require__(197);
 Chart.Ticks = __webpack_require__(24);
 
+__webpack_require__(428)(Chart);
+__webpack_require__(429)(Chart);
 __webpack_require__(430)(Chart);
 __webpack_require__(431)(Chart);
 __webpack_require__(432)(Chart);
 __webpack_require__(433)(Chart);
+
 __webpack_require__(434)(Chart);
 __webpack_require__(435)(Chart);
-
 __webpack_require__(436)(Chart);
 __webpack_require__(437)(Chart);
 __webpack_require__(438)(Chart);
 __webpack_require__(439)(Chart);
-__webpack_require__(440)(Chart);
-__webpack_require__(441)(Chart);
 
 // Controllers must be loaded after elements
 // See Chart.core.datasetController.dataElementType
+__webpack_require__(441)(Chart);
+__webpack_require__(442)(Chart);
 __webpack_require__(443)(Chart);
 __webpack_require__(444)(Chart);
 __webpack_require__(445)(Chart);
 __webpack_require__(446)(Chart);
 __webpack_require__(447)(Chart);
+
 __webpack_require__(448)(Chart);
 __webpack_require__(449)(Chart);
-
 __webpack_require__(450)(Chart);
 __webpack_require__(451)(Chart);
 __webpack_require__(452)(Chart);
 __webpack_require__(453)(Chart);
 __webpack_require__(454)(Chart);
-__webpack_require__(455)(Chart);
-__webpack_require__(456)(Chart);
 
 // Loading built-it plugins
-var plugins = __webpack_require__(457);
+var plugins = __webpack_require__(455);
 for (var k in plugins) {
 	if (plugins.hasOwnProperty(k)) {
 		Chart.plugins.register(plugins[k]);
@@ -65663,7 +65660,7 @@ Chart.layoutService = Chart.layouts;
 
 
 /***/ }),
-/* 415 */
+/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65719,7 +65716,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 416 */
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65976,7 +65973,7 @@ helpers.easingEffects = effects;
 
 
 /***/ }),
-/* 417 */
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66197,7 +66194,7 @@ helpers.drawRoundedRectangle = function(ctx) {
 
 
 /***/ }),
-/* 418 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66300,7 +66297,7 @@ module.exports = {
 
 
 /***/ }),
-/* 419 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66918,10 +66915,10 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 420 */
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var conversions = __webpack_require__(421);
+var conversions = __webpack_require__(419);
 
 var convert = function() {
    return new Converter();
@@ -67015,7 +67012,7 @@ Converter.prototype.getValues = function(space) {
 module.exports = convert;
 
 /***/ }),
-/* 421 */
+/* 419 */
 /***/ (function(module, exports) {
 
 /* MIT license */
@@ -67719,11 +67716,11 @@ for (var key in cssKeywords) {
 
 
 /***/ }),
-/* 422 */
+/* 420 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* MIT license */
-var colorNames = __webpack_require__(423);
+var colorNames = __webpack_require__(421);
 
 module.exports = {
    getRgba: getRgba,
@@ -67946,7 +67943,7 @@ for (var name in colorNames) {
 
 
 /***/ }),
-/* 423 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68105,7 +68102,7 @@ module.exports = {
 
 
 /***/ }),
-/* 424 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68219,7 +68216,7 @@ module.exports = Element.extend({
 
 
 /***/ }),
-/* 425 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68317,7 +68314,7 @@ module.exports = Element.extend({
 
 
 /***/ }),
-/* 426 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68430,7 +68427,7 @@ module.exports = Element.extend({
 
 
 /***/ }),
-/* 427 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68654,7 +68651,7 @@ module.exports = Element.extend({
 
 
 /***/ }),
-/* 428 */
+/* 426 */
 /***/ (function(module, exports) {
 
 /**
@@ -68675,7 +68672,7 @@ module.exports = {
 
 
 /***/ }),
-/* 429 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69139,7 +69136,7 @@ helpers.removeEvent = removeEventListener;
 
 
 /***/ }),
-/* 430 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69318,7 +69315,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 431 */
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70272,7 +70269,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 432 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70609,7 +70606,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 433 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70662,7 +70659,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 434 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71605,7 +71602,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 435 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72560,7 +72557,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 436 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72753,7 +72750,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 437 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72893,7 +72890,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 438 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73091,7 +73088,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 439 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73445,7 +73442,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 440 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73981,7 +73978,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 441 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74771,7 +74768,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 442 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -75036,17 +75033,17 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 442;
+webpackContext.id = 440;
 
 /***/ }),
-/* 443 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var defaults = __webpack_require__(3);
-var elements = __webpack_require__(14);
+var elements = __webpack_require__(12);
 var helpers = __webpack_require__(2);
 
 defaults._set('bar', {
@@ -75550,14 +75547,14 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 444 */
+/* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var defaults = __webpack_require__(3);
-var elements = __webpack_require__(14);
+var elements = __webpack_require__(12);
 var helpers = __webpack_require__(2);
 
 defaults._set('bubble', {
@@ -75737,14 +75734,14 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 445 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var defaults = __webpack_require__(3);
-var elements = __webpack_require__(14);
+var elements = __webpack_require__(12);
 var helpers = __webpack_require__(2);
 
 defaults._set('doughnut', {
@@ -76043,14 +76040,14 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 446 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var defaults = __webpack_require__(3);
-var elements = __webpack_require__(14);
+var elements = __webpack_require__(12);
 var helpers = __webpack_require__(2);
 
 defaults._set('line', {
@@ -76383,14 +76380,14 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 447 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var defaults = __webpack_require__(3);
-var elements = __webpack_require__(14);
+var elements = __webpack_require__(12);
 var helpers = __webpack_require__(2);
 
 defaults._set('polarArea', {
@@ -76612,14 +76609,14 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 448 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var defaults = __webpack_require__(3);
-var elements = __webpack_require__(14);
+var elements = __webpack_require__(12);
 var helpers = __webpack_require__(2);
 
 defaults._set('radar', {
@@ -76787,7 +76784,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 449 */
+/* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -76836,7 +76833,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 450 */
+/* 448 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -76854,7 +76851,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 451 */
+/* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -76871,7 +76868,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 452 */
+/* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -76889,7 +76886,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 453 */
+/* 451 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -76907,7 +76904,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 454 */
+/* 452 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -76925,7 +76922,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 455 */
+/* 453 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -76943,7 +76940,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 456 */
+/* 454 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -76958,20 +76955,20 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 457 */
+/* 455 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 module.exports = {};
-module.exports.filler = __webpack_require__(458);
-module.exports.legend = __webpack_require__(459);
-module.exports.title = __webpack_require__(460);
+module.exports.filler = __webpack_require__(456);
+module.exports.legend = __webpack_require__(457);
+module.exports.title = __webpack_require__(458);
 
 
 /***/ }),
-/* 458 */
+/* 456 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -76984,7 +76981,7 @@ module.exports.title = __webpack_require__(460);
 
 
 var defaults = __webpack_require__(3);
-var elements = __webpack_require__(14);
+var elements = __webpack_require__(12);
 var helpers = __webpack_require__(2);
 
 defaults._set('global', {
@@ -77296,7 +77293,7 @@ module.exports = {
 
 
 /***/ }),
-/* 459 */
+/* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -77879,7 +77876,7 @@ module.exports = {
 
 
 /***/ }),
-/* 460 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -78138,7 +78135,7 @@ module.exports = {
 
 
 /***/ }),
-/* 461 */
+/* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsEqual = __webpack_require__(52);
@@ -78179,14 +78176,14 @@ module.exports = isEqual;
 
 
 /***/ }),
-/* 462 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Stack = __webpack_require__(321),
     equalArrays = __webpack_require__(326),
-    equalByTag = __webpack_require__(497),
-    equalObjects = __webpack_require__(501),
-    getTag = __webpack_require__(519),
+    equalByTag = __webpack_require__(495),
+    equalObjects = __webpack_require__(499),
+    getTag = __webpack_require__(517),
     isArray = __webpack_require__(11),
     isBuffer = __webpack_require__(328),
     isTypedArray = __webpack_require__(330);
@@ -78268,7 +78265,7 @@ module.exports = baseIsEqualDeep;
 
 
 /***/ }),
-/* 463 */
+/* 461 */
 /***/ (function(module, exports) {
 
 /**
@@ -78287,7 +78284,7 @@ module.exports = listCacheClear;
 
 
 /***/ }),
-/* 464 */
+/* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(34);
@@ -78328,7 +78325,7 @@ module.exports = listCacheDelete;
 
 
 /***/ }),
-/* 465 */
+/* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(34);
@@ -78353,7 +78350,7 @@ module.exports = listCacheGet;
 
 
 /***/ }),
-/* 466 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(34);
@@ -78375,7 +78372,7 @@ module.exports = listCacheHas;
 
 
 /***/ }),
-/* 467 */
+/* 465 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(34);
@@ -78407,7 +78404,7 @@ module.exports = listCacheSet;
 
 
 /***/ }),
-/* 468 */
+/* 466 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(33);
@@ -78428,7 +78425,7 @@ module.exports = stackClear;
 
 
 /***/ }),
-/* 469 */
+/* 467 */
 /***/ (function(module, exports) {
 
 /**
@@ -78452,7 +78449,7 @@ module.exports = stackDelete;
 
 
 /***/ }),
-/* 470 */
+/* 468 */
 /***/ (function(module, exports) {
 
 /**
@@ -78472,7 +78469,7 @@ module.exports = stackGet;
 
 
 /***/ }),
-/* 471 */
+/* 469 */
 /***/ (function(module, exports) {
 
 /**
@@ -78492,7 +78489,7 @@ module.exports = stackHas;
 
 
 /***/ }),
-/* 472 */
+/* 470 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(33),
@@ -78532,11 +78529,11 @@ module.exports = stackSet;
 
 
 /***/ }),
-/* 473 */
+/* 471 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isFunction = __webpack_require__(323),
-    isMasked = __webpack_require__(477),
+    isMasked = __webpack_require__(475),
     isObject = __webpack_require__(36),
     toSource = __webpack_require__(325);
 
@@ -78585,7 +78582,7 @@ module.exports = baseIsNative;
 
 
 /***/ }),
-/* 474 */
+/* 472 */
 /***/ (function(module, exports) {
 
 var g;
@@ -78612,7 +78609,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 475 */
+/* 473 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(35);
@@ -78664,7 +78661,7 @@ module.exports = getRawTag;
 
 
 /***/ }),
-/* 476 */
+/* 474 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -78692,10 +78689,10 @@ module.exports = objectToString;
 
 
 /***/ }),
-/* 477 */
+/* 475 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var coreJsData = __webpack_require__(478);
+var coreJsData = __webpack_require__(476);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = (function() {
@@ -78718,7 +78715,7 @@ module.exports = isMasked;
 
 
 /***/ }),
-/* 478 */
+/* 476 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var root = __webpack_require__(10);
@@ -78730,7 +78727,7 @@ module.exports = coreJsData;
 
 
 /***/ }),
-/* 479 */
+/* 477 */
 /***/ (function(module, exports) {
 
 /**
@@ -78749,10 +78746,10 @@ module.exports = getValue;
 
 
 /***/ }),
-/* 480 */
+/* 478 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Hash = __webpack_require__(481),
+var Hash = __webpack_require__(479),
     ListCache = __webpack_require__(33),
     Map = __webpack_require__(53);
 
@@ -78776,14 +78773,14 @@ module.exports = mapCacheClear;
 
 
 /***/ }),
-/* 481 */
+/* 479 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var hashClear = __webpack_require__(482),
-    hashDelete = __webpack_require__(483),
-    hashGet = __webpack_require__(484),
-    hashHas = __webpack_require__(485),
-    hashSet = __webpack_require__(486);
+var hashClear = __webpack_require__(480),
+    hashDelete = __webpack_require__(481),
+    hashGet = __webpack_require__(482),
+    hashHas = __webpack_require__(483),
+    hashSet = __webpack_require__(484);
 
 /**
  * Creates a hash object.
@@ -78814,7 +78811,7 @@ module.exports = Hash;
 
 
 /***/ }),
-/* 482 */
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(37);
@@ -78835,7 +78832,7 @@ module.exports = hashClear;
 
 
 /***/ }),
-/* 483 */
+/* 481 */
 /***/ (function(module, exports) {
 
 /**
@@ -78858,7 +78855,7 @@ module.exports = hashDelete;
 
 
 /***/ }),
-/* 484 */
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(37);
@@ -78894,7 +78891,7 @@ module.exports = hashGet;
 
 
 /***/ }),
-/* 485 */
+/* 483 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(37);
@@ -78923,7 +78920,7 @@ module.exports = hashHas;
 
 
 /***/ }),
-/* 486 */
+/* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(37);
@@ -78952,7 +78949,7 @@ module.exports = hashSet;
 
 
 /***/ }),
-/* 487 */
+/* 485 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(38);
@@ -78976,7 +78973,7 @@ module.exports = mapCacheDelete;
 
 
 /***/ }),
-/* 488 */
+/* 486 */
 /***/ (function(module, exports) {
 
 /**
@@ -78997,7 +78994,7 @@ module.exports = isKeyable;
 
 
 /***/ }),
-/* 489 */
+/* 487 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(38);
@@ -79019,7 +79016,7 @@ module.exports = mapCacheGet;
 
 
 /***/ }),
-/* 490 */
+/* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(38);
@@ -79041,7 +79038,7 @@ module.exports = mapCacheHas;
 
 
 /***/ }),
-/* 491 */
+/* 489 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(38);
@@ -79069,12 +79066,12 @@ module.exports = mapCacheSet;
 
 
 /***/ }),
-/* 492 */
+/* 490 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var MapCache = __webpack_require__(54),
-    setCacheAdd = __webpack_require__(493),
-    setCacheHas = __webpack_require__(494);
+    setCacheAdd = __webpack_require__(491),
+    setCacheHas = __webpack_require__(492);
 
 /**
  *
@@ -79102,7 +79099,7 @@ module.exports = SetCache;
 
 
 /***/ }),
-/* 493 */
+/* 491 */
 /***/ (function(module, exports) {
 
 /** Used to stand-in for `undefined` hash values. */
@@ -79127,7 +79124,7 @@ module.exports = setCacheAdd;
 
 
 /***/ }),
-/* 494 */
+/* 492 */
 /***/ (function(module, exports) {
 
 /**
@@ -79147,7 +79144,7 @@ module.exports = setCacheHas;
 
 
 /***/ }),
-/* 495 */
+/* 493 */
 /***/ (function(module, exports) {
 
 /**
@@ -79176,7 +79173,7 @@ module.exports = arraySome;
 
 
 /***/ }),
-/* 496 */
+/* 494 */
 /***/ (function(module, exports) {
 
 /**
@@ -79195,15 +79192,15 @@ module.exports = cacheHas;
 
 
 /***/ }),
-/* 497 */
+/* 495 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(35),
-    Uint8Array = __webpack_require__(498),
+    Uint8Array = __webpack_require__(496),
     eq = __webpack_require__(322),
     equalArrays = __webpack_require__(326),
-    mapToArray = __webpack_require__(499),
-    setToArray = __webpack_require__(500);
+    mapToArray = __webpack_require__(497),
+    setToArray = __webpack_require__(498);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -79313,7 +79310,7 @@ module.exports = equalByTag;
 
 
 /***/ }),
-/* 498 */
+/* 496 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var root = __webpack_require__(10);
@@ -79325,7 +79322,7 @@ module.exports = Uint8Array;
 
 
 /***/ }),
-/* 499 */
+/* 497 */
 /***/ (function(module, exports) {
 
 /**
@@ -79349,7 +79346,7 @@ module.exports = mapToArray;
 
 
 /***/ }),
-/* 500 */
+/* 498 */
 /***/ (function(module, exports) {
 
 /**
@@ -79373,10 +79370,10 @@ module.exports = setToArray;
 
 
 /***/ }),
-/* 501 */
+/* 499 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getAllKeys = __webpack_require__(502);
+var getAllKeys = __webpack_require__(500);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -79468,11 +79465,11 @@ module.exports = equalObjects;
 
 
 /***/ }),
-/* 502 */
+/* 500 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetAllKeys = __webpack_require__(503),
-    getSymbols = __webpack_require__(505),
+var baseGetAllKeys = __webpack_require__(501),
+    getSymbols = __webpack_require__(503),
     keys = __webpack_require__(39);
 
 /**
@@ -79490,10 +79487,10 @@ module.exports = getAllKeys;
 
 
 /***/ }),
-/* 503 */
+/* 501 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayPush = __webpack_require__(504),
+var arrayPush = __webpack_require__(502),
     isArray = __webpack_require__(11);
 
 /**
@@ -79516,7 +79513,7 @@ module.exports = baseGetAllKeys;
 
 
 /***/ }),
-/* 504 */
+/* 502 */
 /***/ (function(module, exports) {
 
 /**
@@ -79542,11 +79539,11 @@ module.exports = arrayPush;
 
 
 /***/ }),
-/* 505 */
+/* 503 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayFilter = __webpack_require__(506),
-    stubArray = __webpack_require__(507);
+var arrayFilter = __webpack_require__(504),
+    stubArray = __webpack_require__(505);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -79578,7 +79575,7 @@ module.exports = getSymbols;
 
 
 /***/ }),
-/* 506 */
+/* 504 */
 /***/ (function(module, exports) {
 
 /**
@@ -79609,7 +79606,7 @@ module.exports = arrayFilter;
 
 
 /***/ }),
-/* 507 */
+/* 505 */
 /***/ (function(module, exports) {
 
 /**
@@ -79638,10 +79635,10 @@ module.exports = stubArray;
 
 
 /***/ }),
-/* 508 */
+/* 506 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseTimes = __webpack_require__(509),
+var baseTimes = __webpack_require__(507),
     isArguments = __webpack_require__(327),
     isArray = __webpack_require__(11),
     isBuffer = __webpack_require__(328),
@@ -79693,7 +79690,7 @@ module.exports = arrayLikeKeys;
 
 
 /***/ }),
-/* 509 */
+/* 507 */
 /***/ (function(module, exports) {
 
 /**
@@ -79719,7 +79716,7 @@ module.exports = baseTimes;
 
 
 /***/ }),
-/* 510 */
+/* 508 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(25),
@@ -79743,7 +79740,7 @@ module.exports = baseIsArguments;
 
 
 /***/ }),
-/* 511 */
+/* 509 */
 /***/ (function(module, exports) {
 
 /**
@@ -79767,7 +79764,7 @@ module.exports = stubFalse;
 
 
 /***/ }),
-/* 512 */
+/* 510 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(25),
@@ -79833,7 +79830,7 @@ module.exports = baseIsTypedArray;
 
 
 /***/ }),
-/* 513 */
+/* 511 */
 /***/ (function(module, exports) {
 
 /**
@@ -79853,7 +79850,7 @@ module.exports = baseUnary;
 
 
 /***/ }),
-/* 514 */
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var freeGlobal = __webpack_require__(324);
@@ -79890,11 +79887,11 @@ module.exports = nodeUtil;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(29)(module)))
 
 /***/ }),
-/* 515 */
+/* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isPrototype = __webpack_require__(516),
-    nativeKeys = __webpack_require__(517);
+var isPrototype = __webpack_require__(514),
+    nativeKeys = __webpack_require__(515);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -79926,7 +79923,7 @@ module.exports = baseKeys;
 
 
 /***/ }),
-/* 516 */
+/* 514 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -79950,10 +79947,10 @@ module.exports = isPrototype;
 
 
 /***/ }),
-/* 517 */
+/* 515 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var overArg = __webpack_require__(518);
+var overArg = __webpack_require__(516);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeKeys = overArg(Object.keys, Object);
@@ -79962,7 +79959,7 @@ module.exports = nativeKeys;
 
 
 /***/ }),
-/* 518 */
+/* 516 */
 /***/ (function(module, exports) {
 
 /**
@@ -79983,14 +79980,14 @@ module.exports = overArg;
 
 
 /***/ }),
-/* 519 */
+/* 517 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DataView = __webpack_require__(520),
+var DataView = __webpack_require__(518),
     Map = __webpack_require__(53),
-    Promise = __webpack_require__(521),
-    Set = __webpack_require__(522),
-    WeakMap = __webpack_require__(523),
+    Promise = __webpack_require__(519),
+    Set = __webpack_require__(520),
+    WeakMap = __webpack_require__(521),
     baseGetTag = __webpack_require__(25),
     toSource = __webpack_require__(325);
 
@@ -80047,7 +80044,7 @@ module.exports = getTag;
 
 
 /***/ }),
-/* 520 */
+/* 518 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(17),
@@ -80060,7 +80057,7 @@ module.exports = DataView;
 
 
 /***/ }),
-/* 521 */
+/* 519 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(17),
@@ -80073,7 +80070,7 @@ module.exports = Promise;
 
 
 /***/ }),
-/* 522 */
+/* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(17),
@@ -80086,7 +80083,7 @@ module.exports = Set;
 
 
 /***/ }),
-/* 523 */
+/* 521 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(17),
@@ -80099,11 +80096,11 @@ module.exports = WeakMap;
 
 
 /***/ }),
-/* 524 */
+/* 522 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var createFind = __webpack_require__(525),
-    findIndex = __webpack_require__(544);
+var createFind = __webpack_require__(523),
+    findIndex = __webpack_require__(542);
 
 /**
  * Iterates over elements of `collection`, returning the first element
@@ -80147,7 +80144,7 @@ module.exports = find;
 
 
 /***/ }),
-/* 525 */
+/* 523 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIteratee = __webpack_require__(57),
@@ -80178,11 +80175,11 @@ module.exports = createFind;
 
 
 /***/ }),
-/* 526 */
+/* 524 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsMatch = __webpack_require__(527),
-    getMatchData = __webpack_require__(528),
+var baseIsMatch = __webpack_require__(525),
+    getMatchData = __webpack_require__(526),
     matchesStrictComparable = __webpack_require__(332);
 
 /**
@@ -80206,7 +80203,7 @@ module.exports = baseMatches;
 
 
 /***/ }),
-/* 527 */
+/* 525 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Stack = __webpack_require__(321),
@@ -80274,7 +80271,7 @@ module.exports = baseIsMatch;
 
 
 /***/ }),
-/* 528 */
+/* 526 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isStrictComparable = __webpack_require__(331),
@@ -80304,12 +80301,12 @@ module.exports = getMatchData;
 
 
 /***/ }),
-/* 529 */
+/* 527 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsEqual = __webpack_require__(52),
-    get = __webpack_require__(530),
-    hasIn = __webpack_require__(537),
+    get = __webpack_require__(528),
+    hasIn = __webpack_require__(535),
     isKey = __webpack_require__(58),
     isStrictComparable = __webpack_require__(331),
     matchesStrictComparable = __webpack_require__(332),
@@ -80343,7 +80340,7 @@ module.exports = baseMatchesProperty;
 
 
 /***/ }),
-/* 530 */
+/* 528 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(333);
@@ -80382,10 +80379,10 @@ module.exports = get;
 
 
 /***/ }),
-/* 531 */
+/* 529 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoizeCapped = __webpack_require__(532);
+var memoizeCapped = __webpack_require__(530);
 
 /** Used to match property names within property paths. */
 var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -80415,10 +80412,10 @@ module.exports = stringToPath;
 
 
 /***/ }),
-/* 532 */
+/* 530 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoize = __webpack_require__(533);
+var memoize = __webpack_require__(531);
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE = 500;
@@ -80447,7 +80444,7 @@ module.exports = memoizeCapped;
 
 
 /***/ }),
-/* 533 */
+/* 531 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var MapCache = __webpack_require__(54);
@@ -80526,10 +80523,10 @@ module.exports = memoize;
 
 
 /***/ }),
-/* 534 */
+/* 532 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseToString = __webpack_require__(535);
+var baseToString = __webpack_require__(533);
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -80560,11 +80557,11 @@ module.exports = toString;
 
 
 /***/ }),
-/* 535 */
+/* 533 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(35),
-    arrayMap = __webpack_require__(536),
+    arrayMap = __webpack_require__(534),
     isArray = __webpack_require__(11),
     isSymbol = __webpack_require__(40);
 
@@ -80603,7 +80600,7 @@ module.exports = baseToString;
 
 
 /***/ }),
-/* 536 */
+/* 534 */
 /***/ (function(module, exports) {
 
 /**
@@ -80630,11 +80627,11 @@ module.exports = arrayMap;
 
 
 /***/ }),
-/* 537 */
+/* 535 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseHasIn = __webpack_require__(538),
-    hasPath = __webpack_require__(539);
+var baseHasIn = __webpack_require__(536),
+    hasPath = __webpack_require__(537);
 
 /**
  * Checks if `path` is a direct or inherited property of `object`.
@@ -80670,7 +80667,7 @@ module.exports = hasIn;
 
 
 /***/ }),
-/* 538 */
+/* 536 */
 /***/ (function(module, exports) {
 
 /**
@@ -80689,7 +80686,7 @@ module.exports = baseHasIn;
 
 
 /***/ }),
-/* 539 */
+/* 537 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(334),
@@ -80734,7 +80731,7 @@ module.exports = hasPath;
 
 
 /***/ }),
-/* 540 */
+/* 538 */
 /***/ (function(module, exports) {
 
 /**
@@ -80761,11 +80758,11 @@ module.exports = identity;
 
 
 /***/ }),
-/* 541 */
+/* 539 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseProperty = __webpack_require__(542),
-    basePropertyDeep = __webpack_require__(543),
+var baseProperty = __webpack_require__(540),
+    basePropertyDeep = __webpack_require__(541),
     isKey = __webpack_require__(58),
     toKey = __webpack_require__(41);
 
@@ -80799,7 +80796,7 @@ module.exports = property;
 
 
 /***/ }),
-/* 542 */
+/* 540 */
 /***/ (function(module, exports) {
 
 /**
@@ -80819,7 +80816,7 @@ module.exports = baseProperty;
 
 
 /***/ }),
-/* 543 */
+/* 541 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(333);
@@ -80841,12 +80838,12 @@ module.exports = basePropertyDeep;
 
 
 /***/ }),
-/* 544 */
+/* 542 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseFindIndex = __webpack_require__(545),
+var baseFindIndex = __webpack_require__(543),
     baseIteratee = __webpack_require__(57),
-    toInteger = __webpack_require__(546);
+    toInteger = __webpack_require__(544);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMax = Math.max;
@@ -80902,7 +80899,7 @@ module.exports = findIndex;
 
 
 /***/ }),
-/* 545 */
+/* 543 */
 /***/ (function(module, exports) {
 
 /**
@@ -80932,10 +80929,10 @@ module.exports = baseFindIndex;
 
 
 /***/ }),
-/* 546 */
+/* 544 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toFinite = __webpack_require__(547);
+var toFinite = __webpack_require__(545);
 
 /**
  * Converts `value` to an integer.
@@ -80974,10 +80971,10 @@ module.exports = toInteger;
 
 
 /***/ }),
-/* 547 */
+/* 545 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toNumber = __webpack_require__(548);
+var toNumber = __webpack_require__(546);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0,
@@ -81022,7 +81019,7 @@ module.exports = toFinite;
 
 
 /***/ }),
-/* 548 */
+/* 546 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(36),
@@ -81094,11 +81091,11 @@ module.exports = toNumber;
 
 
 /***/ }),
-/* 549 */
+/* 547 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseAssignValue = __webpack_require__(550),
-    createAggregator = __webpack_require__(552);
+var baseAssignValue = __webpack_require__(548),
+    createAggregator = __webpack_require__(550);
 
 /**
  * Creates an object composed of keys generated from the results of running
@@ -81136,10 +81133,10 @@ module.exports = keyBy;
 
 
 /***/ }),
-/* 550 */
+/* 548 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var defineProperty = __webpack_require__(551);
+var defineProperty = __webpack_require__(549);
 
 /**
  * The base implementation of `assignValue` and `assignMergeValue` without
@@ -81167,7 +81164,7 @@ module.exports = baseAssignValue;
 
 
 /***/ }),
-/* 551 */
+/* 549 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(17);
@@ -81184,11 +81181,11 @@ module.exports = defineProperty;
 
 
 /***/ }),
-/* 552 */
+/* 550 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayAggregator = __webpack_require__(553),
-    baseAggregator = __webpack_require__(554),
+var arrayAggregator = __webpack_require__(551),
+    baseAggregator = __webpack_require__(552),
     baseIteratee = __webpack_require__(57),
     isArray = __webpack_require__(11);
 
@@ -81213,7 +81210,7 @@ module.exports = createAggregator;
 
 
 /***/ }),
-/* 553 */
+/* 551 */
 /***/ (function(module, exports) {
 
 /**
@@ -81241,10 +81238,10 @@ module.exports = arrayAggregator;
 
 
 /***/ }),
-/* 554 */
+/* 552 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseEach = __webpack_require__(555);
+var baseEach = __webpack_require__(553);
 
 /**
  * Aggregates elements of `collection` on `accumulator` with keys transformed
@@ -81268,11 +81265,11 @@ module.exports = baseAggregator;
 
 
 /***/ }),
-/* 555 */
+/* 553 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseForOwn = __webpack_require__(556),
-    createBaseEach = __webpack_require__(559);
+var baseForOwn = __webpack_require__(554),
+    createBaseEach = __webpack_require__(557);
 
 /**
  * The base implementation of `_.forEach` without support for iteratee shorthands.
@@ -81288,10 +81285,10 @@ module.exports = baseEach;
 
 
 /***/ }),
-/* 556 */
+/* 554 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseFor = __webpack_require__(557),
+var baseFor = __webpack_require__(555),
     keys = __webpack_require__(39);
 
 /**
@@ -81310,10 +81307,10 @@ module.exports = baseForOwn;
 
 
 /***/ }),
-/* 557 */
+/* 555 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var createBaseFor = __webpack_require__(558);
+var createBaseFor = __webpack_require__(556);
 
 /**
  * The base implementation of `baseForOwn` which iterates over `object`
@@ -81332,7 +81329,7 @@ module.exports = baseFor;
 
 
 /***/ }),
-/* 558 */
+/* 556 */
 /***/ (function(module, exports) {
 
 /**
@@ -81363,7 +81360,7 @@ module.exports = createBaseFor;
 
 
 /***/ }),
-/* 559 */
+/* 557 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArrayLike = __webpack_require__(56);
@@ -81401,13 +81398,13 @@ module.exports = createBaseEach;
 
 
 /***/ }),
-/* 560 */
+/* 558 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(561);
+var content = __webpack_require__(559);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -81415,7 +81412,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(13)(content, options);
+var update = __webpack_require__(16)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -81432,15 +81429,15 @@ if(false) {
 }
 
 /***/ }),
-/* 561 */
+/* 559 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(12)(false);
+exports = module.exports = __webpack_require__(15)(false);
 // imports
 
 
 // module
-exports.push([module.i, "/* http://meyerweb.com/eric/tools/css/reset/ \n   v2.0 | 20110126\n   License: none (public domain)\n*/\n\nhtml,\nbody,\ndiv,\nspan,\napplet,\nobject,\niframe,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\np,\nblockquote,\npre,\na,\nabbr,\nacronym,\naddress,\nbig,\ncite,\ncode,\ndel,\ndfn,\nem,\nimg,\nins,\nkbd,\nq,\ns,\nsamp,\nsmall,\nstrike,\nstrong,\nsub,\nsup,\ntt,\nvar,\nb,\nu,\ni,\ncenter,\ndl,\ndt,\ndd,\nol,\nul,\nli,\nfieldset,\nform,\nlabel,\nlegend,\ntable,\ncaption,\ntbody,\ntfoot,\nthead,\ntr,\nth,\ntd,\narticle,\naside,\ncanvas,\ndetails,\nembed,\nfigure,\nfigcaption,\nfooter,\nheader,\nhgroup,\nmenu,\nnav,\noutput,\nruby,\nsection,\nsummary,\ntime,\nmark,\naudio,\nvideo {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\n\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmenu,\nnav,\nsection {\n  display: block;\n}\n\nbody {\n  line-height: 1;\n}\n\nol,\nul {\n  list-style: none;\n}\n\nblockquote,\nq {\n  quotes: none;\n}\n\nblockquote:before,\nblockquote:after,\nq:before,\nq:after {\n  content: '';\n  content: none;\n}\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n\nbody {\n  font-family: 'Georgia', sans-serif;\n  box-sizing: border-box;\n  overflow-y: hidden;\n}", ""]);
+exports.push([module.i, "/* http://meyerweb.com/eric/tools/css/reset/ \n   v2.0 | 20110126\n   License: none (public domain)\n*/\n\nhtml,\nbody,\ndiv,\nspan,\napplet,\nobject,\niframe,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\np,\nblockquote,\npre,\na,\nabbr,\nacronym,\naddress,\nbig,\ncite,\ncode,\ndel,\ndfn,\nem,\nimg,\nins,\nkbd,\nq,\ns,\nsamp,\nsmall,\nstrike,\nstrong,\nsub,\nsup,\ntt,\nvar,\nb,\nu,\ni,\ncenter,\ndl,\ndt,\ndd,\nol,\nul,\nli,\nfieldset,\nform,\nlabel,\nlegend,\ntable,\ncaption,\ntbody,\ntfoot,\nthead,\ntr,\nth,\ntd,\narticle,\naside,\ncanvas,\ndetails,\nembed,\nfigure,\nfigcaption,\nfooter,\nheader,\nhgroup,\nmenu,\nnav,\noutput,\nruby,\nsection,\nsummary,\ntime,\nmark,\naudio,\nvideo {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\n\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmenu,\nnav,\nsection {\n  display: block;\n}\n\nbody {\n  line-height: 1;\n}\n\nol,\nul {\n  list-style: none;\n}\n\nblockquote,\nq {\n  quotes: none;\n}\n\nblockquote:before,\nblockquote:after,\nq:before,\nq:after {\n  content: '';\n  content: none;\n}\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n\nbody {\n  font-family: \"Noto Sans\", sans-serif;\n  box-sizing: border-box;\n  overflow-y: hidden;\n}", ""]);
 
 // exports
 
